@@ -19,10 +19,10 @@ const dict: Record<Lang, Record<string, string>> = {
       "Privacy utiliza cookies e tecnologias similares para fornecer, manter e melhorar nossos servi\u00e7os. Se voc\u00ea aceitar, usaremos esses dados para personaliza\u00e7\u00e3o e an\u00e1lises associadas. Para mais informa\u00e7ões, leia nossa Política de Privacidade.",
     month: "mês",
     year: "ano",
-    lifetime: "Vitalício",
+    lifetime: "Vitalício (54% OFF)",
     plan_1m: "1 mês (54% OFF)",
-    plan_1y: "1 ano",
-    plan_life: "Vitalício",
+    plan_1y: "1 ano (54% OFF)",
+    plan_life: "Vitalício (54% OFF)",
   },
   en: {
     read_more: "Read more",
@@ -41,8 +41,8 @@ const dict: Record<Lang, Record<string, string>> = {
     year: "year",
     lifetime: "Lifetime",
     plan_1m: "1 month (54% OFF)",
-    plan_1y: "1 year",
-    plan_life: "Lifetime",
+    plan_1y: "1 year (54% OFF)",
+    plan_life: "Lifetime (54% OFF)",
   },
   es: {
     read_more: "Leer más",
@@ -59,10 +59,10 @@ const dict: Record<Lang, Record<string, string>> = {
     cookie_text: "Usamos cookies para mejorar su experiencia.",
     month: "mes",
     year: "año",
-    lifetime: "Vitalicio",
+    lifetime: "Vitalicio (54% OFF)",
     plan_1m: "1 mes (54% OFF)",
-    plan_1y: "1 año",
-    plan_life: "Vitalicio",
+    plan_1y: "1 año (54% OFF)",
+    plan_life: "Vitalicio (54% OFF)",
   },
 };
 
