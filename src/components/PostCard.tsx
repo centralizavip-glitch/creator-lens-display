@@ -1,6 +1,14 @@
 import VerifiedBadge from "./icons/VerifiedBadge";
 import LockIcon from "./icons/LockIcon";
-import { ImageIcon, VideoIcon, HeartIcon, CommentIcon, CoinIcon, BookmarkIcon, MoreVerticalIcon } from "./icons/MetricIcons";
+import {
+  ImageIcon,
+  VideoIcon,
+  HeartIcon,
+  CommentIcon,
+  CoinIcon,
+  BookmarkIcon,
+  MoreVerticalIcon,
+} from "./icons/MetricIcons";
 
 interface PostCardProps {
   onLockedClick: () => void;
@@ -15,7 +23,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
           <div className="w-10 h-10 rounded-full overflow-hidden bg-muted">
             <img
               src="/assets/nayperfil.png"
-              alt="Mariana"
+              alt="Nayara assunção"
               className="w-full h-full object-cover"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = "none";
@@ -53,9 +61,15 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
 
       {/* Metrics */}
       <div className="px-4 py-2 flex items-center gap-4 text-xs text-muted-foreground">
-        <span className="flex items-center gap-1"><ImageIcon size={13} /> 142</span>
-        <span className="flex items-center gap-1"><VideoIcon size={13} /> 239</span>
-        <span className="flex items-center gap-1"><HeartIcon size={13} /> 1K</span>
+        <span className="flex items-center gap-1">
+          <ImageIcon size={13} /> 142
+        </span>
+        <span className="flex items-center gap-1">
+          <VideoIcon size={13} /> 239
+        </span>
+        <span className="flex items-center gap-1">
+          <HeartIcon size={13} /> 1K
+        </span>
       </div>
 
       {/* Actions */}
