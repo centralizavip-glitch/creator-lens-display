@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Globe } from "lucide-react";
+import { GlobeIcon } from "./icons/MetricIcons";
 
 interface HeaderProps {
   onLangChange: (lang: "pt" | "en" | "es") => void;
@@ -8,8 +8,8 @@ interface HeaderProps {
 
 const langs = [
   { code: "en" as const, label: "English" },
-  { code: "pt" as const, label: "Português" },
-  { code: "es" as const, label: "Español" },
+  { code: "pt" as const, label: "Portugues" },
+  { code: "es" as const, label: "Espanol" },
 ];
 
 export default function Header({ onLangChange, currentLang }: HeaderProps) {
@@ -41,10 +41,10 @@ export default function Header({ onLangChange, currentLang }: HeaderProps) {
           className="w-9 h-9 rounded-full border border-border flex items-center justify-center bg-card hover:bg-muted transition-colors"
           aria-label="Language"
         >
-          <Globe className="w-4 h-4 text-muted-foreground" />
+          <GlobeIcon size={16} />
         </button>
         {open && (
-          <div className="absolute right-0 top-11 bg-card border border-border rounded-xl shadow-lg py-1 z-50 min-w-[140px]">
+          <div className="absolute right-0 top-11 bg-card border border-border rounded-xl shadow-sm py-1 z-50 min-w-[140px]">
             {langs.map((l) => (
               <button
                 key={l.code}

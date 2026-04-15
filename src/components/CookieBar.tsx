@@ -17,14 +17,14 @@ export default function CookieBar({ t }: CookieBarProps) {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-card border-t border-border px-4 py-3">
-      <div className="max-w-profile mx-auto flex items-center justify-between gap-4">
-        <p className="text-xs text-muted-foreground flex-1">{t("cookie_text")}</p>
+      <div className="max-w-profile mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <p className="text-xs text-muted-foreground flex-1 leading-relaxed">{t("cookie_text")}</p>
         <button
           onClick={() => {
             localStorage.setItem("cookies_accepted", "true");
             setVisible(false);
           }}
-          className="gradient-orange-btn px-5 py-2 rounded-full text-sm font-medium text-primary-foreground whitespace-nowrap hover:brightness-105 transition-all"
+          className="gradient-orange-btn px-6 py-2 rounded-full text-sm font-medium text-foreground whitespace-nowrap hover:brightness-105 transition-all"
         >
           {t("accept")}
         </button>
