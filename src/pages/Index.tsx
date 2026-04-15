@@ -30,7 +30,7 @@ export default function Index() {
         <ProfileHero t={t} />
         <SubscriptionSection t={t} pulsing={pulsing} />
 
-        <div className="bg-card rounded-3xl shadow-sm overflow-hidden">
+        <div className="bg-card rounded-[28px] md:rounded-[28px] border border-border overflow-hidden">
           <ContentTabs activeTab={activeTab} onTabChange={setActiveTab} t={t} />
 
           {activeTab === "posts" ? (
