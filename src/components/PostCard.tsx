@@ -65,7 +65,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
           <ImageIcon size={13} /> 142
         </span>
         <span className="flex items-center gap-1">
-          <VideoIcon size={13} /> 239
+          <VideoIcon size={13} /> 339
         </span>
         <span className="flex items-center gap-1">
           <HeartIcon size={13} /> 1K

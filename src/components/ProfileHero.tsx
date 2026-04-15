@@ -45,10 +45,10 @@ export default function ProfileHero({ t }: ProfileHeroProps) {
               <ImageIcon size={14} /> 142
             </span>
             <span className="flex items-center gap-1 text-xs text-muted-foreground">
-              <VideoIcon size={14} /> 239
+              <VideoIcon size={14} /> 339
             </span>
             <span className="flex items-center gap-1 text-xs text-muted-foreground">
-              <LockSmallIcon size={13} /> 2
+              <LockSmallIcon size={13} /> 47
             </span>
             <span className="flex items-center gap-1 text-xs text-muted-foreground">
               <HeartIcon size={13} /> 1K
