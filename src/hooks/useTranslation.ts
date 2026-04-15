@@ -15,7 +15,7 @@ const dict: Record<Lang, Record<string, string>> = {
     videos: "Vídeos",
     paid: "Pagos",
     accept: "Aceitar",
-    cookie_text: "Nós usamos cookies para melhorar sua experiência.",
+    cookie_text: "Privacy utiliza cookies e tecnologias similares para fornecer, manter e melhorar nossos servi\u00e7os. Se voc\u00ea aceitar, usaremos esses dados para personaliza\u00e7\u00e3o e an\u00e1lises associadas.",
     month: "mês",
     year: "ano",
     lifetime: "Vitalício",
