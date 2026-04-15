@@ -16,7 +16,7 @@ export default function CookieBar({ t }: CookieBarProps) {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-card border-t border-border px-4 py-3">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-card border-t border-border/40 px-4 py-3">
       <div className="max-w-profile mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <p className="text-xs text-muted-foreground flex-1 leading-relaxed">{t("cookie_text")}</p>
         <button

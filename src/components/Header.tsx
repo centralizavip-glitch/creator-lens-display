@@ -25,26 +25,38 @@ export default function Header({ onLangChange, currentLang }: HeaderProps) {
   }, []);
 
   return (
-    <header className="flex items-center justify-between px-4 py-3 max-w-profile mx-auto">
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-between px-4 py-3 max-w-profile mx-auto">
       <div className="flex-1" />
-      <img
-        src="/assets/logoprivacy.png"
-        alt="Logo"
-        className="h-8 object-contain"
-        onError={(e) => {
-          (e.target as HTMLImageElement).style.display = "none";
-        }}
-      />
+      {/* Wordmark fallback if logo fails */}
+      <div className="flex items-center">
+        <img
+          src="/assets/logoprivacy.png"
+          alt="Privacy"
+          className="h-8 object-contain"
+          onError={(e) => {
+            const img = e.target as HTMLImageElement;
+            img.style.display = "none";
+            const fallback = img.nextElementSibling as HTMLElement;
+            if (fallback) fallback.style.display = "flex";
+          }}
+        />
+        <span
+          className="items-center text-xl font-bold text-foreground tracking-tight hidden"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
+        >
+          privacy<span className="text-primary">.</span>
+        </span>
+      </div>
       <div className="flex-1 flex justify-end relative" ref={ref}>
         <button
           onClick={() => setOpen(!open)}
-          className="w-9 h-9 rounded-full border border-border flex items-center justify-center bg-card hover:bg-muted transition-colors"
+          className="w-9 h-9 rounded-full border border-border/60 flex items-center justify-center bg-card hover:bg-muted transition-colors"
           aria-label="Language"
         >
           <GlobeIcon size={16} />
         </button>
         {open && (
-          <div className="absolute right-0 top-11 bg-card border border-border rounded-xl shadow-sm py-1 z-50 min-w-[140px]">
+          <div className="absolute right-0 top-11 bg-card border border-border/60 rounded-xl shadow-sm py-1 z-50 min-w-[140px]">
             {langs.map((l) => (
               <button
                 key={l.code}

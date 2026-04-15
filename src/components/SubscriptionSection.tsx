@@ -22,7 +22,7 @@ export default function SubscriptionSection({ t, pulsing }: SubscriptionSectionP
   ];
 
   return (
-    <div id="subscriptions" className="bg-card rounded-[28px] md:rounded-[28px] rounded-[24px] p-5 border border-border">
+    <div id="subscriptions" className="bg-card rounded-[28px] md:rounded-[28px] p-5">
       <h2 className="text-base font-semibold text-foreground mb-4">{t("subscriptions")}</h2>
 
       <div className="flex flex-col gap-3">

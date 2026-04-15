@@ -6,14 +6,16 @@
 
 @layer base {
   :root {
-    --background: 36 10% 95%;
-    --foreground: 0 0% 15%;
+    color-scheme: light only;
+
+    --background: 38 8% 95%;
+    --foreground: 0 0% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 15%;
+    --card-foreground: 0 0% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 15%;
+    --popover-foreground: 0 0% 14%;
 
     --primary: 27 78% 60%;
     --primary-foreground: 0 0% 100%;
@@ -30,13 +32,13 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 34 18% 84%;
-    --input: 34 18% 84%;
+    --border: 36 16% 88%;
+    --input: 36 16% 88%;
     --ring: 27 78% 60%;
 
     --radius: 1rem;
 
-    --locked-bg: 36 20% 90%;
+    --locked-bg: 38 18% 90%;
     --gradient-start: 30 65% 80%;
     --gradient-end: 27 80% 60%;
     --lock-icon: 228 12% 52%;
@@ -50,6 +52,35 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    color-scheme: light only;
+    --background: 38 8% 95%;
+    --foreground: 0 0% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 14%;
+    --primary: 27 78% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 34 30% 95%;
+    --secondary-foreground: 0 0% 25%;
+    --muted: 36 12% 92%;
+    --muted-foreground: 0 0% 35%;
+    --accent: 30 75% 92%;
+    --accent-foreground: 27 78% 45%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 36 16% 88%;
+    --input: 36 16% 88%;
+    --ring: 27 78% 60%;
+    --radius: 1rem;
+    --locked-bg: 38 18% 90%;
+    --gradient-start: 30 65% 80%;
+    --gradient-end: 27 80% 60%;
+    --lock-icon: 228 12% 52%;
+    --badge-coral: 16 80% 73%;
   }
 }
 
@@ -87,4 +118,10 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light only;
+  }
 }
