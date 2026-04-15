@@ -32,7 +32,7 @@ export default function ProfileHero({ t }: ProfileHeroProps) {
           <div className="w-[96px] h-[96px] md:w-[114px] md:h-[114px] rounded-full border-[4px] border-card overflow-hidden bg-muted">
             <img
               src="/assets/nayperfil.png"
-              alt="Mariana"
+              alt="Nayara Assunção"
               className="w-full h-full object-cover"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = "none";
