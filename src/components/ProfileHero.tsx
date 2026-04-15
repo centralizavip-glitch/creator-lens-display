@@ -58,10 +58,10 @@ export default function ProfileHero({ t }: ProfileHeroProps) {
 
         {/* Name */}
         <div className="flex items-center gap-1 mb-0.5">
-          <h1 className="text-lg font-semibold text-foreground tracking-tight">Mariana</h1>
+          <h1 className="text-lg font-semibold text-foreground tracking-tight">Nayara assunção</h1>
           <VerifiedBadge size={20} />
         </div>
-        <p className="text-sm text-muted-foreground mb-3">@Babyydoll</p>
+        <p className="text-sm text-muted-foreground mb-3">@nayara_assunofc</p>
 
         {/* Bio */}
         <p

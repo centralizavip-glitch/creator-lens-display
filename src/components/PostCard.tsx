@@ -32,10 +32,10 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
           </div>
           <div>
             <div className="flex items-center gap-1">
-              <span className="text-sm font-semibold text-foreground">Mariana</span>
+              <span className="text-sm font-semibold text-foreground">Nayara assunção</span>
               <VerifiedBadge size={16} />
             </div>
-            <span className="text-xs text-muted-foreground">@Babyydoll</span>
+            <span className="text-xs text-muted-foreground">@nayara_assunofc</span>
           </div>
         </div>
         <button className="text-muted-foreground hover:text-foreground">
