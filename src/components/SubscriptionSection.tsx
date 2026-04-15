@@ -1,4 +1,5 @@
 import { useCheckout } from "@/hooks/useCheckout";
+import { ChevronRightIcon } from "./icons/MetricIcons";
 
 interface Plan {
   id: string;
@@ -21,14 +22,15 @@ export default function SubscriptionSection({ t, pulsing }: SubscriptionSectionP
   ];
 
   return (
-    <div id="subscriptions" className="bg-card rounded-3xl p-5 shadow-sm">
+    <div id="subscriptions" className="bg-card rounded-[28px] md:rounded-[28px] rounded-[24px] p-5 border border-border">
       <h2 className="text-base font-semibold text-foreground mb-4">{t("subscriptions")}</h2>
+
       <div className="flex flex-col gap-3">
         {plans.map((plan) => (
           <button
             key={plan.id}
             onClick={() => startCheckout(plan.id)}
-            className={`gradient-orange-btn flex items-center justify-between px-5 py-3.5 rounded-full text-primary-foreground font-medium text-sm hover:brightness-105 active:scale-[0.98] transition-all ${
+            className={`gradient-orange-btn flex items-center justify-between px-5 py-3.5 rounded-full text-foreground font-medium text-sm hover:brightness-105 active:scale-[0.98] transition-all ${
               pulsing ? "animate-pulse-scale" : ""
             }`}
           >
@@ -37,6 +39,12 @@ export default function SubscriptionSection({ t, pulsing }: SubscriptionSectionP
           </button>
         ))}
       </div>
+
+      {/* Promotions */}
+      <button className="w-full flex items-center justify-between mt-4 px-1 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <span className="font-medium">{t("promotions")}</span>
+        <ChevronRightIcon size={16} />
+      </button>
     </div>
   );
 }

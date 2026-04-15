@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Lock } from "lucide-react";
+import LockIcon from "./icons/LockIcon";
 
 interface MediaGridProps {
   t: (key: string) => string;
@@ -40,10 +40,15 @@ export default function MediaGrid({ t, onLockedClick }: MediaGridProps) {
             key={i}
             onClick={onLockedClick}
             onContextMenu={(e) => e.preventDefault()}
-            className="locked-overlay aspect-[3/4] rounded-lg flex items-center justify-center cursor-pointer select-none"
+            className="locked-overlay aspect-[3/4] rounded-lg flex items-center justify-center cursor-pointer select-none relative overflow-hidden"
             draggable={false}
           >
-            <Lock className="w-6 h-6 text-muted-foreground/40" />
+            {/* Subtle decorative shapes */}
+            <div className="absolute inset-0 opacity-[0.05]">
+              <div className="absolute w-[60px] h-[60px] rounded-full bg-primary -top-4 -right-4" />
+              <div className="absolute w-[50px] h-[50px] rounded-full bg-primary bottom-2 -left-4" />
+            </div>
+            <LockIcon size={22} />
           </div>
         ))}
       </div>
