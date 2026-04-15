@@ -16,42 +16,44 @@ export function ImageIcon({ size = 16 }: { size?: number }) {
   );
 }
 
-export function VideoIcon({ size = 16 }: { size?: number }) {
+/* Feed/Posts icon — phone/device style matching the reference */
+export function PostIcon({ size = 16 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" {...iconStyle}>
-      <rect x="2" y="4" width="15" height="16" rx="2.5" />
-      <path d="M17 9l5-3v12l-5-3" />
+    <svg width={size} height={size} viewBox="0 0 24 24" {...iconStyle} strokeWidth={1.8}>
+      {/* Top bar */}
+      <line x1="8" y1="3" x2="16" y2="3" />
+      {/* Device body */}
+      <rect x="6" y="5.5" width="12" height="13" rx="2.5" />
+      {/* Bottom bar */}
+      <line x1="8" y1="21" x2="16" y2="21" />
     </svg>
   );
+}
+
+/* Video/Media icon — clapperboard matching the reference for both top metrics and tabs */
+export function VideoIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...iconStyle} strokeWidth={1.6}>
+      {/* Board body */}
+      <rect x="2" y="7" width="20" height="14" rx="2" />
+      {/* Clapper top */}
+      <path d="M2 7l3.5-4h13L22 7" />
+      {/* Clapper lines */}
+      <line x1="8" y1="3.5" x2="10.5" y2="7" />
+      <line x1="14" y1="3.5" x2="16.5" y2="7" />
+    </svg>
+  );
+}
+
+/* Reuse the same icon for the Midias tab */
+export function ClapperboardIcon({ size = 16 }: { size?: number }) {
+  return <VideoIcon size={size} />;
 }
 
 export function HeartIcon({ size = 16 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" {...iconStyle}>
       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-    </svg>
-  );
-}
-
-export function ClapperboardIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" {...iconStyle}>
-      <path d="M4 2l4 4H4V2z" />
-      <path d="M8 2l4 4H8V2z" />
-      <path d="M12 2l4 4h-4V2z" />
-      <path d="M16 2l4 4h-4V2z" />
-      <rect x="2" y="6" width="20" height="16" rx="2" />
-    </svg>
-  );
-}
-
-export function PostIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" {...iconStyle}>
-      <rect x="4" y="2" width="16" height="20" rx="2.5" />
-      <line x1="8" y1="7" x2="16" y2="7" />
-      <line x1="8" y1="11" x2="16" y2="11" />
-      <line x1="8" y1="15" x2="12" y2="15" />
     </svg>
   );
 }

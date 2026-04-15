@@ -16,14 +16,14 @@ interface PostCardProps {
 
 export default function PostCard({ onLockedClick }: PostCardProps) {
   return (
-    <div className="bg-card rounded-[24px] border border-border overflow-hidden">
+    <div className="bg-card rounded-[24px] overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full overflow-hidden bg-muted">
             <img
               src="/assets/nayperfil.png"
-              alt="Nayara assunção"
+              alt="Nayara assuncao"
               className="w-full h-full object-cover"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = "none";
@@ -32,7 +32,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
           </div>
           <div>
             <div className="flex items-center gap-1">
-              <span className="text-sm font-semibold text-foreground">Nayara assunção</span>
+              <span className="text-sm font-semibold text-foreground">Nayara assuncao</span>
               <VerifiedBadge size={16} />
             </div>
             <span className="text-xs text-muted-foreground">@nayara_assunofc</span>

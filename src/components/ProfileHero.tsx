@@ -12,7 +12,7 @@ export default function ProfileHero({ t }: ProfileHeroProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="bg-card rounded-[28px] md:rounded-[28px] rounded-[24px] overflow-hidden border border-border">
+    <div className="bg-card rounded-[28px] md:rounded-[28px] overflow-hidden">
       {/* Banner */}
       <div className="h-[170px] md:h-[170px] relative gradient-orange">
         <img
@@ -32,7 +32,7 @@ export default function ProfileHero({ t }: ProfileHeroProps) {
           <div className="w-[96px] h-[96px] md:w-[114px] md:h-[114px] rounded-full border-[4px] border-card overflow-hidden bg-muted">
             <img
               src="/assets/nayperfil.png"
-              alt="Nayara assunção"
+              alt="Nayara assuncao"
               className="w-full h-full object-cover"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = "none";
@@ -57,8 +57,8 @@ export default function ProfileHero({ t }: ProfileHeroProps) {
         </div>
 
         {/* Name */}
-        <div className="flex items-center gap-1 mb-0.5">
-          <h1 className="text-lg font-semibold text-foreground tracking-tight">Nayara assunção</h1>
+        <div className="flex items-center gap-1.5 mb-0.5">
+          <h1 className="text-lg font-semibold text-foreground tracking-tight">Nayara assuncao</h1>
           <VerifiedBadge size={20} />
         </div>
         <p className="text-sm text-muted-foreground mb-3">@nayara_assunofc</p>
@@ -84,7 +84,7 @@ export default function ProfileHero({ t }: ProfileHeroProps) {
             href="https://instagram.com/nayara"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border hover:bg-muted transition-colors"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border/60 hover:bg-muted transition-colors"
           >
             <InstagramIcon size={16} />
           </a>

@@ -8,7 +8,7 @@ interface ContentTabsProps {
 
 export default function ContentTabs({ activeTab, onTabChange, t }: ContentTabsProps) {
   return (
-    <div className="flex border-b border-border">
+    <div className="flex border-b border-border/50">
       <button
         onClick={() => onTabChange("posts")}
         className={`flex-1 py-3 text-sm font-medium text-center transition-colors relative flex items-center justify-center gap-1.5 ${
