@@ -22,7 +22,11 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full overflow-hidden bg-muted">
             <img
+<<<<<<< HEAD
               src="/assets/perfil.png"
+=======
+              src="/assets/nayperfil.png"
+>>>>>>> b327778aa42ecc0a78a7c18c131afc095cd97e10
               alt="Nayara assuncao"
               className="w-full h-full object-cover"
               onError={(e) => {
@@ -30,6 +34,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
               }}
             />
           </div>
+<<<<<<< HEAD
 
           <div>
             <div className="flex items-center gap-1">
@@ -44,12 +49,23 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
           </div>
         </div>
 
+=======
+          <div>
+            <div className="flex items-center gap-1">
+              <span className="text-sm font-semibold text-foreground">Nayara assuncao</span>
+              <VerifiedBadge size={16} />
+            </div>
+            <span className="text-xs text-muted-foreground">@nayara_assunofc</span>
+          </div>
+        </div>
+>>>>>>> b327778aa42ecc0a78a7c18c131afc095cd97e10
         <button className="text-muted-foreground hover:text-foreground">
           <MoreVerticalIcon size={20} />
         </button>
       </div>
 
       {/* Locked content */}
+<<<<<<< HEAD
       <div
         onClick={onLockedClick}
         onContextMenu={(e) => e.preventDefault()}
@@ -91,6 +107,38 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
 
       {/* Actions */}
       <div className="px-4 py-3 flex items-center gap-5">
+=======
+      {/* Front-end protection is limited and cannot fully prevent copying. */}
+      <div
+        onClick={onLockedClick}
+        onContextMenu={(e) => e.preventDefault()}
+        className="locked-overlay aspect-[4/3] flex items-center justify-center cursor-pointer select-none relative overflow-hidden"
+        draggable={false}
+      >
+        {/* Subtle decorative shapes */}
+        <div className="absolute inset-0 opacity-[0.06]">
+          <div className="absolute w-[200px] h-[200px] rounded-full bg-primary -top-10 -left-10" />
+          <div className="absolute w-[160px] h-[160px] rounded-full bg-primary bottom-0 right-10" />
+        </div>
+        <LockIcon size={40} />
+      </div>
+
+      {/* Metrics */}
+      <div className="px-4 py-2 flex items-center gap-4 text-xs text-muted-foreground">
+        <span className="flex items-center gap-1">
+          <ImageIcon size={13} /> 142
+        </span>
+        <span className="flex items-center gap-1">
+          <VideoIcon size={13} /> 339
+        </span>
+        <span className="flex items-center gap-1">
+          <HeartIcon size={13} /> 1K
+        </span>
+      </div>
+
+      {/* Actions */}
+      <div className="px-4 pb-3 flex items-center gap-5">
+>>>>>>> b327778aa42ecc0a78a7c18c131afc095cd97e10
         <button className="text-muted-foreground hover:text-foreground transition-colors">
           <HeartIcon size={20} />
         </button>
@@ -107,4 +155,8 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b327778aa42ecc0a78a7c18c131afc095cd97e10

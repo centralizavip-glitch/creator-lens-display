@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import LockIcon from "./icons/LockIcon";
 import { useState } from "react";
 import VerifiedBadge from "./icons/VerifiedBadge";
@@ -8,6 +9,11 @@ import {
   HeartIcon,
   InstagramIcon,
 } from "./icons/MetricIcons";
+=======
+import { useState } from "react";
+import VerifiedBadge from "./icons/VerifiedBadge";
+import { ImageIcon, VideoIcon, LockSmallIcon, HeartIcon, InstagramIcon } from "./icons/MetricIcons";
+>>>>>>> b327778aa42ecc0a78a7c18c131afc095cd97e10
 
 interface ProfileHeroProps {
   t: (key: string) => string;
@@ -21,9 +27,15 @@ export default function ProfileHero({ t }: ProfileHeroProps) {
   return (
     <div className="bg-card rounded-[28px] md:rounded-[28px] overflow-hidden">
       {/* Banner */}
+<<<<<<< HEAD
       <div className="h-[120px] md:h-[170px] relative gradient-orange">
         <img
           src="/assets/banner.png"
+=======
+      <div className="h-[170px] md:h-[170px] relative gradient-orange">
+        <img
+          src="/assets/banner.jpg"
+>>>>>>> b327778aa42ecc0a78a7c18c131afc095cd97e10
           alt="Banner"
           className="w-full h-full object-cover"
           onError={(e) => {
@@ -38,7 +50,11 @@ export default function ProfileHero({ t }: ProfileHeroProps) {
         <div className="-mt-14 mb-3 flex items-end justify-between">
           <div className="w-[96px] h-[96px] md:w-[114px] md:h-[114px] rounded-full border-[4px] border-card overflow-hidden bg-muted">
             <img
+<<<<<<< HEAD
               src="/assets/perfil.png"
+=======
+              src="/assets/nayperfil.png"
+>>>>>>> b327778aa42ecc0a78a7c18c131afc095cd97e10
               alt="Nayara assuncao"
               className="w-full h-full object-cover"
               onError={(e) => {
@@ -46,7 +62,10 @@ export default function ProfileHero({ t }: ProfileHeroProps) {
               }}
             />
           </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> b327778aa42ecc0a78a7c18c131afc095cd97e10
           {/* Top Metrics */}
           <div className="flex items-center gap-3 mb-2">
             <span className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -56,19 +75,30 @@ export default function ProfileHero({ t }: ProfileHeroProps) {
               <VideoIcon size={14} /> 339
             </span>
             <span className="flex items-center gap-1 text-xs text-muted-foreground">
+<<<<<<< HEAD
               <LockIcon size={14} /> 47
             </span>
             <span className="flex items-center gap-1 text-xs text-muted-foreground">
               <HeartIcon size={13} /> 3,5K
+=======
+              <LockSmallIcon size={13} /> 47
+            </span>
+            <span className="flex items-center gap-1 text-xs text-muted-foreground">
+              <HeartIcon size={13} /> 1K
+>>>>>>> b327778aa42ecc0a78a7c18c131afc095cd97e10
             </span>
           </div>
         </div>
 
         {/* Name */}
         <div className="flex items-center gap-1.5 mb-0.5">
+<<<<<<< HEAD
           <h1 className="text-lg font-semibold text-foreground tracking-tight">
             Nayara assuncao
           </h1>
+=======
+          <h1 className="text-lg font-semibold text-foreground tracking-tight">Nayara assuncao</h1>
+>>>>>>> b327778aa42ecc0a78a7c18c131afc095cd97e10
           <VerifiedBadge size={20} />
         </div>
         <p className="text-sm text-muted-foreground mb-3">@nayara_assunofc</p>
@@ -102,4 +132,8 @@ export default function ProfileHero({ t }: ProfileHeroProps) {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b327778aa42ecc0a78a7c18c131afc095cd97e10
