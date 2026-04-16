@@ -32,7 +32,7 @@ export default function ContentTabs({ activeTab, onTabChange, t }: ContentTabsPr
         }`}
       >
         <ClapperboardIcon size={15} />
-        381 {t("media")}
+        481 {t("media")}
         {activeTab === "media" && (
           <div className="absolute bottom-0 left-1/4 right-1/4 h-0.5 bg-primary rounded-full" />
         )}
