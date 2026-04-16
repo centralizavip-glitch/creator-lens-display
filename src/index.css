@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light only;
+
+    --background: 38 8% 95%;
+    --foreground: 0 0% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 14%;
+
+    --primary: 27 78% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 34 30% 95%;
+    --secondary-foreground: 0 0% 25%;
+
+    --muted: 36 12% 92%;
+    --muted-foreground: 0 0% 35%;
+
+    --accent: 30 75% 92%;
+    --accent-foreground: 27 78% 45%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 36 16% 88%;
+    --input: 36 16% 88%;
+    --ring: 27 78% 60%;
+
+    --radius: 1rem;
+
+    --locked-bg: 38 18% 90%;
+    --gradient-start: 30 65% 80%;
+    --gradient-end: 27 80% 60%;
+    --lock-icon: 228 12% 52%;
+    --badge-coral: 16 80% 73%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    color-scheme: light only;
+    --background: 38 8% 95%;
+    --foreground: 0 0% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 14%;
+    --primary: 27 78% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 34 30% 95%;
+    --secondary-foreground: 0 0% 25%;
+    --muted: 36 12% 92%;
+    --muted-foreground: 0 0% 35%;
+    --accent: 30 75% 92%;
+    --accent-foreground: 27 78% 45%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 36 16% 88%;
+    --input: 36 16% 88%;
+    --ring: 27 78% 60%;
+    --radius: 1rem;
+    --locked-bg: 38 18% 90%;
+    --gradient-start: 30 65% 80%;
+    --gradient-end: 27 80% 60%;
+    --lock-icon: 228 12% 52%;
+    --badge-coral: 16 80% 73%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer utilities {
+  .gradient-orange {
+    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+  }
+  .gradient-orange-btn {
+    background: linear-gradient(90deg, #e39a55 0%, #efc39c 48%, #f1ada1 100%);
+  }
+  .locked-overlay {
+    background-color: hsl(var(--locked-bg));
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+}
+
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-pulse-scale {
+  animation: pulse-scale 0.8s ease-in-out;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light only;
+  }
+}
