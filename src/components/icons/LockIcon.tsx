@@ -1,24 +1,22 @@
 interface LockIconProps {
-  className?: string;
   size?: number;
+  className?: string;
 }
 
-export default function LockIcon({ className = "", size = 24 }: LockIconProps) {
+export default function LockIcon({
+  size = 24,
+  className = "",
+}: LockIconProps) {
   return (
     <svg
+      viewBox="0 0 448 512"
       width={size}
       height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#717996"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
       className={className}
+      fill="currentColor"
+      aria-hidden="true"
     >
-      <rect x="5" y="11" width="14" height="10" rx="2.5" />
-      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-      <circle cx="12" cy="16" r="1.2" fill="#717996" stroke="none" />
+      <path d="M224 32c53 0 96 43 96 96v64H128V128c0-53 43-96 96-96zM96 128v64H80c-44.2 0-80 35.8-80 80V432c0 44.2 35.8 80 80 80H368c44.2 0 80-35.8 80-80V272c0-44.2-35.8-80-80-80H352V128C352 57.3 294.7 0 224 0S96 57.3 96 128zM80 224H368c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H80c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm160 88c0-8.8-7.2-16-16-16s-16 7.2-16 16v80c0 8.8 7.2 16 16 16s16-7.2 16-16V312z" />
     </svg>
   );
 }

@@ -30,7 +30,7 @@ export default function Header({ onLangChange, currentLang }: HeaderProps) {
       {/* Wordmark fallback if logo fails */}
       <div className="flex items-center">
         <img
-          src="/assets/logoprivacy.png"
+          src="/assets/logo-black.svg"
           alt="Privacy"
           className="h-8 object-contain"
           onError={(e) => {

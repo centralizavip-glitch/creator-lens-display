@@ -12,7 +12,10 @@ interface SubscriptionSectionProps {
   pulsing: boolean;
 }
 
-export default function SubscriptionSection({ t, pulsing }: SubscriptionSectionProps) {
+export default function SubscriptionSection({
+  t,
+  pulsing,
+}: SubscriptionSectionProps) {
   const { startCheckout } = useCheckout();
 
   const plans: Plan[] = [
@@ -22,8 +25,13 @@ export default function SubscriptionSection({ t, pulsing }: SubscriptionSectionP
   ];
 
   return (
-    <div id="subscriptions" className="bg-card rounded-[28px] md:rounded-[28px] p-5">
-      <h2 className="text-base font-semibold text-foreground mb-4">{t("subscriptions")}</h2>
+    <div
+      id="subscriptions"
+      className="bg-card rounded-[28px] md:rounded-[28px] p-5"
+    >
+      <h2 className="text-base font-semibold text-foreground mb-4">
+        {t("subscriptions")}
+      </h2>
 
       <div className="flex flex-col gap-3">
         {plans.map((plan) => (

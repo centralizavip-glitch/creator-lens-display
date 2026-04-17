@@ -27,7 +27,7 @@ export default function Index() {
       <Header onLangChange={setLang} currentLang={lang} />
 
       <main className="max-w-profile mx-auto px-4 flex flex-col gap-4">
-        <ProfileHero t={t} />
+        <ProfileHero t={t} onLockedClick={handleLockedClick} />
         <SubscriptionSection t={t} pulsing={pulsing} />
 
         <div className="bg-card rounded-[28px] md:rounded-[28px] overflow-hidden">

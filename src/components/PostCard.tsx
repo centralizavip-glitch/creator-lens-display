@@ -41,7 +41,10 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
           </div>
         </div>
 
-        <button className="text-muted-foreground hover:text-foreground">
+        <button
+          type="button"
+          className="text-muted-foreground hover:text-foreground"
+        >
           <MoreVerticalIcon size={20} />
         </button>
       </div>
@@ -55,19 +58,12 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
           backgroundColor: "#F4EEE5",
         }}
       >
-        {/* Watermark branco visível */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              "url('https://cdn.privacy.com.br/assets/img/logo/privacy-logo-media-watermark.svg')",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            opacity: 0.1,
-            filter: "brightness(-100) invert(10)",
-            transform: "scale(11.00)",
-          }}
+        {/* Watermark local visível */}
+        <img
+          src="/assets/privacy-watermark.svg"
+          alt="watermark"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.35] pointer-events-none select-none brightness-0 invert scale-[1.00]"
+          draggable={false}
         />
 
         {/* Conteúdo central */}
@@ -90,21 +86,37 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
 
       {/* Actions */}
       <div className="px-0 py-3 flex items-center gap-5">
-        <button className="text-muted-foreground hover:text-foreground">
+        <button
+          type="button"
+          onClick={onLockedClick}
+          className="text-muted-foreground hover:text-foreground"
+        >
           <HeartIcon size={20} />
         </button>
 
-        <button className="text-muted-foreground hover:text-foreground">
+        <button
+          type="button"
+          onClick={onLockedClick}
+          className="text-muted-foreground hover:text-foreground"
+        >
           <CommentIcon size={20} />
         </button>
 
-        <button className="text-muted-foreground hover:text-foreground">
+        <button
+          type="button"
+          onClick={onLockedClick}
+          className="text-muted-foreground hover:text-foreground"
+        >
           <CoinIcon size={20} />
         </button>
 
         <div className="flex-1" />
 
-        <button className="text-muted-foreground hover:text-foreground">
+        <button
+          type="button"
+          onClick={onLockedClick}
+          className="text-muted-foreground hover:text-foreground"
+        >
           <BookmarkIcon size={20} />
         </button>
       </div>

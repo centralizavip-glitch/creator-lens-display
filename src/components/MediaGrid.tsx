@@ -39,16 +39,19 @@ export default function MediaGrid({ t, onLockedClick }: MediaGridProps) {
             key={i}
             onClick={onLockedClick}
             onContextMenu={(e) => e.preventDefault()}
-            className="locked-overlay aspect-square cursor-pointer select-none relative overflow-hidden bg-[#f3eee7]"
+            className="locked-overlay aspect-square cursor-pointer select-none relative overflow-hidden bg-[#e9dfd2]"
             draggable={false}
           >
-            {/* Watermark branco estilo Privacy */}
             <img
-              src="https://cdn.privacy.com.br/assets/img/logo/privacy-logo-media-watermark.svg"
-              alt="watermark"
-              className="absolute inset-0 w-full h-full object-cover opacity-[0.05] pointer-events-none select-none brightness-0 invert"
-              draggable={false}
-            />
+  src="/assets/privacy-watermark.svg"
+  alt="watermark"
+  className="absolute inset-0 w-full h-full object-contain opacity-[0.19] pointer-events-none select-none"
+  style={{
+    filter: "brightness(0) invert(1)",
+    transform: "scale(1.13)",
+  }}
+  draggable={false}
+/>
 
             {/* Cadeado central */}
             <div className="absolute inset-0 flex items-center justify-center">
