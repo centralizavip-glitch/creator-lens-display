@@ -13,6 +13,13 @@ export default function MediaGrid({ t, onLockedClick }: MediaGridProps) {
 
   const tiles = Array.from({ length: 12 });
 
+  // AJUSTES DO CADEADO DAS MÍDIAS
+  const lockOpacity = 0.9;
+  const lockColor = "#717996";
+  const lockSize = 24;
+  const lockOffsetX = 0;
+  const lockOffsetY = 0;
+
   return (
     <div>
       {/* Filters */}
@@ -43,19 +50,32 @@ export default function MediaGrid({ t, onLockedClick }: MediaGridProps) {
             draggable={false}
           >
             <img
-  src="/assets/privacy-watermark.svg"
-  alt="watermark"
-  className="absolute inset-0 w-full h-full object-contain opacity-[0.19] pointer-events-none select-none"
-  style={{
-    filter: "brightness(0) invert(1)",
-    transform: "scale(1.13)",
-  }}
-  draggable={false}
-/>
+              src="/assets/privacy-watermark.svg"
+              alt="watermark"
+              className="absolute inset-0 w-full h-full object-contain opacity-[0.39] pointer-events-none select-none"
+              style={{
+                filter: "brightness(0) invert(1)",
+                transform: "scale(1.13)",
+              }}
+              draggable={false}
+            />
 
             {/* Cadeado central */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <LockIcon size={24} />
+            <div
+              className="absolute inset-0 flex items-center justify-center"
+              style={{
+                color: lockColor,
+              }}
+            >
+              <div
+                style={{
+                  opacity: lockOpacity,
+                  transform: `translate(${lockOffsetX}px, ${lockOffsetY}px)`,
+                  lineHeight: 0,
+                }}
+              >
+                <LockIcon size={lockSize} />
+              </div>
             </div>
           </div>
         ))}

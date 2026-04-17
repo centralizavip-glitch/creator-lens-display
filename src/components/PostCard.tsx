@@ -15,6 +15,34 @@ interface PostCardProps {
 }
 
 export default function PostCard({ onLockedClick }: PostCardProps) {
+  // =========================
+  // AJUSTES VISUAIS
+  // =========================
+
+  // Fundo do bloco do meio
+  const previewBackgroundColor = "#F4EEE5";
+
+  // Watermark
+  const watermarkOpacity = 0.35;
+  const watermarkScale = 1.0;
+
+  // Cor padrão dos ícones centrais
+  const centerIconsColor = "#717996";
+
+  // Cadeado central
+  const lockSize = 64;
+  const lockOpacity = 1;
+  const lockOffsetX = 0;
+  const lockOffsetY = 0;
+
+  // Métricas centrais (foto / vídeo / coração)
+  const metricsIconSize = 18;
+  const metricsOpacity = 1;
+  const metricsGap = 16;
+  const metricsMarginTop = 16;
+  const metricsOffsetX = 0;
+  const metricsOffsetY = 0;
+
   return (
     <div className="bg-card overflow-hidden shadow-none border-0 rounded-none">
       {/* Header */}
@@ -55,30 +83,55 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
         onContextMenu={(e) => e.preventDefault()}
         className="aspect-[4/3] w-full cursor-pointer select-none relative overflow-hidden"
         style={{
-          backgroundColor: "#F4EEE5",
+          backgroundColor: previewBackgroundColor,
         }}
       >
         {/* Watermark local visível */}
         <img
           src="/assets/privacy-watermark.svg"
           alt="watermark"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.35] pointer-events-none select-none brightness-0 invert scale-[1.00]"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none brightness-0 invert"
+          style={{
+            opacity: watermarkOpacity,
+            transform: `scale(${watermarkScale})`,
+          }}
           draggable={false}
         />
 
         {/* Conteúdo central */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <LockIcon size={64} />
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center"
+          style={{ color: centerIconsColor }}
+        >
+          {/* Cadeado */}
+          <div
+            style={{
+              opacity: lockOpacity,
+              transform: `translate(${lockOffsetX}px, ${lockOffsetY}px)`,
+              lineHeight: 0,
+            }}
+          >
+            <LockIcon size={lockSize} />
+          </div>
 
-          <div className="mt-4 flex items-center gap-4 text-xs text-muted-foreground">
+          {/* Métricas */}
+          <div
+            className="flex items-center text-xs"
+            style={{
+              marginTop: metricsMarginTop,
+              gap: `${metricsGap}px`,
+              opacity: metricsOpacity,
+              transform: `translate(${metricsOffsetX}px, ${metricsOffsetY}px)`,
+            }}
+          >
             <span className="flex items-center gap-1">
-              <ImageIcon size={18} /> 827
+              <ImageIcon size={metricsIconSize} /> 827
             </span>
             <span className="flex items-center gap-1">
-              <VideoIcon size={18} /> 601
+              <VideoIcon size={metricsIconSize} /> 601
             </span>
             <span className="flex items-center gap-1">
-              <HeartIcon size={18} /> 212.2K
+              <HeartIcon size={metricsIconSize} /> 212.2K
             </span>
           </div>
         </div>
