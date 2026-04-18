@@ -28,19 +28,21 @@ export default function Index() {
 
       <main className="max-w-profile mx-auto px-4 flex flex-col gap-4">
         <ProfileHero t={t} onLockedClick={handleLockedClick} />
-        <SubscriptionSection t={t} pulsing={pulsing} />
+        <SubscriptionSection t={t} pulsing={pulsing} lang={lang} />
 
-        <div className="bg-card rounded-[28px] md:rounded-[28px] overflow-hidden">
+        <div className="bg-card rounded-[20px] md:rounded-[20px] overflow-hidden">
           <ContentTabs activeTab={activeTab} onTabChange={setActiveTab} t={t} />
-
-          {activeTab === "posts" ? (
-            <div className="p-4">
-              <PostCard onLockedClick={handleLockedClick} />
-            </div>
-          ) : (
-            <MediaGrid t={t} onLockedClick={handleLockedClick} />
-          )}
         </div>
+
+        {activeTab === "posts" ? (
+          <div className="bg-card rounded-[20px] md:rounded-[20px] overflow-hidden">
+            <PostCard onLockedClick={handleLockedClick} />
+          </div>
+        ) : (
+          <div className="bg-card rounded-[20px] md:rounded-[20px] overflow-hidden">
+            <MediaGrid t={t} onLockedClick={handleLockedClick} />
+          </div>
+        )}
       </main>
 
       <CookieBar t={t} />

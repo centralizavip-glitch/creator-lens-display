@@ -17,8 +17,6 @@ interface ProfileHeroProps {
   onLockedClick: () => void;
 }
 
-const bio = `Oi amores! Sejam bem-vindos ao meu cantinho exclusivo. Aqui voces vao encontrar conteudos especiais, fotos e videos que nao posto em nenhum outro lugar. Espero que gostem!`;
-
 export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
   const [expanded, setExpanded] = useState(false);
 
@@ -53,16 +51,16 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
 
           {/* Metrics */}
           <div className="flex items-center gap-3 mb-2">
-            <span className="flex items-center gap-1 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
               <ImageIcon size={14} /> 142
             </span>
-            <span className="flex items-center gap-1 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
               <VideoIcon size={14} /> 339
             </span>
-            <span className="flex items-center gap-1 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
               <LockIcon size={14} /> 47
             </span>
-            <span className="flex items-center gap-1 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
               <HeartIcon size={13} /> 3,5K
             </span>
           </div>
@@ -84,7 +82,7 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
             expanded ? "" : "line-clamp-2"
           }`}
         >
-          {bio}
+          {t("bio")}
         </p>
 
         <button

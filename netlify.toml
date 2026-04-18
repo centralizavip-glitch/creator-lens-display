@@ -3,6 +3,35 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/checkout-p1"
+  to = "/.netlify/functions/get-checkout?id=p1"
+  status = 301
+
+[[redirects]]
+  from = "/checkout-p2"
+  to = "/.netlify/functions/get-checkout?id=p2"
+  status = 301
+
+[[redirects]]
+  from = "/checkout-p3"
+  to = "/.netlify/functions/get-checkout?id=p3"
+  status = 301
+
+[[redirects]]
+  from = "/telegram"
+  to = "https://t.me/+bBgdeGSNSHxiZDE5"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://ybqqwmmfejhaalkpxgvk.supabase.co; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://ybqqwmmfejhaalkpxgvk.supabase.co https://api.frankfurter.dev;"

@@ -52,7 +52,7 @@ export default function MediaGrid({ t, onLockedClick }: MediaGridProps) {
             <img
               src="/assets/privacy-watermark.svg"
               alt="watermark"
-              className="absolute inset-0 w-full h-full object-contain fix preview not rendering, fix all import errors, do not change styles, colors, layout, icon sizes or spacingty-[0.39] pointer-events-none select-none"
+              className="absolute inset-0 w-full h-full object-contain opacity-[0.35] pointer-events-none select-none"
               style={{
                 filter: "brightness(0) invert(1)",
                 transform: "scale(1.13)",

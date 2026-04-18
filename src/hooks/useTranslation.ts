@@ -4,6 +4,7 @@ type Lang = "pt" | "en" | "es";
 
 const dict: Record<Lang, Record<string, string>> = {
   pt: {
+    bio: "Oi amores! Sejam bem-vindos ao meu cantinho exclusivo. Aqui voces vao encontrar conteudos especiais, fotos e videos que nao posto em nenhum outro lugar. Espero que gostem!",
     read_more: "Ler mais",
     read_less: "Ler menos",
     subscriptions: "Assinaturas",
@@ -23,8 +24,15 @@ const dict: Record<Lang, Record<string, string>> = {
     plan_1m: "1 mês (54% OFF)",
     plan_1y: "1 ano (54% OFF)",
     plan_life: "Vitalício (54% OFF)",
+    offer_title: "Oferta de assinatura",
+    offer_scarcity: "Restam {n} assinaturas nesse valor",
+    offer_ends: "Termina em {t}",
+    offer_valid: "Oferta válida até {d}",
+    original_price_label: "Preço original {p}",
+    save_badge: "Economize 54%",
   },
   en: {
+    bio: "Hey babes! Welcome to my exclusive corner. I'm sharing special content, photos, and videos here that you won't see anywhere else. I hope you love it!",
     read_more: "Read more",
     read_less: "Read less",
     subscriptions: "Subscriptions",
@@ -43,8 +51,15 @@ const dict: Record<Lang, Record<string, string>> = {
     plan_1m: "1 month (54% OFF)",
     plan_1y: "1 year (54% OFF)",
     plan_life: "Lifetime (54% OFF)",
+    offer_title: "Subscription Offer",
+    offer_scarcity: "Only {n} subscriptions left at this price",
+    offer_ends: "Ends in {t}",
+    offer_valid: "Offer valid until {d}",
+    original_price_label: "Original price {p}",
+    save_badge: "Save 54%",
   },
   es: {
+    bio: "¡Hola cariños! Bienvenidos a mi espaço VIP. Aquí les comparto fotos y videos exclusivos que no verán en mis outras redes. ¡Disfrútenlo mucho!",
     read_more: "Leer más",
     read_less: "Leer menos",
     subscriptions: "Suscripciones",
@@ -63,6 +78,12 @@ const dict: Record<Lang, Record<string, string>> = {
     plan_1m: "1 mes (54% OFF)",
     plan_1y: "1 año (54% OFF)",
     plan_life: "Vitalicio (54% OFF)",
+    offer_title: "Oferta de suscripción",
+    offer_scarcity: "Quedan {n} suscripciones a este preço",
+    offer_ends: "Termina em {t}",
+    offer_valid: "Oferta válida hasta {d}",
+    original_price_label: "Precio original {p}",
+    save_badge: "Ahorra un 54%",
   },
 };
 

@@ -6,12 +6,19 @@ const iconStyle = {
   fill: "none",
 };
 
-export function ImageIcon({ size = 16 }: { size?: number }) {
+export function ImageIcon({ size = 18 }: { size?: number }) {
+  const iconStyle = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" {...iconStyle}>
-      <rect x="3" y="3" width="18" height="18" rx="3" />
-      <circle cx="8.5" cy="8.5" r="1.8" />
-      <path d="M21 15l-5-5L5 21" />
+      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+      <circle cx="8.5" cy="8.5" r="1.5" />
+      <polyline points="21 15 16 10 5 21" />
     </svg>
   );
 }
@@ -30,17 +37,19 @@ export function PostIcon({ size = 16 }: { size?: number }) {
   );
 }
 
-export function VideoIcon({ size = 16 }: { size?: number }) {
+export function VideoIcon({ size = 18 }: { size?: number }) {
   return (
     <svg
-      width={size}
-      height={size}
-      viewBox="0 0 640 512"
-      fill="currentColor"
-      stroke="none"
       aria-hidden="true"
+      focusable="false"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 640 512"
+      width={size}
+      height={(size * 512) / 640}
+      fill="currentColor"
     >
-      <path d="M576 182.9v256c0 20.2-16.3 36.6-36.6 36.6H100.5c-20.2 0-36.6-16.3-36.6-36.6v-256H576zm0-36.6H464.7l99.8-99.8c7.1 6.6 11.5 16.1 11.5 26.6v73.2zm-285 0L400.7 36.6h122.1L413.1 146.3H291zM239.2 146.3H117.3L227 36.6h122.1L239.4 146.3h-.2zM100.5 36.6h74.7L65.5 146.3h-1.6V73.2c0-20.3 16.4-36.6 36.6-36.6zm512 109.7V73.2C612.6 32.8 579.8 0 539.4 0H100.5C60.2 0 27.4 32.8 27.4 73.2v73.1 18.3 18.3v256c0 40.3 32.8 73.1 73.1 73.1h438.9c40.3 0 73.1-32.8 73.1-73.1v-256-18.3-18.3zM274.4 221.9c-5.6-3.3-12.7-3.3-18.4-.1s-9.3 9.3-9.3 15.9v182.9c0 6.5 3.5 12.6 9.3 15.9s12.7 3.2 18.4-.1l155.4-91.4c5.6-3.3 9-9.3 9-15.8s-3.4-12.5-9-15.8L274.4 221.9zM384.4 329.1l-101 59.4V269.6l101 59.5z" />
+      <path d="M576 182.9l0 256c0 20.2-16.3 36.6-36.6 36.6l-438.9 0c-20.2 0-36.6-16.3-36.6-36.6l0-256 512 0zm0-36.6l-111.3 0 99.8-99.8c7.1 6.6 11.5 16.1 11.5 26.6l0 73.1zm-285 0l109.7-109.7 122.1 0-109.7 109.7-122.1 0zm-51.8 0l-121.9 0 109.7-109.7 122.1 0-109.7 109.7-.1 0zM100.5 36.6l74.7 0-109.7 109.7-1.6 0 0-73.1c0-20.2 16.3-36.6 36.6-36.6zm512 109.7l0-73.1C612.6 32.8 579.8 0 539.4 0L100.5 0C60.2 0 27.4 32.8 27.4 73.1l0 73.1 0 18.3 0 18.3 0 256c0 40.3 32.8 73.1 73.1 73.1l438.9 0c40.3 0 73.1-32.8 73.1-73.1l0-256 0-18.3 0-18.3zM274.4 221.9c-5.6-3.3-12.7-3.3-18.4-.1s-9.3 9.3-9.3 15.9l0 182.9c0 6.5 3.5 12.6 9.3 15.9s12.7 3.2 18.4-.1l155.4-91.4c5.6-3.3 9-9.3 9-15.8s-3.4-12.5-9-15.8L274.4 221.9zM384.4 329.1l-101 59.4 0-118.9 101 59.4z" />
     </svg>
   );
 }
@@ -49,7 +58,14 @@ export function ClapperboardIcon({ size = 16 }: { size?: number }) {
   return <VideoIcon size={size} />;
 }
 
-export function HeartIcon({ size = 16 }: { size?: number }) {
+export function HeartIcon({ size = 18 }: { size?: number }) {
+  const iconStyle = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" {...iconStyle}>
       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -95,15 +111,18 @@ export function MoreVerticalIcon({ size = 20 }: { size?: number }) {
 }
 
 export function InstagramIcon({ size = 18 }: { size?: number }) {
+  const iconStyle = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
   return (
-    <svg
-      viewBox="0 0 448 512"
-      width={size}
-      height={size}
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+    <svg width={size} height={size} viewBox="0 0 24 24" {...iconStyle}>
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
     </svg>
   );
 }
@@ -111,19 +130,13 @@ export function InstagramIcon({ size = 18 }: { size?: number }) {
 export function XIcon({ size = 18 }: { size?: number }) {
   return (
     <svg
-      className="svg-inline--fa fa-x"
-      aria-hidden="true"
-      focusable="false"
-      data-prefix="fak"
-      data-icon="x"
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 512 512"
+      viewBox="0 0 24 24"
       width={size}
       height={size}
       fill="currentColor"
+      aria-hidden="true"
     >
-      <path d="M403.2 24L481.7 24 310.2 220 512 486.8 354 486.8 230.2 325.1 88.7 486.8 10 486.8 193.5 277.1 0 24 162 24 273.8 171.9 403.2 24z" />
+      <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM18.097 20.644h2.039L6.486 3.24H4.298L18.097 20.644z" />
     </svg>
   );
 }

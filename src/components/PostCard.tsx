@@ -46,7 +46,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
   return (
     <div className="bg-card overflow-hidden shadow-none border-0 rounded-none">
       {/* Header */}
-      <div className="flex items-center justify-between px-0 py-3">
+      <div className="flex items-center justify-between px-4 py-3">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full overflow-hidden bg-muted">
             <img
@@ -138,7 +138,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
       </div>
 
       {/* Actions */}
-      <div className="px-0 py-3 flex items-center gap-5">
+      <div className="px-4 py-3 flex items-center gap-5">
         <button
           type="button"
           onClick={onLockedClick}

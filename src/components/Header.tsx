@@ -50,10 +50,10 @@ export default function Header({ onLangChange, currentLang }: HeaderProps) {
       <div className="flex-1 flex justify-end relative" ref={ref}>
         <button
           onClick={() => setOpen(!open)}
-          className="w-9 h-9 rounded-full border border-border/60 flex items-center justify-center bg-card hover:bg-muted transition-colors"
+          className="flex items-center justify-center text-foreground hover:text-primary transition-colors"
           aria-label="Language"
         >
-          <GlobeIcon size={16} />
+          <GlobeIcon size={22} />
         </button>
         {open && (
           <div className="absolute right-0 top-11 bg-card border border-border/60 rounded-xl shadow-sm py-1 z-50 min-w-[140px]">
