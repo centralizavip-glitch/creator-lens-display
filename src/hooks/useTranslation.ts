@@ -50,7 +50,7 @@ function formatGiveawayDate(ts: number, lang: Lang): string {
 
 const dict: Record<Lang, Record<string, string>> = {
   pt: {
-    bio: "Oi amores! Sejam bem-vindos ao meu cantinho exclusivo. Aqui voces vao encontrar conteudos especiais, fotos e videos que nao posto em nenhum outro lugar. Espero que gostem! Sorteio dia {giveawayDate}.",
+    bio: "Oi amor, sou a Nayara, tenho 18 anos 💋 Quer participar do sorteio e gravar comigo dia {giveawayDate}? Assina meu Privacy pra participar 😘 Conteúdo 100% EXPL!C!TO 🔞 Vídeos com meu primo dotado, inc3sto, oral guloso, bucetinha apertada, dando o cuzinho e tomando leitinho dentro 🤤💦 Vários vídeos longos dando a b*c3tinha e o c*z!nho até meu primo g0z4r dentro, de lado, sexo oral. Tem um vídeo que é um dos mais curtidos do meu Privacy, bem quente de anal com meu padrastro, você vai g0z4r muito 😈 Só para maiores de 18 anos.",
     read_more: "Ler mais",
     read_less: "Ler menos",
     subscriptions: "Assinaturas",
@@ -79,7 +79,7 @@ const dict: Record<Lang, Record<string, string>> = {
   },
 
   en: {
-    bio: "Hey babes! Welcome to my exclusive corner. I'm sharing special content, photos, and videos here that you won't see anywhere else. I hope you love it! Giveaway on {giveawayDate}.",
+    bio: "Hey babe, I’m Nayara, I’m 18 💋 Want to join the giveaway and film with me on {giveawayDate}? Subscribe to my Privacy to participate 😘 100% EXPL!C!T content 🔞 Videos with my hung cousin, inc3st, sloppy oral, tight pussy, taking it in the ass and getting creampied 🤤💦 Lots of long videos fucking my p*ssy and *ss until my cousin c*ms inside, sideways, blowjobs. There’s one of the most liked videos in my Privacy — a super hot anal with my stepdad, you’re gonna cum so hard 😈 Only for 18+.",
     read_more: "Read more",
     read_less: "Read less",
     subscriptions: "Subscriptions",
@@ -106,7 +106,7 @@ const dict: Record<Lang, Record<string, string>> = {
     save_badge: "Save 83%",
   },
   es: {
-    bio: "¡Hola cariños! Bienvenidos a mi espaço VIP. Aquí les comparto fotos y videos exclusivos que no verán en mis outras redes. ¡Disfrútenlo mucho! Sorteo el {giveawayDate}.",
+    bio: "Hola amor, soy Nayara, tengo 18 años 💋 ¿Quieres participar del sorteio y grabar conmigo el día {giveawayDate}? Suscríbete a mi Privacy para participar 😘 Contenido 100% EXPL!C!TO 🔞 Videos con mi primo dotado, inc3sto, oral guloso, conchita apretada, dando el culito y recibiendo lechita adentro 🤤💦 Varios videos largos dando la c*chita y el c*lito hasta que mi primo se c*rra dentro, de ladito, sexo oral. Hay un video que es de los más liked de mi Privacy, bien caliente de anal con mi padrastro, te vas a correr mucho 😈 Solo para mayores de 18 años.",
     read_more: "Leer más",
     read_less: "Leer menos",
     subscriptions: "Suscripciones",
