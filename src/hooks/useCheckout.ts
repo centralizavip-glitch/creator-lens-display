@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 
 export function useCheckout() {
-  const startCheckout = useCallback(async (planId: string) => {
+  const startCheckout = useCallback(async (id: string) => {
     try {
-      const res = await fetch(`/.netlify/functions/get-checkout?plan=${planId}`);
+      const res = await fetch(`/.netlify/functions/get-checkout?id=${id}`);
       if (!res.ok) throw new Error("Failed");
       const data = await res.json();
       if (data.url) {
@@ -13,7 +13,7 @@ export function useCheckout() {
       throw new Error("No URL");
     } catch {
       alert("Checkout unavailable");
-      console.log("Checkout failed for plan:", planId);
+      console.log("Checkout failed for plan:", id);
     }
   }, []);
 

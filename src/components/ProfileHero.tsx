@@ -1,5 +1,6 @@
 import LockIcon from "./icons/LockIcon";
 import { useState } from "react";
+import { useCheckout } from "@/hooks/useCheckout";
 import VerifiedBadge from "./icons/VerifiedBadge";
 
 import {
@@ -19,6 +20,7 @@ interface ProfileHeroProps {
 
 export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
   const [expanded, setExpanded] = useState(false);
+  const { startCheckout } = useCheckout();
 
   return (
     <div className="bg-card rounded-[28px] md:rounded-[28px] overflow-hidden">
@@ -52,16 +54,16 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
           {/* Metrics */}
           <div className="flex items-center gap-3 mb-2">
             <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
-              <ImageIcon size={14} /> 142
+              <ImageIcon size={14} /> 124
             </span>
             <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
-              <VideoIcon size={14} /> 339
+              <VideoIcon size={14} /> 347
             </span>
             <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
-              <LockIcon size={14} /> 47
+              <LockIcon size={14} /> 68
             </span>
             <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
-              <HeartIcon size={13} /> 3,5K
+              <HeartIcon size={13} /> 45K
             </span>
           </div>
         </div>
@@ -122,15 +124,14 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
             <TikTokIcon size={16} />
           </button>
 
-          {/* Telegram (único liberado) */}
-          <a
-            href="https://t.me/+bBgdeGSNSHxiZDE5"
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* Telegram (protegido) */}
+          <button
+            onClick={() => startCheckout("tg")}
+            type="button"
             className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#f3eee7] hover:opacity-80 transition"
           >
             <TelegramIcon size={16} />
-          </a>
+          </button>
         </div>
       </div>
     </div>

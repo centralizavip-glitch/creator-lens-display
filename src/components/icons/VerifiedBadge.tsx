@@ -8,8 +8,8 @@ interface VerifiedBadgeProps {
 export default function VerifiedBadge({
   className = "",
   size = 10,
-  offsetX = -9,
-  offsetY = 1,
+  offsetX = -12,
+  offsetY = +0,
 }: VerifiedBadgeProps) {
   return (
     <img

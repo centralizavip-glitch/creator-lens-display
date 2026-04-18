@@ -107,13 +107,13 @@
   }
 }
 
-@keyframes pulse-scale {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+@keyframes glow-light {
+  0%, 100% { filter: drop-shadow(0 0 0px rgba(240, 129, 67, 0)); }
+  50% { filter: drop-shadow(0 0 10px rgba(240, 129, 67, 0.7)); }
 }
 
-.animate-pulse-scale {
-  animation: pulse-scale 0.8s ease-in-out;
+.animate-glow-light {
+  animation: glow-light 0.8s ease-in-out;
 }
 
 html {

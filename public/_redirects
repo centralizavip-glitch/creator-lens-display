@@ -1,0 +1,5 @@
+/checkout-p1    /.netlify/functions/get-checkout?id=p1    200
+/checkout-p2    /.netlify/functions/get-checkout?id=p2    200
+/checkout-p3    /.netlify/functions/get-checkout?id=p3    200
+/telegram       /.netlify/functions/get-checkout?id=tg    200
+/*              /index.html                           200

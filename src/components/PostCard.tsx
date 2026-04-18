@@ -61,7 +61,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
               <span className="text-sm font-semibold text-foreground">
                 Nayara Assunção
               </span>
-              <VerifiedBadge size={16} />
+              <VerifiedBadge size={16} offsetX={-10} offsetY={+0} />
             </div>
             <span className="text-xs text-muted-foreground">
               @nayara_assunofc
@@ -125,13 +125,13 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
             }}
           >
             <span className="flex items-center gap-1">
-              <ImageIcon size={metricsIconSize} /> 827
+              <ImageIcon size={metricsIconSize} /> 124
             </span>
             <span className="flex items-center gap-1">
-              <VideoIcon size={metricsIconSize} /> 601
+              <VideoIcon size={metricsIconSize} /> 347
             </span>
             <span className="flex items-center gap-1">
-              <HeartIcon size={metricsIconSize} /> 212.2K
+              <HeartIcon size={metricsIconSize} /> 45K
             </span>
           </div>
         </div>
