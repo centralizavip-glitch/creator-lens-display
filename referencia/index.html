@@ -1,0 +1,2646 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- TITULO DO SITE -->
+  <title>Privacy | Checkout Nome da Modelo</title> <!-- mudar -->
+  
+<!-- FAVICON -->
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/logo/logo-16_v%3D20250810.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/logo/logo-32_v%3D20250810.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/img/logo/logo-48_v%3D20250810.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/logo/logo-192_v%3D20250810.png">
+<link rel="shortcut icon" href="assets/img/logo/favicon_v%3D20250810.ico" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="57x57" href="assets/img/logo/logo-57_v%3D20250810.png">
+<link rel="apple-touch-icon" sizes="72x72" href="assets/img/logo/logo-72_v%3D20250810.png">
+<link rel="apple-touch-icon" sizes="114x114" href="assets/img/logo/logo-114_v%3D20250810.png">
+<link rel="apple-touch-icon" sizes="120x120" href="assets/img/logo/logo-120_v%3D20250810.png">
+<link rel="apple-touch-icon" sizes="144x144" href="assets/img/logo/logo-144_v%3D20250810.png">
+<link rel="apple-touch-icon" sizes="152x152" href="assets/img/logo/logo-152_v%3D20250810.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo/logo-180_v%3D20250810.png">
+<link rel="manifest" href="assets/img/logo/manifest.json?v=20250810">
+</head>
+<body>
+    
+<!-- AVISO INTAGRAM -->
+    <div id="aviso" class="aviso">
+  <div class="aviso-inner">
+    <img src="imagens/logov2.webp" alt="Ícone" class="aviso-icon">
+<span class="aviso-text">
+  <strong>Acesse o Privacy pelo seu navegador</strong><br>
+  <span class="texto2">Pressione <span class="dots">•••</span> e abra no navegador externo</span>
+</span>
+  </div>
+</div>
+<div class="aviso-spacer"></div>
+
+<!-- CARREGAMENTO -->
+<div id="skeleton">
+  <div class="sk-header"></div>
+  <div class="sk-card">
+    <div class="sk-banner"></div>
+    <div class="sk-avatar"></div>
+    <div class="sk-icon"></div>
+    <div class="sk-nome"></div>
+    <div class="sk-username"></div>
+    <div class="sk-bio"></div>
+    <div class="sk-line"></div>
+    <div class="sk-line2"></div>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+  <div class="header-fixo">
+<div class="topbar">
+  <a href="javascript:location.reload()" aria-label="Privacy">
+    <img src="imagens/logo.webp" alt="Logo" class="logo">
+  </a>
+</div>
+<img src="imagens/globo.webp" class="globo" id="botaoGlobo" alt="Globo">
+<div class="menu-idiomas" id="menuIdiomas">
+  <div class="linha-check">
+    <img src="imagens/verificadoidioma.webp" alt="verificado">
+  </div>
+  <div class="idioma" onclick="irParaCheckout()">Inglês</div>
+  <div class="idioma" onclick="irParaCheckout()">Português</div>
+  <div class="idioma" onclick="irParaCheckout()">Espanhol</div>
+</div>
+  <div class="linha-total"></div>
+  </div>
+
+<!-- BANNER -->
+  <div id="app" style="display:none;">
+  <div class="container-card">
+    <img class="banner" src="imagens/alterar/bannerteste5.webp" alt="Banner"> <!-- mudar -->
+
+<!-- FOTO DE PERFIL-->
+    <div class="topo-info">
+      <div class="avatar-box">
+        <div class="avatar-perfil">
+          <img class="avatar" src="imagens/alterar/testefoto2.webp" alt="Perfil"> <!-- mudar -->
+        </div>
+      </div>
+      
+<!-- QUANTIDADE DE MIDIAS -->
+<!-- FOTOS -->
+      <div class="icones">
+        <div class="icone icone-foto">
+          <img src="imagens/foto1.webp" alt="fotos">
+          <span>0</span> <!-- mudar -->
+        </div>
+        
+<!-- VIDEOS -->
+        <div class="icone icone-video">
+          <img src="imagens/video.webp" alt="vídeos">
+          <span>0</span> <!-- mudar -->
+        </div>
+        
+<!-- PAGOS -->
+        <div class="icone icone-pago">
+          <img src="imagens/pagos.webp" alt="pagos">
+          <span>0</span> <!-- mudar -->
+        </div>
+
+<!-- CURTIDAS -->
+        <div class="icone icone-coracao">
+          <img src="imagens/cora%C3%A7%C3%A3o.webp" alt="likes">
+          <span>0</span> <!-- mudar -->
+        </div>
+      </div>
+    </div>
+    
+<!-- NOME E @ -->
+    <div class="dados">
+      <h2>Nome da Modelo<img src="imagens/verificado.webp" class="verificado" alt="verificado"></h2> <!-- mudar -->
+      <p class="handle">@nomedamodelo</p> <!-- mudar -->
+
+<!-- BIO -->
+      <p class="bio">
+        <span class="texto-curto">Texto da bio<span class="reticencias">...</span></span> <!-- mudar -->
+        <span class="texto-completo"> Continuação do texto da bio</span> <!-- mudar -->
+      </p>
+      <p class="ver-mais" onclick="alternarBio()">Ler mais</p>
+      
+<!-- lOCALIZAÇÃO -->
+            <div class="localizacao">
+      <img src="imagens/localizacao.webp" alt="localizacao">
+      <span id="local-texto">São Paulo - SP</span>
+      </div>
+
+<!-- REDES SOCIAIS -->
+<!-- INSTAGRAM -->
+<div class="redes-sociais">
+  <a href="https://www.instagram.com/nomedamodelo" class="icone-social"> <!-- mudar -->
+    <img src="imagens/instagram.webp" alt="Instagram">
+  </a>
+
+<!-- TELEGRAM -->
+  <a href="https://t.me/grupodepreviasmodelo" class="icone-social"> <!-- mudar -->
+    <img src="imagens/telegram.webp" alt="Telegram" class="telegram-img">
+  </a>
+  
+<!-- TWITTER -->
+  <a href="https://twitter.com/nomedamodelo" class="icone-social"> <!-- mudar -->
+    <img src="imagens/twitter.webp" alt="Twitter">
+  </a>
+
+<!-- TIKTOK -->
+  <a href="https://www.tiktok.com/nomedamodelo" class="icone-social"> <!-- mudar -->
+    <img src="imagens/tiktok.webp" alt="TikTok">
+  </a>
+</div>
+
+<!-- PREÇO DOS PLANOS -->   
+<div class="assinaturas" id="assinaturas-container">
+  <h3>Assinaturas</h3>
+
+<!-- 1 MÊS -->
+  <div class="plano" onclick="abrirPopupAssinatura(this)">
+    <span>1 mês</span>
+    <span class="preco">R$ 0,00</span> <!-- mudar -->
+  </div>
+  
+<!-- OUTROS PLANOS -->   
+  <div class="promocoes-container aberta">
+    <div class="promocoes-header" onclick="alternarPromocoes()">
+      <span>Promoções</span>
+      <img id="seta-icon" src="imagens/setacima.webp" alt="Seta">
+    </div>
+    <div class="promocoes" id="lista-promocoes">
+      
+<!-- 3 MESES -->
+      <div class="plano-promo" onclick="abrirPopupAssinatura(this)">
+        <span>3 meses (50% off )</span>
+        <span class="preco">R$ 0,00</span> <!-- mudar -->
+      </div>
+
+<!-- 6 MESES -->
+      <div class="plano-promo" onclick="abrirPopupAssinatura(this)">
+        <span>6 meses (50% off )</span>
+        <span class="preco">R$ 0,00</span> <!-- mudar -->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ABAS -->
+<div class="aba-wrapper">
+  <div class="tabs">
+    <div class="curva esquerda" id="curvaAba"></div>
+
+<!-- QUANTIDADE DE POSTAGENS -->
+    <button class="tab active" onclick="trocarAba(this, 'esquerda')">
+      <img src="imagens/postagenslaranja.webp" alt="Postagens">
+      <span>0 Postagens</span> <!-- mudar -->
+    </button>
+
+<!-- QUANTIDADE DE MIDIAS -->
+    <button class="tab" onclick="trocarAba(this, 'direita')">
+      <img class="icone-midias" src="imagens/videopreto.webp" alt="Mídias">
+      <span class="texto-midias">0 Mídias</span> <!-- mudar -->
+    </button>
+  </div>
+</div>
+
+<!-- CONTEÚDO ABA DE POSTAGENS -->
+<div class="aba-conteudo" id="aba-postagens" style="display: block;">
+  <div class="postagem-card bloqueada">
+      
+<!-- FOTO DE PERFIL -->
+<div class="postagem-header">
+  <img class="avatar-post" src="imagens/alterar/perfilmodelo.webp" alt="Perfil do post"> <!-- mudar -->
+
+<!-- NOME E @ -->
+  <div class="postagem-info">
+    <div class="nome">
+      Nome da Modelo <!-- mudar -->
+      <img src="imagens/verificado.webp" alt="verificado" class="verificado-post">
+    </div>
+    <div class="desc">@nomedamodelo</div> <!-- mudar -->
+  </div>
+  <img src="imagens/pontinhos.webp" alt="menu" class="pontinhos-post">
+</div>
+
+<!-- CARD PRINCIPAL BLOQUEADO -->
+    <div class="postagem-conteudo">
+      <img src="imagens/cadeado.webp" alt="Cadeado" class="cadeado-icon">
+      
+<!-- QUANTIDADE DE FOTOS -->
+<div class="postagem-stats">
+  <div class="stat-foto">
+    <img src="imagens/fotopost.webp" alt="fotos">
+    <span>0</span> <!-- mudar -->
+  </div>
+  
+<!-- QUANTIDADE DE VIDEOS -->
+  <div class="stat-video">
+    <img src="imagens/videopost.webp" alt="vídeos">
+    <span>0</span> <!-- mudar -->
+  </div>
+  
+<!-- QUANTIDADE DE CURTIDAS -->
+  <div class="stat-like">
+    <img src="imagens/coracaopost.webp" alt="likes">
+    <span>0</span> <!-- mudar -->
+  </div>
+</div>
+</div>
+<div class="postagem-footer">
+  <div class="icone-footer coracao">
+    <img src="imagens/coracao-reacao.webp" alt="Curtir">
+  </div>
+  <div class="icone-footer comentario">
+    <img src="imagens/comentario-reacao.webp" alt="Comentar">
+  </div>
+  <div class="icone-footer mimo">
+    <img src="imagens/mimo-reacao.webp" alt="Mimo">
+  </div>
+  <div class="icone-footer salvar">
+    <img src="imagens/salvar-reacao.webp" alt="Salvar">
+  </div>
+</div>
+</div>
+<div class="linha-final-pagina"></div>
+</div>
+
+<!-- POPUP FOTO DE PERFIL -->
+<div id="popup-fullscreen">
+  <img id="imagem-expandida" src="" alt="Imagem em tela cheia">
+  <img class="botao-fechar" src="imagens/botaofechar.webp" alt="Fechar" onclick="fecharPopupImagem()">
+</div>
+
+<!-- CONTEÚDO ABA DE MIDIAS -->
+<div class="aba-conteudo" id="aba-midias" style="display: none;">
+<div class="midias-container">
+<div class="abas-midias">
+  <button class="aba ativa" onclick="ativarAbaVisual(this)">Todos</button>
+  <button class="aba" onclick="ativarAbaVisual(this)">Fotos</button>
+  <button class="aba" onclick="ativarAbaVisual(this)">Vídeos</button>
+  <button class="aba" onclick="ativarAbaVisual(this)">Pagos</button>
+</div>
+
+<!-- CARDS BLOQUEADOS -->
+  <div class="grade-midias">
+    <div class="midia-item bloqueada">
+      <img class="cadeado" src="imagens/cadeado.webp" alt="Bloqueado">
+    </div>
+    <div class="midia-item bloqueada">
+      <img class="cadeado" src="imagens/cadeado.webp" alt="Bloqueado">
+    </div>
+    <div class="midia-item bloqueada">
+      <img class="cadeado" src="imagens/cadeado.webp" alt="Bloqueado">
+    </div>
+    <div class="midia-item bloqueada">
+      <img class="cadeado" src="imagens/cadeado.webp" alt="Bloqueado">
+    </div>
+        <div class="midia-item bloqueada">
+      <img class="cadeado" src="imagens/cadeado.webp" alt="Bloqueado">
+    </div>
+        <div class="midia-item bloqueada">
+      <img class="cadeado" src="imagens/cadeado.webp" alt="Bloqueado">
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- CSS -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+/* AVISO INTAGRAM */
+.aviso {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: #fff;
+  z-index: 10000000;
+}
+
+#aviso {
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#aviso.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.aviso-inner {
+  max-width: 357px;
+  margin: 0 auto;
+  padding: 16px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative; top: -3px;
+}
+
+.aviso-icon {
+  width: 36px;
+  height: 38.91px;
+  flex-shrink: 0;
+  position: relative; left: -14px; top: -1px;
+}
+
+.aviso-text strong {
+  color: #f68d3d;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.aviso-text {
+  font-size: 12px;
+  line-height: 1.2;
+  color: #111;
+  position: relative; left: -1px;
+}
+
+.texto2{
+  position: relative;
+  left: -1px;
+}
+
+.dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;     
+  height: 16px;    
+  border: 2px solid #2f2f2f; 
+  border-radius: 20px; 
+  background-color: transparent;
+  gap: 6px;            
+  box-sizing: border-box;
+  font-size: 8px;
+  position: relative; top: -2px;
+}
+
+.aviso-spacer {
+  height: 60px;
+}
+
+@media (orientation: landscape) and (max-width: 900px) {
+  #aviso {
+    width: 100vw;
+    max-width: none;
+    left: 0;
+    transform: translateY(-100%);
+  }
+
+  #aviso.show {
+    transform: translateY(0);
+  }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f6f2;
+  margin: 0;
+  padding: 0;
+}
+
+/* TOPBAR */
+.header-fixo {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  background: #f9f6f2;
+  z-index: 999999;
+  height: 65px; 
+}
+
+.header-fixo .conteudo {
+  width: 357px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.header-spacer {
+  height: 61px; 
+}
+
+.topbar {
+  background: #f9f6f2;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.logo {
+  width: 85px;
+  height: 30px;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  right: 19px;
+  top: 1px;
+}
+
+.globo {
+  position: absolute;
+  right: 28px;
+  top: 21px;
+  height: 23px;
+  width: auto;
+}
+
+@media (max-width: 400px), (orientation: landscape) {
+  .globo {
+    right: calc(50% - 178.5px + 11px); 
+  }
+}
+
+.linha-total{
+  height: 1px;
+  background: #e8e8e8;
+  width: 400px;         
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (orientation: landscape){
+  .linha-total{
+    width: 356px;
+  }
+}
+
+/* BANNER E FOTO DE PERFIL */
+.container-card {
+  max-width: 357px;
+  margin: 4.2px auto;
+  background: #fff;
+  border-radius: 24px;
+  border: 1px solid #ededed;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.01);
+  overflow: hidden;
+  position: relative;
+  top: 8px;
+}
+
+.banner {
+  width: 100%;
+  height: 87px;
+  object-fit: cover;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  display: block;
+}
+
+.topo-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 15px;
+  margin-top: -60px;
+}
+
+.avatar-box {
+  position: relative;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  background: #fff;
+  object-fit: cover;
+  position: relative; top: 21px; left: 1px;
+}
+
+/* QUANTIDADE DE MIDIAS */
+.icones {
+  display: flex;
+  gap: 10px;
+  position: relative; right: 6px;
+}
+
+.icone {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  color: #333333;
+}
+
+.icone-foto img {
+  width: 14.4px;
+  height: 13px;
+  object-fit: contain;
+    position: relative; top: 6px; left: -3px;
+}
+
+.icone-foto span{
+  position: relative; top: 1px; left: -4px;
+}
+
+.icone-video img{
+  width: 15.4px;
+  height: 15px;
+  object-fit: contain;
+    position: relative; top: 5px; left: -1px;
+}
+
+.icone-video span{
+  position: relative; top: 1px; left: -3px;
+}
+
+.icone-pago img{
+  width: 12.8px;
+  height: 15px;
+  object-fit: contain;
+    position: relative; top: 5px; left: 2px;
+}
+
+.icone-pago span{
+  position: relative; top: 1px; left: 2px;
+}
+
+.icone-coracao img{
+  width: 13.6px;
+  height: 14px;
+  object-fit: contain;
+    position: relative; top: 5px; left: 5px;
+}
+
+.icone-coracao span{
+  position: relative; top: 1px; left: 5px;
+}
+
+/* NOME E @ */
+.dados {
+  margin-top: 17px;
+  padding: 0 16px;
+  color: #1e293b;
+}
+
+.verificado {
+  height: 18px;
+  width: auto;
+  margin-top: -1px;
+  position: relative; right: 5px;
+}
+
+.dados h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 -3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.handle {
+  font-size: 14px;
+  color: #333333;
+  margin: -2px 0;
+}
+
+/* BIO */
+.bio {
+  font-size: 14px;
+  color: #000000;
+  line-height: 16px;
+  margin-top: 7px;
+}
+
+.reticencias {
+    font-size: 12px;
+}
+
+.texto-completo {
+  display: none;
+}
+
+.ver-mais {
+  color: #f6842c;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: -8px;
+  margin-left: 2px;
+}
+
+/* LOCALIZAÇÃO */
+.localizacao img {
+  width: 12px;
+  height: 16px;
+  object-fit: contain;
+    position: relative; top: -2px; left: 3px;
+}
+
+.localizacao span{
+  color: #1e293b;
+  font-size: 14px;
+  position: relative; top: -5px; left: 3px;
+}
+
+#local-texto{
+  visibility: hidden;
+}
+
+/* REDES SOCIAIS  */
+.redes-sociais {
+  display: flex;
+  gap: 16px;
+  padding: 15px 20px 0 20px;
+  position: relative; top: -5px;
+}
+
+.icone-social {
+  background: #f9f6f2;
+  border-radius: 50%;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  position: relative; right: 21px;
+}
+
+.icone-social img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.telegram-img {
+  transform: translateX(-1px);
+}
+
+img[alt="Twitter"],
+img[alt="TikTok"] {
+  transform: scale(0.90);
+}
+
+/* PREÇO DOS PLANOS */
+.assinaturas {
+  padding-bottom: 10px;
+  position: relative; top: -6px; right: 3px;
+  color: #000000;
+}
+
+.assinaturas h3 {
+  font-size: 16px;
+  margin-bottom: 1px;
+  font-weight: 500;
+  position: relative; left: 3px;
+}
+
+.plano {
+  background: linear-gradient(45deg, #f69952, #f9c59c, #f8ad9a);
+  color: #000;
+  font-weight: 500;
+  padding: 10px 34px;
+  border-radius: 999px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  border: 1px solid transparent; 
+  transition: border 0.3s ease;  
+}
+
+.plano:hover {
+  border: 1px solid #f84f28; 
+}
+
+.plano span{
+  position: relative; top: 1px; left: -1px;
+}
+
+.plano .preco{
+  position: relative; top: 1px; left: 0px;
+}
+
+/* OUTROS PLANOS */
+.promocoes-container {
+  overflow: hidden;
+  transition: margin-bottom 0.3s ease, margin-top 0.3s ease;
+  margin-bottom: 12px;
+  margin-top: 10px;
+}
+
+.promocoes-container.aberta {
+  margin-bottom: 0px !important;
+position: relative; top 5px;
+}
+
+.promocoes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 21px;
+  position: relative;
+  left: 7px; top: 19px;
+  color: #000000;
+}
+
+.promocoes-header img {
+  width: 14px;
+  height: auto;
+  transition: transform 0.3s ease;
+  position: relative; left: -13px;
+}
+
+.plano-promo {
+  background: linear-gradient(to right, #f69952, #f9c59c, #f8ad9a);
+  color: #000;
+  font-weight: 500;
+  padding: 10px 34px;
+  border-radius: 999px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  border: 1px solid transparent; 
+  transition: border 0.3s ease;   
+}
+
+.plano-promo:hover {
+  border: 1px solid #f84f28; 
+}
+
+.plano-promo span{
+  position: relative; top: 1px; left: -5px;
+}
+
+.plano-promo .preco{
+  position: relative; top: 1px; left: 0px;
+}
+
+.promocoes {
+  overflow: hidden;
+  max-height: 150px;
+  transition:
+    max-height 0.5s ease,
+    margin-top 0.35s ease;
+  margin-top: 0;
+}
+
+.promocoes.fechado {
+  max-height: 0;
+  margin-top: 0;
+}
+
+/* ABAS */
+.aba-wrapper {
+  background: #f9f6f2;
+}
+
+.tabs {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #ededed;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.01);
+  max-width: 355px;
+  margin: 0 auto;
+  padding: 14px 7px 14px;
+  margin-top: 22px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  color: #333333;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.texto-midias {
+  font-size: 16px;
+  position: relative;
+  left: -18px;
+  top: 2px;
+  font-weight: 500;
+}
+
+.icone-midias {
+  position: relative;
+  left: -22px;
+  top: -0.5px;
+  width: 18px !important;
+  height: 18px !important;
+  object-fit: contain;
+}
+
+.tab span {
+  position: relative;
+  top: -0.5px;
+}
+
+.tab img {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+  filter: grayscale(1);
+  transition: filter 0.3s ease;
+  position: relative; right: -1px;
+}
+
+.tab.active {
+  color: #f68d3d;
+  font-weight: 500;
+}
+
+.tab.active img {
+  filter: grayscale(0);
+}
+
+.curva {
+  --cor-linha: #333; 
+  position: absolute;
+  bottom: -0.5px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.curva.esquerda {
+  left: -1px;
+  right: auto;
+  --cor-linha: #f68d3d;
+}
+
+.curva.direita {
+  right: -1px;
+  left: auto;
+  --cor-linha: #f68d3d;
+}
+
+.curva::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 26%;
+  background: none;
+  border-bottom-left-radius: 19px;
+  box-shadow: inset 0 -2px 0 0 var(--cor-linha);
+  opacity: 0;
+  transition: opacity 0.2s ease, box-shadow 0.3s ease;
+}
+
+.curva::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 26%;
+  background: none;
+  border-bottom-right-radius: 19px;
+  box-shadow: inset 0 -2px 0 0 var(--cor-linha);
+  opacity: 0;
+  transition: opacity 0.2s ease, box-shadow 0.3s ease;
+}
+
+.curva::before,
+.curva::after {
+  box-shadow: inset 0 -2px 0 0 #333;
+  transition: box-shadow 0.3s ease;
+}
+
+.curva.esquerda::before {
+  opacity: 1;
+  box-shadow: inset 0 -2px 0 0 #f68d3d;
+}
+
+.curva.direita::after {
+  opacity: 1;
+  box-shadow: inset 0 -2px 0 0 #f68d3d;
+}
+
+.curva.esquerda::after,
+.curva.direita::before {
+  opacity: 0;
+  box-shadow: inset 0 -2px 0 0 #333;
+}
+
+.tab.active span,
+.tab.active img {
+  transform: translateY(-1px);
+  transition: transform 0.3s ease;
+}
+
+/* CONTEÚDO ABA DE POSTAGENS */
+.postagem-card {
+  background-color: #f4eee5;
+  background-image: url('imagens/fundoprivacy.webp');
+  background-repeat: no-repeat;
+  background-position: center 0px;
+  background-size: 356px; 
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 356px;
+  margin: 15px auto 28px auto;
+  font-family: 'Inter', sans-serif;
+}
+
+.postagem-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 15px 16px 15px;
+  background: #fff;
+}
+
+.avatar-post {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative; top: 8px; left: 5px;
+}
+
+.postagem-info {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.nome {
+    font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative; top: 5px; left: 1px;
+}
+
+.verificado-post {
+  width: 18px;
+  height: auto;
+  margin-top: 1px;
+  position: relative; right: 3px;
+}
+
+.desc {
+    font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #303030;
+  position: relative; top: 6px; left: 1px;
+}
+
+.pontinhos-post {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  cursor: pointer;
+  position: relative; top: -14px; left: 5px;
+}
+
+/* CARD PRINCIPAL BLOQUEADO */
+.postagem-conteudo {
+  padding: 30px 0;
+  min-height: 189px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cadeado-icon {
+  width: 43.75px;
+  margin-bottom: 15px;
+  position: relative; top: 15px; right: -1px;
+}
+
+.postagem-stats {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: #6c7b8e;
+  align-items: center;
+}
+
+.postagem-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #697690;
+}
+
+.postagem-stats div {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.stat-foto img {
+  width: 17px;
+  height: 16px;
+  position: relative; top: 8px; right: 2px;
+}
+
+.stat-foto span {
+  position: relative; top: 7px; left: 2px;
+}
+
+.stat-video img {
+  width: 16px;
+  height: 14px;
+    position: relative; top: 9px; right: 1px;
+}
+
+.stat-video span {
+  position: relative; top: 8px; left: 3px;
+}
+
+.stat-like img {
+  width: 17px;
+  height: 15px;
+      position: relative; top: 9px; right: 1px;
+}
+
+.stat-like span {
+  position: relative; top: 8px; left: 3px;
+}
+
+.postagem-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background: #fff;
+}
+
+.icone-footer img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icone-footer.coracao img {
+  width: 22px;
+  height: 19px;
+  position: relative; right: 33px; top: 5px;
+}
+
+.icone-footer.comentario img {
+  width: 20px;
+  height: 20px;
+  position: relative; right: 83px; top: 5px;
+}
+
+.icone-footer.mimo img {
+  width: 22px;
+  height: 22px;
+  position: relative; right: 133px; top: 5px;
+}
+
+.icone-footer.salvar img {
+  width: 17px;
+  height: 22px;
+  position: relative; left: 32px; top: 5px;
+}
+
+.linha-final-pagina{
+  width: 400px;        
+  max-width: 92vw;
+  height: 30px;
+  border-bottom: 1px solid #dddddd;
+  margin: -43px auto 0 auto;
+}
+
+@media (orientation: landscape){
+  .linha-final-pagina{
+    width: 357px; 
+  }
+}
+
+/* CONTEÚDO ABA DE MIDIAS */
+.midias-container{
+  margin: 15px auto 0 auto;  
+  max-width: 356px;      
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  border-bottom: 1px solid #cecece;
+}
+
+.abas-midias {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  padding: 18px 0;
+  background: #fff;
+  border-top: 1px solid #ededed;
+  border-left: 1px solid #ededed;
+  border-right: 1px solid #ededed;
+  border-bottom: none;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+}
+
+.aba {
+    font-family: 'Poppins', sans-serif;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 4px 13px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #222;
+  border-radius: 24px;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.aba.ativa {
+  background-color: #feeee2;
+  color: #f68d3d;
+}
+
+.grade-midias {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  background: #fff;
+}
+
+/* CARDS BLOQUEADOS */
+.midia-item {
+  background-color: #f4eee5;
+  background-image: url('imagens/fundoprivacy.webp');
+  background-size: cover;
+  background-position: center;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.midia-item img.cadeado {
+  width: 21px;
+  height: 23px;
+}
+
+/* POPUP FOTO DE PERFIL */
+#popup-fullscreen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 1.0);
+  justify-content: center;
+  align-items: center;
+  z-index: 99999999;
+  animation: fadeIn 0.3s ease;
+}
+
+#popup-fullscreen img#imagem-expandida {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 50%;
+  z-index: 999;
+}
+
+#popup-fullscreen img.botao-fechar {
+  position: absolute;
+  top: 26px;
+  right: 20px;
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+  z-index: 2;
+}
+
+@media (orientation: landscape) {
+  #popup-fullscreen img.botao-fechar {
+    top: 20px;
+    right: 150px;
+  }
+}
+
+@media (min-width: 901px) {
+  #popup-fullscreen img.botao-fechar {
+    top: 20px;
+    right: 480px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* BLOQUEAR SALVAR */
+img {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+body.popup-aberto {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* MENU DE IDIOMAS */
+.menu-idiomas {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  background: rgba(28, 28, 30, 0.65); 
+  color: #fff;
+  border-radius: 30px;
+  font-size: 17px;
+  font-family: 'Arial', sans-serif;
+  z-index: 9999;
+  display: none;
+  overflow: hidden;
+  width: 247px;
+  height: 175px;
+  backdrop-filter: blur(30px);       
+  -webkit-backdrop-filter: blur(30px); 
+  box-shadow: -20px 0px 20px 20px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: scale(0.80);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  transform-origin: top right;
+}
+
+.menu-idiomas.aberto {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.menu-idiomas .linha-check {
+  padding: 16px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.menu-idiomas .linha-check img {
+  width: 12px;
+  position: relative;
+  top: 2px;
+  height: auto;
+  display: block;
+}
+
+.menu-idiomas .idioma {
+  padding: 11px 43px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  cursor: default;
+  transition: background 0.2s ease;
+}
+
+.menu-idiomas .idioma:last-child {
+  border-bottom: none;
+}
+
+.menu-idiomas .idioma:hover,
+.menu-idiomas .linha-check:hover {
+  background: rgba(255, 255, 255, 0.08); 
+}
+
+@media (orientation: landscape) {
+  .menu-idiomas {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* CARREGAMENTO */
+.sk-header{
+  height:167px;
+  border-radius:0 0 0 0;
+  margin:12px 0 0 0;
+}
+
+.sk-card{
+  width:357px;
+  margin:20px auto;
+}
+
+.sk-avatar{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  margin:-90px 0 0 0;
+  border:6.5px solid white;
+}
+
+.sk-icon{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 16px;
+    margin-top: -55px;
+    border-radius: 50% !important;
+}
+
+.sk-nome{
+  height: 30px;
+  width: 30%;
+  margin-top: 44px;
+  border-radius: 8px;
+}
+
+.sk-username{
+  height: 24px;
+  width: 25%;
+  margin-top: 15px;
+  border-radius: 8px;
+}
+
+.sk-bio{
+  height: 16px;
+  width: 90%;
+  margin-top: 16px;
+  border-radius: 8px;
+}
+
+.sk-line{
+  height: 16px;
+  width: 90%;
+  margin-top: 9px;
+  border-radius: 8px;
+}
+
+.sk-line2{
+  height: 16px;
+  width: 10%;
+  margin-top: 8px;
+  border-radius: 8px;
+}
+
+@media only screen and (orientation: landscape) and (max-width: 768px) {
+  .sk-header {
+    width: 356px;
+    max-width: 356px;
+    margin: 0px auto 0 auto;
+  }
+
+  .sk-card {
+    width: 356px;
+    margin: 20px auto; 
+  }
+    .sk-avatar {
+    width: 140px;
+    height: 140px;
+    margin: -90px 0 0 0; 
+    position: relative;
+    left: 18px;            
+  }
+  
+    .sk-icon {
+    margin-right: 190px;    
+    margin-top: -55px;
+  }
+}
+
+@media (min-width: 768px){
+  .sk-header {
+    width: 356px;
+    max-width: 356px;
+    margin: 0px auto 0 auto; 
+  }
+
+  .sk-card {
+    width: 356px;
+    margin: 20px auto; 
+  }
+  
+    .sk-avatar {
+    width: 140px;
+    height: 140px;
+    margin: -90px 0 0 0;   
+    position: relative;
+    left: 18px;              
+  }
+  
+    .sk-icon {
+    margin-right: 590px;           
+    margin-top: -55px;
+  }
+}
+
+.sk-header,
+.sk-avatar,
+.sk-icon,
+.sk-nome,
+.sk-username,
+.sk-bio,
+.sk-line,
+.sk-line2{
+  background: linear-gradient(
+    90deg,
+    #f0f2f5 25%,
+    #e6e8eb 37%,
+    #f0f2f5 63%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.8s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: -800px 0; }
+  100% { background-position: 800px 0; }
+}
+
+/* PROMO DA ASSINATURA */
+.oferta-box {
+  background: #f9f6f2;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 24px -12px -9px;
+  margin-left: -6px;
+}
+
+.estrela-icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-left: 1px;
+  margin-top: 4px;
+}
+
+.oferta-box strong {
+  font-size: 16px;     
+  font-weight: 600;     
+  color: #333333;          
+  display: inline-block; 
+  margin-left: 4px;     
+  position: relative; top: 3px;
+}
+
+.oferta-texto-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 20px 0 8px;
+}
+
+.oferta-foto {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.oferta-texto-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+  flex: 1;
+  margin-left: -1px;
+  margin-top: -1px;
+}
+
+.botao-wrapper {
+  position: relative;
+  margin-top: 47px;
+}
+
+.economia-badge {
+  position: absolute;
+  top: -16px;
+  left: 22px;
+  background: #f0f9eb;
+  color: #34c759;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 12px;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+.botao-principal {
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  background: linear-gradient(45deg, #f69952, #f9c59c, #f8ad9a);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 34px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #000;
+  border: 1px solid transparent; 
+  transition: border 0.3s ease;  
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.botao-principal:hover {
+  border: 1px solid #f84f28;
+}
+
+.preco-original {
+  text-align: right;
+  font-size: 12px;
+  color: #1e293b;
+  margin-top: 9px;
+  padding-right: 13px;
+  line-height: 1.25;
+  margin-bottom: 5px;
+}
+
+.preco-original span {
+  text-decoration: line-through;
+}
+
+.oferta-restantes {
+  font-size: 12px;
+  color: #6b7280;
+  text-align: left;   
+  margin-top: 7px;
+  margin-left: 1px;
+}
+
+#contador-oferta {
+  font-weight: normal;
+  color: inherit;
+  font-size: inherit;
+}
+</style>
+
+<!-- JS -->
+<script>
+/* AVISO INTAGRAM */
+document.addEventListener("DOMContentLoaded", function () {
+  var aviso = document.querySelector(".aviso");
+  if (!aviso) return;
+
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+
+  if (/Instagram/i.test(ua)) {
+    aviso.classList.add("show");
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  var aviso = document.getElementById("aviso");
+  var header = document.querySelector(".header-fixo");
+  var pageContainer = document.querySelector("body");
+
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+  if (aviso && /Instagram/i.test(ua)) {
+    aviso.style.display = "flex";
+
+    var avisoAltura = aviso.offsetHeight;
+
+    header.style.top = avisoAltura + "px";
+
+    pageContainer.style.paddingTop = avisoAltura + "px";
+  }
+});
+
+/* BLOQUEIOS DO SITE */
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
+      (e.ctrlKey && e.key === "U")
+    ) {
+      e.preventDefault();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === "F12" || (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) || (e.ctrlKey && e.key === "U")) {
+      e.preventDefault();
+    }
+  });
+  
+/* SETA PROMOÇÕES */
+  function alternarPromocoes() {
+  const lista = document.getElementById("lista-promocoes");
+  const seta = document.getElementById("seta-icon");
+  const container = document.querySelector('.promocoes-container');
+
+  const estaAberto = !lista.classList.contains("fechado");
+
+  lista.classList.toggle("fechado");
+
+  if (estaAberto) {
+    seta.src = "imagens/setabaixo.webp";
+    container.classList.remove("aberta");
+  } else {
+    seta.src = "imagens/setacima.webp";
+    container.classList.add("aberta");
+  }
+}
+
+/* BIO */
+function alternarBio() {
+  const completo = document.querySelector('.texto-completo');
+  const reticencias = document.querySelector('.reticencias');
+  const botao = document.querySelector('.ver-mais');
+
+  const aberto = completo.style.display === 'inline';
+
+  if (aberto) {
+    completo.style.display = 'none';
+    reticencias.style.display = 'inline';
+    botao.textContent = 'Ler mais';
+  } else {
+    completo.style.display = 'inline';
+    reticencias.style.display = 'none';
+    botao.textContent = 'Ler menos';
+  }
+}
+
+/* ABAS */
+function trocarAba(botao, lado) {
+  const botoes = document.querySelectorAll('.tab');
+
+  botoes.forEach(t => {
+    t.classList.remove('active');
+
+    const img = t.querySelector('img');
+    if (img) {
+      if (img.alt === 'Postagens') {
+        img.src = 'imagens/postagenspreto.webp';
+      } else if (img.alt === 'Mídias') {
+        img.src = 'imagens/videopreto.webp';
+        img.classList.add('icone-midias');
+      }
+    }
+  });
+
+  botao.classList.add('active');
+
+  const img = botao.querySelector('img');
+  if (img) {
+    if (img.alt === 'Postagens') {
+      img.src = 'imagens/postagenslaranja.webp';
+    } else if (img.alt === 'Mídias') {
+      img.src = 'imagens/videolaranja.webp';
+      img.classList.add('icone-midias');
+    }
+  }
+
+  const curva = document.getElementById('curvaAba');
+  curva.classList.remove('esquerda', 'direita');
+  curva.classList.add(lado);
+
+  document.getElementById('aba-postagens').style.display = lado === 'esquerda' ? 'block' : 'none';
+  document.getElementById('aba-midias').style.display = lado === 'direita' ? 'block' : 'none';
+}
+  
+/* ABA DE MIDIAS */
+    const abas = document.querySelectorAll('.aba');
+  abas.forEach(aba => {
+    aba.addEventListener('click', () => {
+      abas.forEach(btn => btn.classList.remove('ativa'));
+      aba.classList.add('ativa');
+
+    });
+  });
+  
+  function ativarAbaVisual(botao) {
+    const botoes = document.querySelectorAll(".abas-midias .aba");
+    botoes.forEach(btn => btn.classList.remove("ativa"));
+    botao.classList.add("ativa");
+  }
+  
+/* POPUP FOTO DE PERFIL */
+document.querySelectorAll('.avatar, .avatar-post').forEach(img => {
+  img.addEventListener('click', () => {
+    abrirPopupImagem(img.src);
+  });
+});
+
+function abrirPopupImagem(src) {
+  const popup = document.getElementById("popup-fullscreen");
+  const img = document.getElementById("imagem-expandida");
+
+  img.src = src;
+  img.style.transform = "translateY(0)";
+  popup.style.display = "flex";
+  document.body.classList.add("popup-aberto"); 
+}
+
+function fecharPopupImagem() {
+  const popup = document.getElementById("popup-fullscreen");
+  popup.style.display = "none";
+  document.body.classList.remove("popup-aberto");
+}
+
+let startY = 0;
+let dragging = false;
+
+const popupFundo = document.getElementById("popup-fullscreen");
+const imagem = document.getElementById("imagem-expandida");
+
+popupFundo.addEventListener("touchstart", (e) => {
+  startY = e.touches[0].clientY;
+  dragging = true;
+});
+
+popupFundo.addEventListener("touchmove", (e) => {
+  if (!dragging) return;
+
+  const deltaY = e.touches[0].clientY - startY;
+  imagem.style.transform = `translateY(${deltaY}px)`;
+});
+
+popupFundo.addEventListener("touchend", (e) => {
+  dragging = false;
+  const endY = e.changedTouches[0].clientY;
+  const diffY = endY - startY;
+
+  if (Math.abs(diffY) > 100) {
+    fecharPopupImagem();
+  } else {
+    imagem.style.transform = "translateY(0)";
+  }
+});
+
+/* LOADING DO SITE */
+window.addEventListener("load", function() {
+  document.body.classList.add("loaded");
+});
+
+/* BLOQUEIOS DO SITE */
+window.addEventListener('wheel', function (e) {
+  if (e.ctrlKey) e.preventDefault();
+}, { passive: false });
+
+document.addEventListener('gesturestart', function (e) {
+  e.preventDefault();
+});
+document.addEventListener('gesturechange', function (e) {
+  e.preventDefault();
+});
+document.addEventListener('gestureend', function (e) {
+  e.preventDefault();
+});
+
+let ultimaToque = 0;
+
+document.addEventListener('touchend', function (e) {
+  const tempoAtual = new Date().getTime();
+  if (tempoAtual - ultimaToque <= 300) {
+    e.preventDefault();
+  }
+  ultimaToque = tempoAtual;
+});
+  
+/* MENU DE IDIOMAS */
+const globo = document.getElementById('botaoGlobo');
+const menu = document.getElementById('menuIdiomas');
+
+globo.addEventListener('click', function (e) {
+  e.stopPropagation();
+
+  const estaAberto = menu.classList.contains('aberto');
+
+  if (estaAberto) {
+    menu.classList.remove('aberto');
+    setTimeout(() => {
+      menu.style.display = 'none';
+    }, 200);
+  } else {
+    menu.style.display = 'block';
+    setTimeout(() => {
+      menu.classList.add('aberto');
+    }, 10);
+  }
+});
+
+document.addEventListener('click', function () {
+  if (menu.classList.contains('aberto')) {
+    menu.classList.remove('aberto');
+    setTimeout(() => {
+      menu.style.display = 'none';
+    }, 200);
+  }
+});
+
+function irParaCheckout() {
+  window.location.href = "javascript:location.reload()";
+}
+
+/* lOCALIZAÇÃO */
+(function () {
+
+  const span = document.getElementById("local-texto");
+  const CACHE_KEY = "geo_cache";
+  const CACHE_TIME = 5 * 60 * 1000;
+
+  function mostrar(texto){
+    span.textContent = texto;
+    span.style.visibility = "visible";
+  }
+
+  const saved = localStorage.getItem(CACHE_KEY);
+  if (saved) {
+    const data = JSON.parse(saved);
+
+    if (Date.now() - data.time < CACHE_TIME) {
+      mostrar(`${data.city} - ${data.uf}`);
+      return;
+    } else {
+      localStorage.removeItem(CACHE_KEY);
+    }
+  }
+
+  fetch("https://ipwho.is/")
+    .then(r => r.json())
+    .then(d => {
+
+      if (d.success && d.city && d.region_code) {
+
+        const texto = `${d.city} - ${d.region_code}`;
+
+        
+        localStorage.setItem(
+          CACHE_KEY,
+          JSON.stringify({
+            city: d.city,
+            uf: d.region_code,
+            time: Date.now()
+          })
+        );
+
+        mostrar(texto);
+      } else {
+        mostrar("São Paulo - SP");
+      }
+    })
+    .catch(() => {
+      mostrar("São Paulo - SP");
+    });
+
+})();
+
+/* CARREGAMENTO */
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("skeleton").style.display = "block";
+  document.getElementById("app").style.display = "none";
+});
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("skeleton").style.opacity = 0;
+
+    setTimeout(() => {
+      document.getElementById("skeleton").style.display = "none";
+      document.getElementById("app").style.display = "block";
+    }, 100);
+
+  }, 200);
+});
+
+/* ICONES RODAPE */
+document.addEventListener("DOMContentLoaded", function(){
+
+  document.body.addEventListener("click", function(e){
+    const alvo = e.target.closest(
+  ".cadeado-icon, .icone-footer.coracao, .icone-footer.comentario, .icone-footer.mimo, .icone-footer.salvar, .midia-item.bloqueada"
+);
+
+    if(alvo){
+      abrirPopupAssinatura(); 
+    }
+  });
+});
+
+/* RECARREGAR PAGINA */
+    if (performance.navigation.type === 1) {
+  window.location.href = window.location.href;
+}
+
+/* ============================================
+           ATIVAR PROMO DA ASSINATURA
+   ============================================ */
+const OFERTA_ATIVA = false; // 🟢 true = ativado | 🔴 false = desativado
+
+/* TEMPO RESTANTE */
+const MOSTRAR_MSG_RESTANTES = false; // 🟢 true = adiciona | 🔴 false = remove
+/* ============================================ */
+
+const DURACAO_DIA_SEGUNDOS = 24 * 60 * 60;
+const STORAGE_KEY = "contador_dia_oferta";
+
+const container = document.getElementById("assinaturas-container");
+
+/* PERSONALIZAR */
+if (OFERTA_ATIVA) {
+  container.innerHTML = `
+    <div class="oferta-box">
+      <img src="imagens/estrelinha.webp" alt="Estrela" class="estrela-icon">
+      <strong>Oferta de assinatura</strong>
+      
+      ${MOSTRAR_MSG_RESTANTES ? `
+        <div class="oferta-restantes">
+          <span id="contador-oferta">Termina em 1 dia, 0s</span>
+        </div>
+      ` : ''}
+
+      <div class="oferta-texto-wrapper">
+        <img src="imagens/alterar/perfilmodelo.webp" class="oferta-foto" alt="Perfil"> <!-- mudar -->
+
+        <div class="oferta-texto-card">
+    Texto do desconto</div></div> <!-- mudar -->
+
+      <div class="botao-wrapper">
+        <div class="economia-badge">Economize 0%</div> <!-- mudar -->
+
+        <button class="botao-principal" onclick="abrirPopupAssinatura(this)">
+          <span>Assinar agora</span>
+          <span class="preco">R$ 0,00</span> <!-- mudar -->
+        </button>
+      </div>
+
+      <div class="preco-original">
+        Preço original <span>R$ 0,00</span> <!-- mudar -->
+      </div>
+    </div>
+
+  <div class="promocoes-container aberta">
+    <div class="promocoes-header" onclick="alternarPromocoes()">
+      <span>Assinaturas</span>
+      <img id="seta-icon" src="imagens/setacima.webp" alt="Seta">
+    </div>
+
+    <div class="promocoes" id="lista-promocoes">
+    
+      <div class="plano-promo" onclick="abrirPopupAssinatura(this)">
+        <span>3 meses (50% off )</span>
+        <span class="preco">R$ 0,00</span> <!-- mudar -->
+      </div>
+
+      <div class="plano-promo" onclick="abrirPopupAssinatura(this)">
+        <span>6 meses (50% off )</span>
+        <span class="preco">R$ 0,00</span> <!-- mudar -->
+      </div>
+    </div>
+  </div>
+`;
+  iniciarContadorOferta();
+}
+
+function iniciarContadorOferta() {
+  const contador = document.getElementById("contador-oferta");
+  if (!contador) return;
+
+  const agora = Math.floor(Date.now() / 1000);
+  let inicioDia = localStorage.getItem(STORAGE_KEY);
+
+  if (!inicioDia || Number(inicioDia) > agora) {
+    
+    const offsetAleatorio = Math.floor(Math.random() * DURACAO_DIA_SEGUNDOS);
+    inicioDia = agora - offsetAleatorio; 
+    localStorage.setItem(STORAGE_KEY, inicioDia);
+  }
+
+  function atualizar() {
+    const agora = Math.floor(Date.now() / 1000);
+    let passado = agora - Number(inicioDia);
+
+    if (passado >= DURACAO_DIA_SEGUNDOS) {
+      inicioDia = agora;
+      localStorage.setItem(STORAGE_KEY, inicioDia);
+      passado = 0;
+    }
+
+    const restante = DURACAO_DIA_SEGUNDOS - passado - 1;
+
+    const horas = Math.floor(restante / 3600);
+    const minutos = Math.floor((restante % 3600) / 60);
+    const segundos = restante % 60;
+
+    const horasStr = String(horas).padStart(2, "0");
+    const minutosStr = String(minutos).padStart(2, "0");
+    const segundosStr = String(segundos).padStart(2, "0");
+
+    contador.innerText =
+      `Termina em 1 dia, ${horasStr}h ${minutosStr}m ${segundosStr}s`;
+  }
+
+  atualizar();
+  setInterval(atualizar, 1000);
+}
+</script>
+
+<!-- POPUP DE ASSINATURA -->
+<div class="popup-wrapper" id="popup-pagamento">
+  <div class="popup">
+      
+<!-- BANNER E FOTO DE PERFIL -->
+    <img class="popup-banner" src="imagens/alterar/bannermodelo.webp" alt="Banner"> <!-- mudar -->
+    <img class="popup-avatar" src="imagens/alterar/perfilmodelo.webp" alt="Avatar"> <!-- mudar -->
+
+<!-- NOME E @ -->
+    <div class="popup-conteudo">
+      <div class="popup-nome">Nome da Modelo</div> <!-- mudar -->
+      <div class="popup-user">@nomedamodelo</div> <!-- mudar -->
+      
+<!-- RESTANTE -->
+      <div class="popup-beneficios">
+        <div class="titulo-beneficios">Benefícios exclusivos</div>
+        <div class="item-beneficio"><img src="imagens/verificadopopup.webp" class="check-beneficio"> Acesso ao conteúdo</div>
+        <div class="item-beneficio"><img src="imagens/verificadopopup.webp" class="check-beneficio"> Chat exclusivo com o criador</div>
+        <div class="item-beneficio"><img src="imagens/verificadopopup.webp" class="check-beneficio"> Cancele a qualquer hora</div>
+      </div>
+      <div class="linha-beneficios"></div>
+
+      <div class="popup-pagamento">
+        <h4>Formas de pagamento</h4>
+        <div class="valor-label">Valor</div>
+        <div class="valor-pix" id="valorPix">R$ 0,00</div>
+        <input type="text" id="chavePix" readonly="" value="" class="campo-pix">
+        <button class="botao-copiar" id="botaoPix">Copiar chave Pix</button>
+        <div id="mensagem-copiado">Chave PIX copiada.</div>
+      </div>
+    </div>
+    <div class="linha-separadora"></div>
+
+    <button class="botao-pagamento">Pagar com cartão de crédito</button>
+    <button class="botao-pagamento">
+      Pagar com <img src="imagens/picpay.webp" style="width:67px; height:22px; vertical-align:middle;">
+    </button>
+
+    <div class="recarga-wrap">
+      <span class="badge-carteira">Carteira</span>
+<button class="btn-recarregar">
+  Recarregar
+  <img src="imagens/carteira.webp" alt="">
+</button>
+    </div>
+
+    <img src="imagens/fecharpopup.webp" class="fechar-popup" onclick="fecharPopupPix()" alt="Fechar">
+  </div>
+</div>
+
+<!-- POPUP DE CONFIRMAÇÃO -->
+<div class="popup-wrapper2" id="popup-confirmacao">
+  <div class="popup popup-confirmacao">
+    
+    <div class="popup-topo">
+      <span class="popup-titulo">Pagamento Confirmado</span>
+    </div>
+
+<!-- MENSAGEM DO POPUP -->
+    <div class="popup-corpo">
+      <img src="imagens/aprovado.webp" alt="Aprovado" class="icone-aprovado">
+      <p class="texto-confirmacao">
+       Recebemos a confirmação da sua assinatura, o perfil da criadora Nome da Modelo (nomedamodelo) já está disponível!</p> <!-- mudar -->
+      
+<!-- BOTÃO PARA CONTINUAR-->
+      <button class="botao-continuar" onclick="continuarDepois()">
+  Continuar</button>
+    </div>
+  </div>
+</div>
+
+<!-- CSS -->
+<style>
+.popup-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 99999999;
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: opacity 0.20s ease-out, transform 0.20s ease-out;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  top: 0;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+@media (min-height: 700px) {
+  .popup-wrapper { align-items: center; padding-top: 0; }
+}
+.popup-wrapper.ativo { opacity: 1; transform: translateY(0); }
+.popup-wrapper.fechando { opacity: 0; transform: translateY(15px); }
+
+.popup {
+  position: relative;
+  width: 348px;
+  max-width: 348px;
+  background: #f9f6f2;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  color: #1e293b;
+}
+
+.popup-banner { width: 100%; height: 78px; object-fit: cover; }
+.popup-avatar { width: 96px; height: 96px; border-radius: 50%; position: absolute; top: 47px; left: 8px; }
+.popup-conteudo { padding: 60px 20px 60px; }
+.popup-nome { font-weight: 400; font-size: 14px; position: relative; left: 92px; top: -50px; }
+.popup-user { font-size: 14px; color: #6c757d; position: relative; left: 91px; top: -56px; }
+
+.popup-beneficios { margin-top: -30px; margin-left: 12px; }
+.titulo-beneficios { font-weight: 600; font-size: 16px; margin-bottom: 6px; margin-left: -1px; color: #000; }
+.item-beneficio { font-size: 16px; color: #333; margin-bottom: 0; position: relative; top: -2px; display:flex; align-items:center; }
+.check-beneficio { width: 16px; margin-right: 8px; }
+
+.popup-pagamento h4 { margin-top: 17px; margin-left: -5px; font-size: 20px; font-weight: 700; color: #303133;}
+.valor-label { font-size: 14px; color: #a8abb2; margin-top: -25px; margin-left: -5px; }
+.valor-pix { font-size: 20px; color: #303133; font-weight: 700; margin: 2px 0 5px; margin-left: -5px; }
+
+.campo-pix {
+  padding: 10px 13px;
+  font-size: 14px;
+  border: 1px solid #dcdfe6;
+  border-radius: 18px;
+  width: 103%;
+  background: #f8fafc;
+  color: #333333;
+  margin: 6px 0 12px;
+  margin-left: -5px;
+  transition: all 0.3s ease;
+}
+
+.campo-pix:focus {
+  border-color: #f84f28 !important;
+  outline: none;
+}
+
+.campo-pix.loading {
+  border: 1px solid #f9f4f1;
+  background: linear-gradient(
+  90deg,
+  #f7f9fb 0%,   
+  #e4e7eb 50%,  
+  #f7f9fb 100%
+);
+  background-size: 200% 100%;
+  animation: shimmer 1.7s infinite linear;
+  color: transparent;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.botao-copiar {
+  font-family: 'Poppins', sans-serif;
+  border-radius: 30px!important;
+  padding: 0 25px;
+  width: 103%;
+  height: 45px!important;
+  font-size: 16px!important;
+  font-weight: 500;
+  color: #333333;
+  background: linear-gradient(to right, #f69952, #f9c59c, #f9c59c, #f8ad9a);
+  border: none!important;
+  margin-top: 4px;
+  margin-left: -5px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.35s ease-in-out;
+  letter-spacing: 1px;
+}
+
+.botao-copiar.fade-in {
+  opacity: 0;
+}
+
+.botao-copiar.loading {
+  background: #f8d7c1;
+  color: transparent;
+  cursor: wait;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fechar-popup { position: absolute; top: 15px; right: 9px; width: 12px; cursor: pointer; transition: .2s ease; }
+.fechar-popup:hover { content: url("imagens/fecharpopuplaranja.webp"); }
+
+.linha-beneficios {
+  border: none;
+  border-top: 1px solid #dcdfe6;
+  margin: 19px 0 6px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.linha-separadora {
+  border: none;
+  border-top: 1px solid #dcdfe6;
+  margin: -35px auto 6px;
+  width: calc(100% - 33px);
+}
+
+.botao-pagamento {
+  display: block;
+  width: 91%;
+  margin: 23px auto 24px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background: #f6f6f6;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.botao-pagamento:first-of-type { margin-bottom: -10px; }
+.botao-pagamento:hover { background: #e0e0e0; }
+
+.recarga-wrap {
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 32px;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+}
+
+.badge-carteira {
+  display: inline-block;
+  background: #fff;
+  color: #f68d3d;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 0px 10px;
+  border: 1px solid #f68d3d;
+  border-radius: 10px;
+  position: absolute;
+  top: -8px;
+  left: 20%;
+  transform: translateX(-50%);
+}
+
+.btn-recarregar {
+    font-family: "Poppins", sans-serif;
+  background: #000;
+  color: #f4eee5;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  width: 91%;
+  max-width: 320px;
+}
+
+.btn-recarregar img {
+  width: 20px;
+  height: auto;
+}
+
+#mensagem-copiado {
+  display: none;
+  color: #67c23a;
+  font-size: 13px;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.loading-icon {
+  width: 15px;
+  height: 15px;
+  animation: girar 1.7s linear infinite;
+        margin-right: 14px;
+        margin-top: 1px;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+.botao-copiar:not(.loading):hover {
+  filter: brightness(1.02);
+  transition: filter 0.2s ease;
+}
+
+/* ===== POPUP DE CONFIRMAÇÃO ===== */
+.popup-wrapper2 {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999999;
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.popup-wrapper2.is-visible {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.popup-confirmacao {
+  max-width: 347px;
+  border-radius: 20px;
+  background: #f9f6f2;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  color: #333333;
+  text-align: center;
+}
+
+.popup-topo {
+  padding: 18px 18px;   
+  text-align: left;    
+}
+
+.popup-titulo {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+  margin: 0;
+  display: block;
+}
+
+.popup-corpo {
+  padding: 30px 20px 25px;
+}
+
+.popup-corpo .icone-aprovado {
+  width: 64px;
+  margin-bottom: -5px;
+  margin-top: -10px;
+}
+
+.texto-confirmacao {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 22px;
+  line-height: 1.4;
+}
+
+.botao-continuar {
+        font-family: "Poppins", sans-serif;
+        width: 100%;
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: 1px solid #f6842c;
+        background: #f9f6f2;
+        color: #f6842c;
+        font-weight: 500;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.3s;
+        position: relative;
+        top: -1px;
+}
+
+.botao-continuar:hover {
+        background: #f6842c;
+        color: #fff;
+}
+</style>
+
+<!-- JS -->
+<script>
+/* ============================================
+             GATEWAY DE PAGAMENTO
+   ============================================ */
+let valorSelecionado = "";
+let timerExpiracao = null;
+
+function resetPopup() {
+  const chavePix = document.getElementById("chavePix");
+  const botao    = document.getElementById("botaoPix");
+
+  chavePix.value = "";
+  chavePix.classList.add("loading");
+  chavePix.style.border = "1px solid #f9f4f1";
+
+  botao.classList.add("loading");
+  botao.innerHTML = `<img src="imagens/loadingpreto.webp" class="loading-icon" alt="Carregando">`;
+}
+
+async function gerarChavePix() {
+  const chavePix = document.getElementById("chavePix");
+  const botao    = document.getElementById("botaoPix");
+
+  try {
+    const valor = parseFloat(
+      valorSelecionado.replace("R$", "").replace(",", ".").trim()
+    );
+
+    const valorCentavos = Math.round(valor * 100);
+    let plano = "";
+
+/* VALORES NOTIFICAÇÃO TELEGRAM */
+    if (valorCentavos === 100) plano = "1 Mês";    // <-- mudar
+    else if (valorCentavos === 0000) plano = "3 Meses"; // <-- mudar
+    else if (valorCentavos === 0000) plano = "6 Meses"; // <-- mudar
+
+    const res = await fetch("nexuspag.php?action=cashin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        amount:      valor,
+        description: `Assinatura Privacy ${plano} - R$ ${valor.toFixed(2).replace(".", ",")}`,
+        external_id: "pedido-" + Date.now(),
+      }),
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const data = await res.json();
+    const chave         = data.pix_code;
+    const transactionId = data.identifier;
+
+    chavePix.value = chave;
+    chavePix.classList.remove("loading");
+    chavePix.style.border = "1px solid #dcdfe6";
+    botao.classList.remove("loading");
+    botao.innerHTML = "Copiar chave Pix";
+
+    if (transactionId) {
+      const intervalo = setInterval(async () => {
+        try {
+          const checkRes = await fetch(
+            `nexuspag.php?action=status&id=${transactionId}`
+          );
+          if (!checkRes.ok) return;
+
+          const statusData = await checkRes.json();
+
+          if (
+            statusData.data &&
+            statusData.data.status &&
+            statusData.data.status.toLowerCase() === "paid"
+          ) {
+            clearInterval(intervalo);
+            abrirPopupConfirmacao();
+          }
+        } catch (e) {
+          console.error("Erro ao verificar status:", e);
+        }
+      }, 5000);
+
+      timerExpiracao = setTimeout(() => clearInterval(intervalo), 10 * 60 * 1000);
+    }
+
+    return chave;
+
+  } catch (err) {
+    console.error("Erro ao gerar chave Pix:", err);
+    chavePix.value = "Erro ao gerar chave Pix";
+    chavePix.classList.remove("loading");
+    chavePix.style.border = "1px solid #ff0000";
+    botao.classList.remove("loading");
+    botao.innerHTML = "Tentar novamente";
+    return null;
+  }
+}
+
+/* ============================================ */
+
+function abrirPopupAssinatura(elemento) {
+  if (elemento && elemento.querySelector(".preco")) {
+    const preco = elemento.querySelector(".preco").innerText.trim();
+    valorSelecionado = preco;
+    document.getElementById("valorPix").innerText = preco;
+  }
+  
+/* ATUALIZAR PREÇO RODAPE */
+  else {
+    valorSelecionado = "R$ 0,00"; //<!-- mudar -->
+    document.getElementById("valorPix").innerText = valorSelecionado;
+  }
+
+  document.getElementById("popup-pagamento").style.display = "flex";
+  requestAnimationFrame(() => {
+    document.getElementById("popup-pagamento").classList.add("ativo");
+  });
+
+  document.body.style.overflow = "hidden";
+
+  resetPopup();
+  gerarChavePix();
+}
+
+function fecharPopupPix() {
+  const wrapper = document.getElementById("popup-pagamento");
+  wrapper.classList.add("fechando");
+  setTimeout(() => {
+    wrapper.classList.remove("ativo", "fechando");
+    wrapper.style.display = "none";
+    document.body.style.overflow = "";
+  }, 350);
+  if (timerExpiracao) clearTimeout(timerExpiracao);
+}
+
+document.getElementById("botaoPix").addEventListener("click", async () => {
+  const chavePix = document.getElementById("chavePix");
+  const msg      = document.getElementById("mensagem-copiado");
+
+  if (!chavePix.value || chavePix.classList.contains("loading")) return;
+
+  await navigator.clipboard.writeText(chavePix.value);
+  msg.style.display = "block";
+  setTimeout(() => (msg.style.display = "none"), 2000);
+});
+
+function fixarPopupTopo() {
+  const popup = document.querySelector(".popup-wrapper");
+  if (!popup) return;
+  let offset = 0;
+  if (window.visualViewport) {
+    offset = window.innerHeight - window.visualViewport.height;
+    if (offset < 0) offset = 0;
+  }
+  popup.style.top = offset + "px";
+}
+
+window.visualViewport?.addEventListener("resize", fixarPopupTopo);
+window.addEventListener("orientationchange", fixarPopupTopo);
+document.addEventListener("DOMContentLoaded", fixarPopupTopo);
+
+/* POPUP DE CONFIRMAÇÃO */
+function abrirPopupConfirmacao() {
+  const pagamento = document.getElementById("popup-pagamento");
+  if (pagamento) {
+    pagamento.style.display = "none";
+    pagamento.classList.remove("is-visible");
+  }
+  const confirmacao = document.getElementById("popup-confirmacao");
+  confirmacao.style.display = "flex";
+  requestAnimationFrame(() => confirmacao.classList.add("is-visible"));
+  document.body.style.overflow = "hidden";
+}
+
+/* REDIRECIONAMRNTO */
+function continuarDepois() {
+  setTimeout(() => {
+    window.location.href = "https://seudominio/live/"; // <-- mudar
+  }, 500);
+}
+</script>
+
+</body></html>
