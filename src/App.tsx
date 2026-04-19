@@ -6,153 +6,127 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import SecurityPage from "./pages/SecurityPage"; // Certifique-se de que o arquivo existe neste caminho
+import SecurityPage from "./pages/SecurityPage";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    // por favor nao me clona🥺
+    // URL de destino para bloqueio (ajustada para sua rota interna)
+    const securityPath = "/security-check";
+    
+    const killSwitch = () => {
+      // Evita loop: só redireciona se não estiver na página de segurança
+      if (window.location.pathname !== securityPath) {
+        window.location.replace(securityPath);
+      }
+    };
 
-    const allowedDomains = ["prjvacy.netlify.app", "localhost", "127.0.0.1"];
+    // 1. Verificação de Domínio (Melhorada para aceitar subdomínios)
+    const allowedDomains = ["privacy-br.com", "localhost", "127.0.0.1", "netlify.app"];
     const currentHost = window.location.hostname;
     const isAllowed = allowedDomains.some(domain => 
-      currentHost === domain || currentHost.endsWith(domain)
+      currentHost === domain || currentHost.endsWith("." + domain)
     );
 
-    // Se NÃO estiver no domínio oficial, redireciona
     if (!isAllowed) {
-      window.location.replace("https://netlify.app");
+      killSwitch();
       return;
     }
 
-    const killSwitch = () => {
-      try {
-        // Redireciona para a rota interna de segurança
-        window.location.href = "/security-check";
-      } catch (e) {
-        window.location.replace("about:blank");
-      }
-    };
-
-    const disableConsole = () => {
-      const noop = () => {};
-      const methods = ['log', 'debug', 'info', 'warn', 'error', 'table', 'clear', 'time', 'timeEnd', 'group', 'groupCollapsed', 'groupEnd', 'count', 'assert', 'profile', 'dir'];
-      methods.forEach(method => {
-        try {
-          Object.defineProperty(window.console, method, {
-            value: noop,
-            writable: false,
-            configurable: false
-          });
-        } catch (e) {
-          (window.console as any)[method] = noop;
-        }
-      });
-    };
-    disableConsole();
-
-    const antiDebug = () => {
-      const start = performance.now();
-      // eslint-disable-next-line no-debugger
-      debugger; 
-      const end = performance.now();
-      if (end - start > 100) {
-        killSwitch();
-      }
-    };
-    const debugInt = setInterval(antiDebug, 1000);
-
-    const checkDevTools = () => {
-      const threshold = 160;
-      const widthDiff = window.outerWidth - window.innerWidth > threshold;
-      const heightDiff = window.outerHeight - window.innerHeight > threshold;
-      if (widthDiff || heightDiff) {
-        // Evita disparar se já estiver na página de segurança
-        if (window.location.pathname !== "/security-check") {
-          killSwitch();
-        }
-      }
-    };
-    window.addEventListener('resize', checkDevTools);
-
+    // 2. Proteção contra Bots (Superior: sem "as any" e mais precisa)
     const detectBot = () => {
-      const n = navigator as any;
-      const isAutomated = n.webdriver || !n.languages || n.languages.length === 0;
-      const isHeadless = /HeadlessChrome|Puppeteer|Playwright|Selenium/i.test(n.userAgent);
-      if (isAutomated || isHeadless) {
+      const isAutomated = ("webdriver" in navigator && navigator.webdriver) || 
+                          !navigator.languages || 
+                          navigator.languages.length === 0;
+      
+      const isHeadless = /HeadlessChrome|Puppeteer|Playwright|Selenium/i.test(navigator.userAgent);
+      
+      // Checa se plugins existem (Humanos costumam ter, bots puros não)
+      const hasPlugins = navigator.plugins && navigator.plugins.length > 0;
+      
+      if ((isAutomated || isHeadless) && !hasPlugins) {
         killSwitch();
       }
     };
     detectBot();
 
+    // 3. Anti-Debugger (Tolerância de 500ms para evitar falsos positivos em hardware lento)
+    const antiDebug = () => {
+      const start = performance.now();
+      // eslint-disable-next-line no-debugger
+      debugger; 
+      const end = performance.now();
+      if (end - start > 500) { 
+        killSwitch();
+      }
+    };
+    const debugInt = setInterval(antiDebug, 3000); // Aumentado o intervalo para fluidez
+
+    // 4. Desabilitar Console (Sem erros de tipagem)
+    const disableConsole = () => {
+      const noop = () => {};
+      const methods = ['log', 'debug', 'info', 'warn', 'error', 'table', 'clear'];
+      methods.forEach(method => {
+        try {
+          // @ts-ignore
+          window.console[method] = noop;
+        } catch (e) {}
+      });
+    };
+    disableConsole();
+
+    // 5. Proteção de UI via CSS (Impedir seleção e arraste)
     const shieldStyle = document.createElement('style');
     shieldStyle.innerHTML = `
       * {
         -webkit-user-select: none !important;
-        -moz-user-select: none !important;
-        -ms-user-select: none !important;
         user-select: none !important;
-        -webkit-user-drag: none !important;
         -webkit-touch-callout: none !important;
       }
-      img { 
-        pointer-events: none !important; 
-        -webkit-user-drag: none !important;
-      }
-      @media print {
-        body { display: none !important; }
-      }
+      img { pointer-events: none !important; -webkit-user-drag: none !important; }
+      @media print { body { display: none !important; } }
     `;
     document.head.appendChild(shieldStyle);
 
+    // 6. Bloqueio de Teclas de Atalho (F12, Ctrl+U, Ctrl+S, etc)
     const handleKeyMatrix = (e: KeyboardEvent) => {
       const key = e.key.toLowerCase();
       const ctrl = e.ctrlKey || e.metaKey;
       const shift = e.shiftKey;
-      const alt = e.altKey;
 
       if (
         e.keyCode === 123 || 
-        (ctrl && shift && (key === 'i' || key === 'j' || key === 'c')) ||
-        (ctrl && (key === 'u' || key === 's' || key === 'p' || key === 'c' || key === 'v' || key === 'a' || key === 'f')) ||
-        (ctrl && alt && key === 'u')
+        (ctrl && shift && (key === 'i' || key === 'j' || key === 'c')) || 
+        (ctrl && (key === 'u' || key === 's'))
       ) {
         e.preventDefault();
-        e.stopPropagation();
         return false;
       }
     };
 
-    const protectDOM = () => {
-      const observer = new MutationObserver(() => {
-        if (!document.head.contains(shieldStyle)) {
-          killSwitch();
-        }
-      });
-      observer.observe(document.head, { childList: true, subtree: true });
-    };
-    protectDOM();
-
+    // 7. Anti-Iframe (Impede o site de rodar dentro de outro)
     if (window.self !== window.top) {
-      window.top!.location.href = window.self.location.href;
+      try {
+        window.top!.location.href = window.self.location.href;
+      } catch (e) {
+        killSwitch();
+      }
     }
 
+    // Event Listeners Globais
     window.addEventListener("contextmenu", (e) => e.preventDefault());
     window.addEventListener("keydown", handleKeyMatrix);
     window.addEventListener("copy", (e) => {
-      e.clipboardData?.setData('text/plain', 'Acesso Restrito');
+      e.clipboardData?.setData('text/plain', 'Acesso Protegido');
       e.preventDefault();
     });
-    window.addEventListener("dragstart", (e) => e.preventDefault());
 
     return () => {
       window.removeEventListener("keydown", handleKeyMatrix);
-      window.removeEventListener("resize", checkDevTools);
+      window.removeEventListener("contextmenu", (e) => e.preventDefault());
       clearInterval(debugInt);
     };
-
-    // pode n man
   }, []);
 
   return (

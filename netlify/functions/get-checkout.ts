@@ -1,11 +1,11 @@
 import { Handler } from "@netlify/functions";
 
 export const handler: Handler = async (event) => {
-  // SEGURANÇA: Verifica se a requisição vem do seu domínio original
+  
   const referer = event.headers.referer || "";
-  const meuDominio = "prjvacy.netlify.app";
+  const meuDominio = "www.privacy-br.com";
 
-  // Só bloqueia se não estiver em ambiente de teste local
+  
   if (process.env.NODE_ENV === "production" && !referer.includes(meuDominio)) {
     return {
       statusCode: 403,
