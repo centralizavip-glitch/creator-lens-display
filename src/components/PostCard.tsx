@@ -88,7 +88,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
       >
         {/* Watermark local visível */}
         <img
-          src="/assets/privacy-watermark.svg"
+          src="/assets/f6h3j8.svg"
           alt="watermark"
           className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none brightness-0 invert"
           style={{

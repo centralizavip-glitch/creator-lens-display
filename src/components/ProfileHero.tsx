@@ -23,14 +23,18 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
   const { startCheckout } = useCheckout();
 
   return (
-    <div className="bg-transparent rounded-none overflow-hidden">
-      {/* a9f3k1 */}
-      <div className="h-[91px] md:h-[170px] relative gradient-orange">
+    <div className="bg-transparent overflow-hidden">
+      {/* BANNER COM BORDAS SUPERIORES ATIVADAS */}
+      <div 
+        /* Altere o valor de rounded-t-[20px] para ajustar a curvatura do topo */
+        className="relative gradient-orange overflow-hidden mx-0 mt-1 h-[89px] md:h-[191px] rounded-t-[20px]"
+      >
         <div className="absolute inset-0 z-10" aria-hidden="true" />
         <img
           src="/assets/a9f3k1.png"
           alt="a9f3k1"
-          className="w-full h-full object-cover"
+          /* A imagem precisa do mesmo arredondamento para não cobrir a curva */
+          className="w-full h-full object-cover rounded-t-[20px]"
           onError={(e) => {
             (e.target as HTMLImageElement).style.display = "none";
           }}
@@ -39,7 +43,6 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
 
       {/* Avatar + Info */}
       <div className="px-4 pb-5 relative">
-        {/* Avatar + Metrics */}
         <div className="-mt-10 mb-1 flex items-end justify-between">
           <div className="relative w-[78px] h-[78px] md:w-[114px] md:h-[114px] rounded-full border-[4px] border-card overflow-hidden bg-muted">
             <div className="absolute inset-0 z-10" aria-hidden="true" />
@@ -53,7 +56,6 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
             />
           </div>
 
-          {/* Metrics */}
           <div className="flex items-center gap-3 mb-2">
             <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
               <ImageIcon size={14} /> 124
@@ -70,7 +72,6 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
           </div>
         </div>
 
-        {/* Nome */}
         <div className="flex items-center gap-1.5 mb-0.5">
           <h1 className="text-lg font-semibold text-foreground tracking-tight">
             Nayara Assunção
@@ -80,7 +81,6 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
 
         <p className="text-sm text-muted-foreground mb-3">@nayara_assunofc</p>
 
-        {/* Bio */}
         <p
           className={`text-sm text-foreground leading-relaxed transition-all duration-300 ${
             expanded ? "" : "line-clamp-2"
@@ -97,9 +97,7 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
           {expanded ? t("read_less") : t("read_more")}
         </button>
 
-        {/* Redes sociais */}
         <div className="mt-3 flex items-center gap-3">
-          {/* Instagram */}
           <button
             onClick={onLockedClick}
             type="button"
@@ -108,7 +106,6 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
             <InstagramIcon size={16} />
           </button>
 
-          {/* X */}
           <button
             onClick={onLockedClick}
             type="button"
@@ -117,7 +114,6 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
             <XIcon size={16} />
           </button>
 
-          {/* TikTok */}
           <button
             onClick={onLockedClick}
             type="button"
@@ -126,7 +122,6 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
             <TikTokIcon size={16} />
           </button>
 
-          {/* Telegram (protegido) */}
           <button
             onClick={() => startCheckout("tg")}
             type="button"

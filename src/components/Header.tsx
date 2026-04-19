@@ -27,12 +27,17 @@ export default function Header({ onLangChange, currentLang }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 bg-white border-b-[1px] border-black/5 flex items-center justify-between px-4 py-3 max-w-profile mx-auto">
       <div className="flex-1" />
-      {/* Wordmark fallback if logo fails */}
-      <div className="flex items-center">
+      
+      <div className="flex items-center relative">
         <img
-          src="/assets/logo-black.svg"
-          alt="Privacy"
-          className="h-6 object-contain"
+          src="/assets/d2p9s4.svg"
+          alt="d2p9s4"
+          className="h-5 object-contain relative"
+          /* AJUSTE MANUAL ABAIXO: */
+          style={{ 
+            left: "-15px",  // Aumente para mover para a DIREITA
+            right: "-1px"  // Aumente para mover para a ESQUERDA
+          }}
           onError={(e) => {
             const img = e.target as HTMLImageElement;
             img.style.display = "none";
@@ -47,6 +52,7 @@ export default function Header({ onLangChange, currentLang }: HeaderProps) {
           privacy<span className="text-primary">.</span>
         </span>
       </div>
+
       <div className="flex-1 flex justify-end relative" ref={ref}>
         <button
           onClick={() => setOpen(!open)}
