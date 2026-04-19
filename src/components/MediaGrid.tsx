@@ -50,8 +50,8 @@ export default function MediaGrid({ t, onLockedClick }: MediaGridProps) {
             draggable={false}
           >
             <img
-              src="/assets/privacy-watermark.svg"
-              alt="watermark"
+              src="/assets/f6h3j8.svg"
+              alt="f6h3j8"
               className="absolute inset-0 w-full h-full object-contain opacity-[0.35] pointer-events-none select-none"
               style={{
                 filter: "brightness(0) invert(1)",
