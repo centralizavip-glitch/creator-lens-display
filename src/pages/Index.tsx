@@ -23,12 +23,14 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-[#F5F5F5] pb-20">
       <Header onLangChange={setLang} currentLang={lang} />
 
       <main className="max-w-profile mx-auto px-4 flex flex-col gap-4">
-        <ProfileHero t={t} onLockedClick={handleLockedClick} />
-        <SubscriptionSection t={t} pulsing={pulsing} lang={lang} />
+        <div className="bg-white rounded-[28px] overflow-hidden">
+          <ProfileHero t={t} onLockedClick={handleLockedClick} />
+          <SubscriptionSection t={t} pulsing={pulsing} lang={lang} />
+        </div>
 
         <div className="bg-card rounded-[20px] md:rounded-[20px] overflow-hidden">
           <ContentTabs activeTab={activeTab} onTabChange={setActiveTab} t={t} />

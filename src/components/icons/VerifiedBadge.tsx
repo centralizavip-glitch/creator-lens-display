@@ -13,8 +13,8 @@ export default function VerifiedBadge({
 }: VerifiedBadgeProps) {
   return (
     <img
-      src="/assets/verificado.png"
-      alt="verificado"
+      src="/assets/g1r7w5.png"
+      alt="g1r7w5"
       width={size}
       height={size}
       className={className}

@@ -25,14 +25,14 @@ export default function Header({ onLangChange, currentLang }: HeaderProps) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-between px-4 py-3 max-w-profile mx-auto">
+    <header className="sticky top-0 z-50 bg-white border-b-[1px] border-black/5 flex items-center justify-between px-4 py-3 max-w-profile mx-auto">
       <div className="flex-1" />
       {/* Wordmark fallback if logo fails */}
       <div className="flex items-center">
         <img
           src="/assets/logo-black.svg"
           alt="Privacy"
-          className="h-8 object-contain"
+          className="h-6 object-contain"
           onError={(e) => {
             const img = e.target as HTMLImageElement;
             img.style.display = "none";

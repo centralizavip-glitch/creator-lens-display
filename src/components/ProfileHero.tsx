@@ -23,12 +23,13 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
   const { startCheckout } = useCheckout();
 
   return (
-    <div className="bg-card rounded-[28px] md:rounded-[28px] overflow-hidden">
-      {/* Banner */}
-      <div className="h-[120px] md:h-[170px] relative gradient-orange">
+    <div className="bg-transparent rounded-none overflow-hidden">
+      {/* a9f3k1 */}
+      <div className="h-[91px] md:h-[170px] relative gradient-orange">
+        <div className="absolute inset-0 z-10" aria-hidden="true" />
         <img
-          src="/assets/banner.png"
-          alt="Banner"
+          src="/assets/a9f3k1.png"
+          alt="a9f3k1"
           className="w-full h-full object-cover"
           onError={(e) => {
             (e.target as HTMLImageElement).style.display = "none";
@@ -39,10 +40,11 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
       {/* Avatar + Info */}
       <div className="px-4 pb-5 relative">
         {/* Avatar + Metrics */}
-        <div className="-mt-12 mb-3 flex items-end justify-between">
-          <div className="w-[96px] h-[96px] md:w-[114px] md:h-[114px] rounded-full border-[4px] border-card overflow-hidden bg-muted">
+        <div className="-mt-10 mb-1 flex items-end justify-between">
+          <div className="relative w-[78px] h-[78px] md:w-[114px] md:h-[114px] rounded-full border-[4px] border-card overflow-hidden bg-muted">
+            <div className="absolute inset-0 z-10" aria-hidden="true" />
             <img
-              src="/assets/perfil.png"
+              src="/assets/b7q2x9.png"
               alt="Nayara Assunção"
               className="w-full h-full object-cover"
               onError={(e) => {

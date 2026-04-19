@@ -50,7 +50,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full overflow-hidden bg-muted">
             <img
-              src="/assets/perfil.png"
+              src="/assets/b7q2x9.png"
               alt="Nayara Assunção"
               className="w-full h-full object-cover"
             />

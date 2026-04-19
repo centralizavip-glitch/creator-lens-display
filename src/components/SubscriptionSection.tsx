@@ -455,7 +455,7 @@ export default function SubscriptionSection({
   return (
     <div
       id="subscriptions"
-      className="bg-card rounded-[28px] md:rounded-[28px] p-5"
+      className="bg-transparent rounded-none p-5"
     >
       {offerEnabled && isOfferVisible && promotedPlan && (
         <div className="mb-4 rounded-2xl bg-[#f3eee7] p-4">
@@ -487,7 +487,7 @@ export default function SubscriptionSection({
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full overflow-hidden bg-muted flex-shrink-0">
               <img
-                src="/assets/perfil.png"
+                src="/assets/b7q2x9.png"
                 alt="Nayara Assunção"
                 className="w-full h-full object-cover"
               />
