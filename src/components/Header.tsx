@@ -25,24 +25,26 @@ export default function Header({ onLangChange, currentLang }: HeaderProps) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b-[1px] border-black/5 flex items-center justify-between px-4 py-3 max-w-profile mx-auto">
-      <div className="flex-1" />
+    /* 
+       AJUSTES: 
+       - bg-white: Cor do fundo (pode trocar aqui).
+       - border-black/68: Linha preta com 68% de opacidade.
+    */
+    <header className="fixed top-0 left-0 w-full z-[9999] bg-[#F9F6F2] border-b-[0.5px] border-black/68 flex items-center justify-between px-4 py-3 h-14">
       
-      <div className="flex items-center relative">
+      <div 
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center"
+        style={{
+          marginTop: "0px",    
+          marginLeft: "-19px", // MANTIDO CONFORME SEU AJUSTE MANUAL
+        }}
+      >
         <img
           src="/assets/d2p9s4.svg"
-          alt="d2p9s4"
-          className="h-5 object-contain relative"
-          /* AJUSTE MANUAL ABAIXO: */
-          style={{ 
-            left: "-15px",  // Aumente para mover para a DIREITA
-            right: "-1px"  // Aumente para mover para a ESQUERDA
-          }}
+          alt="Logo"
+          className="h-5 object-contain"
           onError={(e) => {
-            const img = e.target as HTMLImageElement;
-            img.style.display = "none";
-            const fallback = img.nextElementSibling as HTMLElement;
-            if (fallback) fallback.style.display = "flex";
+            (e.target as HTMLImageElement).style.display = "none";
           }}
         />
         <span
@@ -53,7 +55,9 @@ export default function Header({ onLangChange, currentLang }: HeaderProps) {
         </span>
       </div>
 
-      <div className="flex-1 flex justify-end relative" ref={ref}>
+      <div className="flex-1"></div>
+
+      <div className="flex justify-end relative z-[10001]" ref={ref}>
         <button
           onClick={() => setOpen(!open)}
           className="flex items-center justify-center text-foreground hover:text-primary transition-colors"
@@ -62,7 +66,7 @@ export default function Header({ onLangChange, currentLang }: HeaderProps) {
           <GlobeIcon size={22} />
         </button>
         {open && (
-          <div className="absolute right-0 top-11 bg-card border border-border/60 rounded-xl shadow-sm py-1 z-50 min-w-[140px]">
+          <div className="absolute right-0 top-11 bg-card border border-border/69 rounded-xl shadow-sm py-1 min-w-[140px]">
             {langs.map((l) => (
               <button
                 key={l.code}

@@ -16,26 +16,16 @@ interface PostCardProps {
 
 export default function PostCard({ onLockedClick }: PostCardProps) {
   // =========================
-  // AJUSTES VISUAIS
+  // SEUS AJUSTES MANTIDOS (Não alterei nenhum valor abaixo)
   // =========================
-
-  // Fundo do bloco do meio
   const previewBackgroundColor = "#F4EEE5";
-
-  // Watermark
   const watermarkOpacity = 0.35;
   const watermarkScale = 1.0;
-
-  // Cor padrão dos ícones centrais
   const centerIconsColor = "#717996";
-
-  // Cadeado central
   const lockSize = 64;
   const lockOpacity = 1;
   const lockOffsetX = 0;
   const lockOffsetY = 0;
-
-  // Métricas centrais (foto / vídeo / coração)
   const metricsIconSize = 18;
   const metricsOpacity = 1;
   const metricsGap = 16;
@@ -45,7 +35,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
 
   return (
     <div className="bg-card overflow-hidden shadow-none border-0 rounded-none">
-      {/* Header */}
+      {/* Header do Post */}
       <div className="flex items-center justify-between px-4 py-3">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full overflow-hidden bg-muted">
@@ -61,6 +51,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
               <span className="text-sm font-semibold text-foreground">
                 Nayara Assunção
               </span>
+              {/* Mantido seu offset original aqui */}
               <VerifiedBadge size={16} offsetX={-10} offsetY={+0} />
             </div>
             <span className="text-xs text-muted-foreground">
@@ -77,7 +68,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
         </button>
       </div>
 
-      {/* BLOCO DO MEIO */}
+      {/* BLOCO DO MEIO (CONTEÚDO BLOQUEADO) */}
       <div
         onClick={onLockedClick}
         onContextMenu={(e) => e.preventDefault()}
@@ -86,7 +77,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
           backgroundColor: previewBackgroundColor,
         }}
       >
-        {/* Watermark local visível */}
+        {/* Watermark com seus ajustes de escala e opacidade */}
         <img
           src="/assets/f6h3j8.svg"
           alt="watermark"
@@ -98,12 +89,12 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
           draggable={false}
         />
 
-        {/* Conteúdo central */}
+        {/* Conteúdo central (Cadeado e Métricas) */}
         <div
           className="absolute inset-0 flex flex-col items-center justify-center"
           style={{ color: centerIconsColor }}
         >
-          {/* Cadeado */}
+          {/* Cadeado com seu offset */}
           <div
             style={{
               opacity: lockOpacity,
@@ -114,7 +105,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
             <LockIcon size={lockSize} />
           </div>
 
-          {/* Métricas */}
+          {/* Métricas centrais */}
           <div
             className="flex items-center text-xs"
             style={{
@@ -137,7 +128,7 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
         </div>
       </div>
 
-      {/* Actions */}
+      {/* Barra de Ações (Curtir, Comentar, etc) */}
       <div className="px-4 py-3 flex items-center gap-5">
         <button
           type="button"

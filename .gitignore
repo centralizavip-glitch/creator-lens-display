@@ -13,6 +13,8 @@ dist
 dist-ssr
 *.local
 .env
+referencia
+referencia/index.html
 
 # Editor directories and files
 .vscode/*

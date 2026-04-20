@@ -7,7 +7,7 @@ import {
   ImageIcon,
   VideoIcon,
   HeartIcon,
- InstagramIcon,
+  InstagramIcon,
   TikTokIcon,
   XIcon,
   TelegramIcon,
@@ -23,18 +23,26 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
   const { startCheckout } = useCheckout();
 
   return (
-    <div className="bg-transparent overflow-hidden">
-      {/* BANNER COM BORDAS SUPERIORES ATIVADAS */}
+    /* 
+       ESTRUTURA MANTIDA:
+       - rounded-t-[30px] para alinhar com o container do Index.tsx
+       - bg-card para o fundo do perfil
+    */
+    <div className="bg-card overflow-hidden rounded-t-[30px]">
+      
+      {/* 
+          BANNER: 
+          - h-[100px]: Sua altura ajustada.
+          - rounded-t-[30px]: Curvatura sincronizada.
+      */}
       <div 
-        /* Altere o valor de rounded-t-[20px] para ajustar a curvatura do topo */
-        className="relative gradient-orange overflow-hidden mx-0 mt-1 h-[89px] md:h-[191px] rounded-t-[20px]"
+        className="relative gradient-orange overflow-hidden h-[100px] md:h-[200px] rounded-t-[30px]"
       >
         <div className="absolute inset-0 z-10" aria-hidden="true" />
         <img
           src="/assets/a9f3k1.png"
-          alt="a9f3k1"
-          /* A imagem precisa do mesmo arredondamento para não cobrir a curva */
-          className="w-full h-full object-cover rounded-t-[20px]"
+          alt="Banner"
+          className="w-full h-full object-cover rounded-t-[30px]"
           onError={(e) => {
             (e.target as HTMLImageElement).style.display = "none";
           }}
@@ -43,12 +51,13 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
 
       {/* Avatar + Info */}
       <div className="px-4 pb-5 relative">
-        <div className="-mt-10 mb-1 flex items-end justify-between">
-          <div className="relative w-[78px] h-[78px] md:w-[114px] md:h-[114px] rounded-full border-[4px] border-card overflow-hidden bg-muted">
+        <div className="-mt-12 mb-1 flex items-end justify-between">
+          {/* Avatar com borda branca */}
+          <div className="relative w-[84px] h-[84px] md:w-[120px] md:h-[120px] rounded-full border-[4px] border-white overflow-hidden bg-muted shadow-sm">
             <div className="absolute inset-0 z-10" aria-hidden="true" />
             <img
               src="/assets/b7q2x9.png"
-              alt="Nayara Assunção"
+              alt="Avatar"
               className="w-full h-full object-cover"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = "none";
@@ -56,79 +65,69 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
             />
           </div>
 
-          <div className="flex items-center gap-3 mb-2">
-            <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
+          {/* Métricas do Perfil */}
+          <div className="flex items-center gap-3 mb-3">
+            <span className="flex items-center gap-1 text-xs text-muted-foreground font-medium">
               <ImageIcon size={14} /> 124
             </span>
-            <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
+            <span className="flex items-center gap-1 text-xs text-muted-foreground font-medium">
               <VideoIcon size={14} /> 347
             </span>
-            <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
+            <span className="flex items-center gap-1 text-xs text-muted-foreground font-medium">
               <LockIcon size={14} /> 68
             </span>
-            <span className="flex items-center gap-1 text-xs text-muted-foreground opacity-100">
+            <span className="flex items-center gap-1 text-xs text-muted-foreground font-medium">
               <HeartIcon size={13} /> 45K
             </span>
           </div>
         </div>
 
+        {/* Nome e Selo de Verificado */}
         <div className="flex items-center gap-1.5 mb-0.5">
-          <h1 className="text-lg font-semibold text-foreground tracking-tight">
+          <h1 className="text-lg font-bold text-foreground tracking-tight">
             Nayara Assunção
           </h1>
-          <VerifiedBadge size={20} />
+          <VerifiedBadge size={18} />
         </div>
 
-        <p className="text-sm text-muted-foreground mb-3">@nayara_assunofc</p>
+        <p className="text-sm text-muted-foreground mb-3 font-medium">@nayara_assunofc</p>
 
-        <p
-          className={`text-sm text-foreground leading-relaxed transition-all duration-300 ${
-            expanded ? "" : "line-clamp-2"
-          }`}
-        >
-          {t("bio")}
-        </p>
-
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="text-sm font-medium text-primary mt-1 hover:underline"
-          type="button"
-        >
-          {expanded ? t("read_less") : t("read_more")}
-        </button>
-
-        <div className="mt-3 flex items-center gap-3">
-          <button
-            onClick={onLockedClick}
-            type="button"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#f3eee7] hover:opacity-80 transition"
+        {/* Bio com função de ler mais/menos */}
+        <div className="relative">
+          <p
+            className={`text-sm text-foreground leading-relaxed transition-all duration-300 ${
+              expanded ? "" : "line-clamp-2"
+            }`}
           >
-            <InstagramIcon size={16} />
-          </button>
+            {t("bio")}
+          </p>
 
           <button
-            onClick={onLockedClick}
+            onClick={() => setExpanded(!expanded)}
+            className="text-sm font-semibold text-primary mt-1 hover:opacity-80 transition-opacity"
             type="button"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#f3eee7] hover:opacity-80 transition"
           >
-            <XIcon size={16} />
+            {expanded ? t("read_less") : t("read_more")}
           </button>
+        </div>
 
-          <button
-            onClick={onLockedClick}
-            type="button"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#f3eee7] hover:opacity-80 transition"
-          >
-            <TikTokIcon size={16} />
-          </button>
-
-          <button
-            onClick={() => startCheckout("tg")}
-            type="button"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#f3eee7] hover:opacity-80 transition"
-          >
-            <TelegramIcon size={16} />
-          </button>
+        {/* Botões de Redes Sociais */}
+        <div className="mt-4 flex items-center gap-3">
+          {[
+            { icon: <InstagramIcon size={18} />, action: onLockedClick },
+            { icon: <XIcon size={18} />, action: onLockedClick },
+            { icon: <TikTokIcon size={18} />, action: onLockedClick },
+            { icon: <TelegramIcon size={18} />, action: () => startCheckout("tg") },
+          ].map((item, index) => (
+            <button
+              key={index}
+              onClick={item.action}
+              type="button"
+              className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-secondary/50 hover:bg-secondary transition-colors"
+            >
+              {item.icon}
+            </button>
+          ))}
         </div>
       </div>
     </div>

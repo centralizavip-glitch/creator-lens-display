@@ -1,11 +1,10 @@
 import { useEffect, useMemo, useState, useRef } from "react";
 import { useCheckout } from "@/hooks/useCheckout";
-import { ChevronRightIcon } from "./icons/MetricIcons";
 
 interface Plan {
   id: string;
   label: string;
-  price: number; // Alterado para number para facilitar conversão
+  price: number;
   originalPrice?: number;
 }
 
@@ -48,9 +47,9 @@ export default function SubscriptionSection({
   const promotedPlan = plans[0];
 
   const badgeConfig = {
-    offsetX: +13, // Controla posição horizontal (negativo = esquerda, positivo = direita)
-    offsetY: -13, // Controla posição vertical (negativo = cima, positivo = baixo)
-    scale: 0.8,   // Controla o tamanho (ex: 1.1 aumenta 10%, 0.9 diminui 10%)
+    offsetX: +13,
+    offsetY: -13,
+    scale: 0.8,
   };
 
   const formatFixedPrice = (value: number) => {
@@ -533,7 +532,7 @@ export default function SubscriptionSection({
         </div>
       )}
 
-      <div 
+      <div
         className="flex items-center justify-between mb-4 cursor-pointer select-none"
         onClick={() => setIsCollapsed(!isCollapsed)}
       >
@@ -543,8 +542,8 @@ export default function SubscriptionSection({
         {isCollapsed ? (
           <svg width="24" height="24" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M4.18179 6.18181C4.35753 6.00608 4.64245 6.00608 4.81819 6.18181L7.49999 8.86362L10.1818 6.18181C10.3575 6.00608 10.6424 6.00608 10.8182 6.18181C10.9939 6.35755 10.9939 6.64247 10.8182 6.81821L7.81819 9.81821C7.73379 9.9026 7.61934 9.95001 7.49999 9.95001C7.38064 9.95001 7.26618 9.9026 7.18179 9.81821L4.18179 6.81821C4.00605 6.64247 4.00605 6.35755 4.18179 6.18181Z"
               fill="#000000"
             />
@@ -552,8 +551,8 @@ export default function SubscriptionSection({
         ) : (
           <svg width="24" height="24" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M4.18179 8.81819C4.00605 8.64245 4.00605 8.35753 4.18179 8.18179L7.18179 5.18179C7.26618 5.0974 7.38064 5.04999 7.49999 5.04999C7.61933 5.04999 7.73379 5.0974 7.81819 5.18179L10.8182 8.18179C10.9939 8.35753 10.9939 8.64245 10.8182 8.81819C10.6424 8.99392 10.3575 8.99392 10.1818 8.81819L7.49999 6.13638L4.81819 8.81819C4.64245 8.99392 4.35753 8.99392 4.18179 8.81819Z"
               fill="#000000"
             />
@@ -561,7 +560,7 @@ export default function SubscriptionSection({
         )}
       </div>
 
-      <div className={`flex flex-col gap-3 transition-all duration-300 ${isCollapsed ? 'hidden' : 'flex'}`}>
+      <div className={`flex flex-col gap-3 transition-all duration-300 ${isCollapsed ? "hidden" : "flex"}`}>
         {plans
           .filter(
             (plan) =>
@@ -584,7 +583,6 @@ export default function SubscriptionSection({
             </div>
           ))}
       </div>
-
     </div>
   );
 }

@@ -23,30 +23,44 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F5F5F5] pb-20">
+    <div className="min-h-screen bg-[#f3eee7] pb-20">
       <Header onLangChange={setLang} currentLang={lang} />
-
-      <main className="max-w-profile mx-auto px-4 flex flex-col gap-4">
-        <div className="bg-white rounded-[28px] overflow-hidden">
+      
+      {/* 
+          A SOLUÇÃO:
+          - pt-[80px]: Ajusta a distância do topo (espaço entre Header e Banner). 
+            Aumente para [100px] ou [120px] para descer mais.
+          - gap-4: Mantém o espaçamento entre os cards.
+      */}
+      <main className="max-w-profile mx-auto px-4 flex flex-col gap-4 pt-[61px]">
+        
+        {/* 
+            BLOCO PRINCIPAL:
+            - Removi o mt-20 daqui para evitar conflitos.
+            - rounded-t-[30px]: Sincronizado com o ProfileHero.
+        */}
+        <div className="bg-white rounded-t-[30px] rounded-b-[28px] overflow-hidden shadow-sm">
           <ProfileHero t={t} onLockedClick={handleLockedClick} />
           <SubscriptionSection t={t} pulsing={pulsing} lang={lang} />
         </div>
 
-        <div className="bg-card rounded-[20px] md:rounded-[20px] overflow-hidden">
+        {/* BLOCO DE TABS */}
+        <div className="bg-card rounded-[20px] overflow-hidden">
           <ContentTabs activeTab={activeTab} onTabChange={setActiveTab} t={t} />
         </div>
 
+        {/* BLOCO DE CONTEÚDO */}
         {activeTab === "posts" ? (
-          <div className="bg-card rounded-[20px] md:rounded-[20px] overflow-hidden">
+          <div className="bg-card rounded-[20px] overflow-hidden">
             <PostCard onLockedClick={handleLockedClick} />
           </div>
         ) : (
-          <div className="bg-card rounded-[20px] md:rounded-[20px] overflow-hidden">
+          <div className="bg-card rounded-[20px] overflow-hidden">
             <MediaGrid t={t} onLockedClick={handleLockedClick} />
           </div>
         )}
       </main>
-
+      
       <CookieBar t={t} />
     </div>
   );

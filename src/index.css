@@ -8,7 +8,7 @@
   :root {
     color-scheme: light only;
 
-    --background: 38 8% 95%;
+    --background: 8 8% 9%;
     --foreground: 0 0% 14%;
 
     --card: 0 0% 100%;
@@ -43,6 +43,9 @@
     --gradient-end: 27 80% 60%;
     --lock-icon: 228 12% 52%;
     --badge-coral: 16 80% 73%;
+
+    /* COR DO FUNDO GLOBAL — mesma do card de oferta (#f3eee7) */
+    --page-bg: #f3eee7;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -81,6 +84,9 @@
     --gradient-end: 27 80% 60%;
     --lock-icon: 228 12% 52%;
     --badge-coral: 16 80% 73%;
+
+    /* COR DO FUNDO GLOBAL — mesma do card de oferta (#f3eee7) */
+    --page-bg: #f3eee7;
   }
 }
 
@@ -90,6 +96,8 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+    /* Fundo global — mesma cor do card de oferta */
+    background-color: var(--page-bg) !important;
   }
   img {
     -webkit-user-select: none;
@@ -105,9 +113,18 @@
   .gradient-orange {
     background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
   }
+
   .gradient-orange-btn {
-    background: linear-gradient(90deg, #e39a55 0%, #efc39c 48%, #f1ada1 100%);
-  }
+  background: linear-gradient(45deg, #f69952, #f9c59c, #f8ad9a);
+  border: 0px solid #f69952; /* Adiciona a borda com a cor que você pediu */
+  transition: all 0.3s ease; /* Opcional: deixa o efeito mais suave */
+}
+
+.gradient-orange-btn:hover {
+  opacity: 0.9;
+  border-color: #d46712; /* Opcional: escurece a borda ao passar o mouse */
+}
+
   .locked-overlay {
     background-color: hsl(var(--locked-bg));
     user-select: none;
@@ -117,7 +134,7 @@
 
 @keyframes glow-light {
   0%, 100% { filter: drop-shadow(0 0 0px rgba(240, 129, 67, 0)); }
-  50% { filter: drop-shadow(0 0 10px rgba(240, 129, 67, 0.7)); }
+  50% { filter: drop-shadow(0 0 0px rgba(185, 109, 11, 0.993)); }
 }
 
 .animate-glow-light {

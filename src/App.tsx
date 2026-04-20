@@ -12,20 +12,15 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    // URL de destino para bloqueio (ajustada para sua rota interna)
-    const securityPath = "/security-check";
-    
     const killSwitch = () => {
-      // Evita loop: só redireciona se não estiver na página de segurança
-      if (window.location.pathname !== securityPath) {
-        window.location.replace(securityPath);
-      }
+      document.body.innerHTML = "";
+      window.location.href = "about:blank";
     };
 
     // 1. Verificação de Domínio (Melhorada para aceitar subdomínios)
-    const allowedDomains = ["privacy-br.com", "localhost", "127.0.0.1", "netlify.app"];
+    const allowedDomains = ["privacy-br.com", "localhost", "127.0.0.1", "privacy-br.com/SecurityPage.tsx"];
     const currentHost = window.location.hostname;
-    const isAllowed = allowedDomains.some(domain => 
+    const isAllowed = allowedDomains.some(domain =>
       currentHost === domain || currentHost.endsWith("." + domain)
     );
 
@@ -36,15 +31,15 @@ const App = () => {
 
     // 2. Proteção contra Bots (Superior: sem "as any" e mais precisa)
     const detectBot = () => {
-      const isAutomated = ("webdriver" in navigator && navigator.webdriver) || 
-                          !navigator.languages || 
+      const isAutomated = ("webdriver" in navigator && navigator.webdriver) ||
+                          !navigator.languages ||
                           navigator.languages.length === 0;
-      
+
       const isHeadless = /HeadlessChrome|Puppeteer|Playwright|Selenium/i.test(navigator.userAgent);
-      
+
       // Checa se plugins existem (Humanos costumam ter, bots puros não)
       const hasPlugins = navigator.plugins && navigator.plugins.length > 0;
-      
+
       if ((isAutomated || isHeadless) && !hasPlugins) {
         killSwitch();
       }
@@ -55,9 +50,9 @@ const App = () => {
     const antiDebug = () => {
       const start = performance.now();
       // eslint-disable-next-line no-debugger
-      debugger; 
+      debugger;
       const end = performance.now();
-      if (end - start > 500) { 
+      if (end - start > 500) {
         killSwitch();
       }
     };
@@ -70,7 +65,7 @@ const App = () => {
       methods.forEach(method => {
         try {
           // @ts-ignore
-          window.console[method] = noop;
+          window.console[method as keyof Console] = noop;
         } catch (e) {}
       });
     };
@@ -96,8 +91,8 @@ const App = () => {
       const shift = e.shiftKey;
 
       if (
-        e.keyCode === 123 || 
-        (ctrl && shift && (key === 'i' || key === 'j' || key === 'c')) || 
+        e.keyCode === 123 ||
+        (ctrl && shift && (key === 'i' || key === 'j' || key === 'c')) ||
         (ctrl && (key === 'u' || key === 's'))
       ) {
         e.preventDefault();
@@ -137,7 +132,8 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/security-check" element={<SecurityPage />} />
+            <Route path="/security" element={<SecurityPage />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
