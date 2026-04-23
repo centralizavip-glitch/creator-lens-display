@@ -14,17 +14,18 @@ export const handler: Handler = async (event) => {
   }
 
   const planId = event.queryStringParameters?.id;
+  const method = event.queryStringParameters?.method;
   let url = "";
 
   switch (planId) {
     case "p1":
-      url = process.env.LINK_CHEKOUT_18_99 || "";
+      url = method === "cartao" ? process.env.LINK_CHEKOUT_CARTAO_18_99 || "" : process.env.LINK_CHEKOUT_18_99 || "";
       break;
     case "p2":
-      url = process.env.LINK_CHEKOUT_31_99 || "";
+      url = method === "cartao" ? process.env.LINK_CHEKOUT_CARTAO_31_99 || "" : process.env.LINK_CHEKOUT_31_99 || "";
       break;
     case "p3":
-      url = process.env.LINK_CHEKOUT_49_99 || "";
+      url = method === "cartao" ? process.env.LINK_CHEKOUT_CARTAO_49_99 || "" : process.env.LINK_CHEKOUT_49_99 || "";
       break;
     case "tg":
       url = process.env.LINK_TELEGRAM || "";

@@ -1,0 +1,39 @@
+# DIRETRIZES OPERACIONAIS - PRIVACY-BR 
+
+1. COMPORTAMENTO E EXECUÇÃO (REGRAS DE OURO)
+SÓ IMPLEMENTE alguma coisa se o usuário pedir explicitamente.
+Se o usuário disser "faça agora, faça, faça logo, faz logo, ou algo do tipo!", execute sem explicações longas, não mande códigos no chat, apenas trechos pequenos se for necessário ou se o usuario pedir explicitamente.
+Se precisar explicar algo, seja extremamente resumido.
+MANTENHA o que já está funcionando; não altere lógicas validadas sem ordem direta, não altere cores tamanhos icons e etc sem ordem explicita.
+NÃO reescreva o projeto inteiro, nem arquivos inteiros. Conserte apenas o erro ou altere apenas o trecho necessário para economizar tokens.
+Se precisar reescrever por necessidade técnica, mantenha rigorosamente a lógica, cores, visuais e tamanhos originais.
+
+2. AJUSTES DE POSICIONAMENTO E ESTILO
+Quando o usuario pedir algun ajustes em icons, ou qualquer elemento visual cores posições e etc sempre adicione opções de ajustes manuais para o usuario. adicionar opções de ajustes (cores, posições, tamanhos, eixos X/Y), informe resumidamente em qual parte do código a mudança foi feita.
+OBRIGATÓRIO: Adicione comentários no código (// INICIO AJUSTE / // FIM AJUSTE) para que o usuário localize as alterações rapidamente.
+
+3. CONTEXTO DO PROJETO E DOMÍNIO
+DOMÍNIO PRINCIPAL: https://privacy-br.com
+SUBSITES ATUAIS E FUTUROS:
+https://localhost:8080
+https://privacy-br.com/termos
+https://privacy-br.com/beatriz
+https://privacy-br.com/reembolso
+(Sempre manter a estrutura dentro do domínio principal).
+STACK: React + Vite + TypeScript (TSX/TS). Hospedagem estática no Netlify.
+
+4. SEGURANÇA E REFERÊNCIA
+ANTI-CLONE: Manter e Preservar proteções existentes (bloqueio de clique direito, etc.).
+CHECKOUT: Links apenas via Netlify Functions (/.netlify/functions/get-checkout). Nunca usar href direto.
+REFERÊNCIA: Pasta /referencia/index.html serve apenas para consulta visual de cores/layout. Proibido copiar dados (nomes, preços, bios) dela, pegar medidas, cores, tamanhos, nunca pegue descrições de texto ou texto, só se o usuário pedir.
+
+5. ARQUIVOS E PASTAS IGNORADOS (ECONOMIA DE TOKENS)
+PROIBIDO LER OU ANALISAR: node_modules/, .git/, .netlify/, dist/, build/.
+ARQUIVOS DE TRAVA/SISTEMA: package-lock.json, bun.lockb, .env, arquivos .mjs ou .timestamp.
+MÍDIA E PESADOS: Ignorar completamente arquivos .mp3, .mp4, .png, .jpg, .jpeg, .gif.
+AÇÃO: Caso esses arquivos apareçam no contexto, a IA deve desconsiderá-los automaticamente.
+
+6. COMUNICAÇÃO
+Idioma: Português (Brasil).
+Foco: Eficiência, economia de tokens e proteção do código validado.
+Agora

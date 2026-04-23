@@ -2,30 +2,50 @@ import { useState, useCallback } from "react";
 
 type Lang = "pt" | "en" | "es";
 
+function setHybridStorage(key: string, value: string) {
+  if (typeof window === "undefined") return;
+  try { window.localStorage.setItem(key, value); } catch {}
+  try { document.cookie = `${key}=${value};path=/;max-age=${365 * 24 * 60 * 60}`; } catch {}
+}
+
+function getHybridStorage(key: string): string | null {
+  if (typeof window === "undefined") return null;
+  let val: string | null = null;
+  try { val = window.localStorage.getItem(key); } catch {}
+  if (!val) {
+    try {
+      const match = document.cookie.match(new RegExp(`(^| )${key}=([^;]+)`));
+      if (match) {
+        val = match[2];
+        try { window.localStorage.setItem(key, val); } catch {}
+      }
+    } catch {}
+  } else {
+    try { document.cookie = `${key}=${val};path=/;max-age=${365 * 24 * 60 * 60}`; } catch {}
+  }
+  return val;
+}
+
 function getOrCreateGiveawayDateTimestamp(): number | null {
   if (typeof window === "undefined") return null;
   try {
-    const existingGiveaway = window.localStorage.getItem("giveawayDate");
-    if (existingGiveaway) {
-      const giveawayTs = Number(existingGiveaway);
-      if (Number.isFinite(giveawayTs) && giveawayTs > 0) {
-        const existingFirstSeen = window.localStorage.getItem("firstSeenAt");
-        if (!existingFirstSeen) {
-          const approxFirstSeenAt = giveawayTs - 4 * 24 * 60 * 60 * 1000;
-          window.localStorage.setItem("firstSeenAt", String(approxFirstSeenAt));
-        }
-        return giveawayTs;
+    const existingGiveaway = getHybridStorage("giveawayDate");
+    const now = Date.now();
+    let giveawayTs = existingGiveaway ? Number(existingGiveaway) : null;
+
+    if (giveawayTs && Number.isFinite(giveawayTs) && giveawayTs > 0) {
+      if (giveawayTs - now < 24 * 60 * 60 * 1000) {
+        giveawayTs = now + 5 * 24 * 60 * 60 * 1000;
+        setHybridStorage("giveawayDate", String(giveawayTs));
       }
+      return giveawayTs;
     }
 
-    const firstSeenAt = Date.now();
-    const giveawayDate = new Date(firstSeenAt);
-    giveawayDate.setDate(giveawayDate.getDate() + 4);
+    giveawayTs = now + 5 * 24 * 60 * 60 * 1000;
+    setHybridStorage("firstSeenAt", String(now));
+    setHybridStorage("giveawayDate", String(giveawayTs));
 
-    window.localStorage.setItem("firstSeenAt", String(firstSeenAt));
-    window.localStorage.setItem("giveawayDate", String(giveawayDate.getTime()));
-
-    return giveawayDate.getTime();
+    return giveawayTs;
   } catch {
     return null;
   }
@@ -33,19 +53,10 @@ function getOrCreateGiveawayDateTimestamp(): number | null {
 
 function formatGiveawayDate(ts: number, lang: Lang): string {
   const date = new Date(ts);
-  if (lang === "en") {
-    return date.toLocaleDateString("en-US", {
-      month: "long",
-      day: "2-digit",
-      year: "numeric",
-    });
-  }
-
-  return date.toLocaleDateString(lang === "pt" ? "pt-BR" : "es-ES", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  });
+  const dd = String(date.getDate()).padStart(2, '0');
+  const mm = String(date.getMonth() + 1).padStart(2, '0');
+  const yyyy = date.getFullYear();
+  return `${dd}/${mm}/${yyyy}`;
 }
 
 const dict: Record<Lang, Record<string, string>> = {
@@ -76,6 +87,16 @@ const dict: Record<Lang, Record<string, string>> = {
     offer_valid: "Oferta válida até {d}",
     original_price_label: "Preço original {p}",
     save_badge: "Economize 83%",
+    popup_benefits: "Benefícios exclusivos",
+    popup_benefit_1: "Acesso ao conteúdo",
+    popup_benefit_2: "Chat exclusivo com o criador",
+    popup_benefit_3: "Cancele a qualquer hora",
+    popup_payments: "Formas de pagamento",
+    popup_value: "Valor",
+    popup_pay_pix: "Pagar com Pix",
+    popup_pay_apple: "Pagar com Apple Pay",
+    popup_pay_card: "Pagar com Cartão",
+    popup_or: "ou",
   },
 
   en: {
@@ -104,6 +125,16 @@ const dict: Record<Lang, Record<string, string>> = {
     offer_valid: "Offer valid until {d}",
     original_price_label: "Original price {p}",
     save_badge: "Save 83%",
+    popup_benefits: "Exclusive benefits",
+    popup_benefit_1: "Access to content",
+    popup_benefit_2: "Exclusive chat with creator",
+    popup_benefit_3: "Cancel anytime",
+    popup_payments: "Payment methods",
+    popup_value: "Amount",
+    popup_pay_pix: "Pay with Pix",
+    popup_pay_apple: "Pay with Apple Pay",
+    popup_pay_card: "Pay with Card",
+    popup_or: "or",
   },
   es: {
     bio: "Hola amor, soy Nayara, tengo 18 años 💋 ¿Quieres participar del sorteio y grabar conmigo el día {giveawayDate}? Suscríbete a mi Privacy para participar 😘 Contenido 100% EXPL!C!TO 🔞 Videos con mi primo dotado, inc3sto, oral guloso, conchita apretada, dando el culito y recibiendo lechita adentro 🤤💦 Varios videos largos dando la c*chita y el c*lito hasta que mi primo se c*rra dentro, de ladito, sexo oral. Hay un video que es de los más liked de mi Privacy, bien caliente de anal con mi padrastro, te vas a correr mucho 😈 Solo para mayores de 18 años.",
@@ -131,6 +162,16 @@ const dict: Record<Lang, Record<string, string>> = {
     offer_valid: "Oferta válida hasta {d}",
     original_price_label: "Precio original {p}",
     save_badge: "Ahorra un 83%",
+    popup_benefits: "Beneficios exclusivos",
+    popup_benefit_1: "Acceso al contenido",
+    popup_benefit_2: "Chat exclusivo con el creador",
+    popup_benefit_3: "Cancela en cualquier momento",
+    popup_payments: "Formas de pago",
+    popup_value: "Valor",
+    popup_pay_pix: "Pagar con Pix",
+    popup_pay_apple: "Pagar con Apple Pay",
+    popup_pay_card: "Pagar con Tarjeta",
+    popup_or: "o",
   },
 };
 

@@ -150,3 +150,173 @@ html {
     color-scheme: light only;
   }
 }
+
+/* ============================================
+   ABAS DE POSTAGENS / MÍDIAS (Referência)
+   ============================================ */
+/* AJUSTES DE POSIÇÃO - Edite aqui para alinhar com blocos acima/abaixo */
+/* INICIO AJUSTE - Bloco Clicável Postagens / Mídias */
+/* Variáveis para você ajustar manualmente depois se quiser */
+:root {
+  --tab-bg-color: #f3eee7; /* Fundo do container (deixe igual ao fundo da página) */
+  --tab-width: 100%;       /* Largura das abas (100% para acompanhar blocos acima/abaixo) */
+  --tab-max-width: 100%;   /* Largura máxima permitida */
+  --tab-margin-top: 0px;   /* Margem superior para distanciar do bloco acima */
+  --tab-margin-bottom: 0px;/* Margem inferior para distanciar do bloco abaixo */
+  --tab-padding: 14px 7px 14px; /* Padding interno das abas */
+  --tab-border-color: #ededed;
+}
+
+.aba-wrapper {
+  background: transparent;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tabs {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid var(--tab-border-color);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.01);
+  width: var(--tab-width);
+  max-width: var(--tab-max-width);
+  margin: 0 auto;
+  margin-top: var(--tab-margin-top);
+  margin-bottom: var(--tab-margin-bottom);
+  padding: var(--tab-padding);
+}
+/* FIM AJUSTE */
+
+.tab {
+  background: none;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  color: #333333;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+  transition: all 0.3s ease;
+  flex: 1;
+  justify-content: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.texto-midias {
+  font-size: 16px;
+  position: relative;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tab span {
+  position: relative;
+  top: -0.5px;
+  white-space: nowrap;
+}
+
+.tab svg {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+  filter: grayscale(1);
+  transition: filter 0.3s ease;
+  position: relative;
+  right: -1px;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tab.active {
+  color: #f68d3d;
+  font-weight: 500;
+}
+
+.tab.active svg {
+  filter: grayscale(0);
+}
+
+.tab.active span,
+.tab.active svg {
+  transform: translateY(-1px);
+  transition: transform 0.3s ease;
+}
+
+.curva {
+  --cor-linha: #333;
+  position: absolute;
+  bottom: -0.5px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.curva.esquerda {
+  left: -1px;
+  right: auto;
+  --cor-linha: #f68d3d;
+}
+
+.curva.direita {
+  right: -1px;
+  left: auto;
+  --cor-linha: #f68d3d;
+}
+
+.curva::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 26%;
+  background: none;
+  border-bottom-left-radius: 19px;
+  box-shadow: inset 0 -2px 0 0 var(--cor-linha);
+  opacity: 0;
+  transition: opacity 0.2s ease, box-shadow 0.3s ease;
+}
+
+.curva::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 26%;
+  background: none;
+  border-bottom-right-radius: 19px;
+  box-shadow: inset 0 -2px 0 0 var(--cor-linha);
+  opacity: 0;
+  transition: opacity 0.2s ease, box-shadow 0.3s ease;
+}
+
+.curva.esquerda::before {
+  opacity: 1;
+  box-shadow: inset 0 -2px 0 0 #f68d3d;
+}
+
+.curva.direita::after {
+  opacity: 1;
+  box-shadow: inset 0 -2px 0 0 #f68d3d;
+}
+
+.curva.esquerda::after,
+.curva.direita::before {
+  opacity: 0;
+  box-shadow: inset 0 -2px 0 0 #333;
+}

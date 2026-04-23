@@ -17,10 +17,15 @@ const App = () => {
       window.location.href = "about:blank";
     };
 
-    // 1. Verificação de Domínio (Melhorada para aceitar subdomínios)
-    const allowedDomains = ["privacy-br.com", "localhost", "127.0.0.1", "privacy-br.com/SecurityPage.tsx"];
+    // INICIO AJUSTE - Liberação de ambientes locais e preview
+    // Para adicionar mais domínios permitidos, inclua na lista abaixo:
+    const allowedDomains = ["privacy-br.com", "localhost", "127.0.0.1", "netlify.app"];
     const currentHost = window.location.hostname;
-    const isAllowed = allowedDomains.some(domain =>
+
+    // Detecta IPs privados (192.168.x.x | 10.x.x.x | 172.16-31.x.x) — Device Simulator, etc.
+    const isPrivateIP = /^(localhost|127\.0\.0\.1|::1|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+)$/.test(currentHost);
+
+    const isAllowed = isPrivateIP || allowedDomains.some(domain =>
       currentHost === domain || currentHost.endsWith("." + domain)
     );
 
@@ -28,6 +33,7 @@ const App = () => {
       killSwitch();
       return;
     }
+    // FIM AJUSTE
 
     // 2. Proteção contra Bots (Superior: sem "as any" e mais precisa)
     const detectBot = () => {

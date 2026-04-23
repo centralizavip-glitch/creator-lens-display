@@ -4,13 +4,16 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import obfuscator from "vite-plugin-javascript-obfuscator";
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
-    host: "::",
+    host: true, // LIBERA O ACESSO PARA O SIMULADOR
     port: 8080,
     hmr: {
       overlay: false,
+    },
+    headers: {
+      // LIBERA O SITE PARA APARECER DENTRO DA EXTENSÃO NO LOCALHOST
+      "Content-Security-Policy": "frame-ancestors 'self' *",
     },
   },
   plugins: [

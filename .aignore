@@ -35,3 +35,12 @@ venv/
 *.njsproj
 *.sln
 *.sw?
+.continue\prompts\new-prompt.md
+.continue\prompts\
+.continue\
+.vscode\launch.json
+.vscode\settings.json
+.vscode
+.claude\settings.local.json
+.claude\
+dist

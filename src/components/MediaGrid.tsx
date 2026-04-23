@@ -11,7 +11,7 @@ const filters = ["all", "photos", "videos", "paid"] as const;
 export default function MediaGrid({ t, onLockedClick }: MediaGridProps) {
   const [active, setActive] = useState<string>("all");
 
-  const tiles = Array.from({ length: 12 });
+  const tiles = Array.from({ length: 6 });
 
   // AJUSTES DO CADEADO DAS MÍDIAS
   const lockOpacity = 0.9;
@@ -28,10 +28,10 @@ export default function MediaGrid({ t, onLockedClick }: MediaGridProps) {
           <button
             key={f}
             onClick={() => setActive(f)}
-            className={`px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
+            className={`px-4 py-1.5 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors ${
               active === f
-                ? "bg-accent text-accent-foreground"
-                : "bg-muted text-muted-foreground hover:bg-accent/50"
+                ? "bg-[#ffedd5] text-[#f97316]"
+                : "bg-transparent text-[#1f2937] hover:bg-slate-100"
             }`}
           >
             {t(f)}
@@ -40,7 +40,7 @@ export default function MediaGrid({ t, onLockedClick }: MediaGridProps) {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-3 gap-[2px] p-[2px]">
+      <div className="grid grid-cols-3 gap-[2px]">
         {tiles.map((_, i) => (
           <div
             key={i}
@@ -80,6 +80,9 @@ export default function MediaGrid({ t, onLockedClick }: MediaGridProps) {
           </div>
         ))}
       </div>
+
+      {/* Rodapé do bloco de mídias */}
+      <div className="h-12 w-full bg-card"></div>
     </div>
   );
 }

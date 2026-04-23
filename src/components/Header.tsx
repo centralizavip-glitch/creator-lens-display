@@ -26,17 +26,20 @@ export default function Header({ onLangChange, currentLang }: HeaderProps) {
 
   return (
     /* 
-       AJUSTES: 
-       - bg-white: Cor do fundo (pode trocar aqui).
-       - border-black/68: Linha preta com 68% de opacidade.
+       INICIO AJUSTE - CABEÇALHO (HEADER)
+       Opções de ajustes:
+       - h-[75px] -> Define a altura total do cabeçalho (aumentado em ~15%). Mude o número para ajustar.
+       - border-b-[2px] -> Espessura da linha inferior. Mude para border-b-[3px] se quiser ainda mais grosso.
+       - border-[#e8e8e8] -> Cor da linha (agora corrigida para a cor original suave).
+       - bg-[#F9F6F2] -> Cor do fundo do cabeçalho.
     */
-    <header className="fixed top-0 left-0 w-full z-[9999] bg-[#F9F6F2] border-b-[0.5px] border-black/68 flex items-center justify-between px-4 py-3 h-14">
-      
-      <div 
+    <header className="fixed top-0 left-0 w-full z-[9999] bg-[#F9F6F2] border-b-[2px] border-[#e8e8e8] flex items-center justify-between px-4 h-[75px]">
+
+      <div
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center"
         style={{
-          marginTop: "0px",    
-          marginLeft: "-19px", // MANTIDO CONFORME SEU AJUSTE MANUAL
+          marginTop: "0px",
+          marginLeft: "-26px", // MANTIDO CONFORME SEU AJUSTE MANUAL
         }}
       >
         <img
@@ -74,9 +77,8 @@ export default function Header({ onLangChange, currentLang }: HeaderProps) {
                   onLangChange(l.code);
                   setOpen(false);
                 }}
-                className={`block w-full text-left px-4 py-2 text-sm transition-colors hover:bg-muted ${
-                  currentLang === l.code ? "text-primary font-semibold" : "text-foreground"
-                }`}
+                className={`block w-full text-left px-4 py-2 text-sm transition-colors hover:bg-muted ${currentLang === l.code ? "text-primary font-semibold" : "text-foreground"
+                  }`}
               >
                 {l.label}
               </button>

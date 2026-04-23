@@ -33,6 +33,13 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
   const metricsOffsetX = 0;
   const metricsOffsetY = 0;
 
+  // INICIO AJUSTE - Ícone Coração (barra de ações abaixo do post)
+  const heartColor = "#717996";    // Cor do ícone coração — mesmo valor dos ícones vizinhos
+  const heartOpacity = 1;          // Opacidade: 0.0 a 1.0
+  const heartOffsetX = 0;          // Deslocamento horizontal em px
+  const heartOffsetY = 0;          // Deslocamento vertical em px
+  // FIM AJUSTE
+
   return (
     <div className="bg-card overflow-hidden shadow-none border-0 rounded-none">
       {/* Header do Post */}
@@ -130,13 +137,20 @@ export default function PostCard({ onLockedClick }: PostCardProps) {
 
       {/* Barra de Ações (Curtir, Comentar, etc) */}
       <div className="px-4 py-3 flex items-center gap-5">
+        {/* INICIO AJUSTE - Ícone Coração com cor/opacidade/posição controladas */}
         <button
           type="button"
           onClick={onLockedClick}
-          className="text-muted-foreground hover:text-foreground"
+          className="hover:opacity-80 transition-opacity"
+          style={{
+            color: heartColor,
+            opacity: heartOpacity,
+            transform: `translate(${heartOffsetX}px, ${heartOffsetY}px)`,
+          }}
         >
           <HeartIcon size={20} />
         </button>
+        {/* FIM AJUSTE */}
 
         <button
           type="button"

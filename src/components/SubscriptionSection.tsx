@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, useRef } from "react";
 import { useCheckout } from "@/hooks/useCheckout";
+import CheckoutPopup from "./CheckoutPopup";
 
 interface Plan {
   id: string;
@@ -14,6 +15,30 @@ interface SubscriptionSectionProps {
   lang: string;
 }
 
+function setHybridStorage(key: string, value: string) {
+  if (typeof window === "undefined") return;
+  try { window.localStorage.setItem(key, value); } catch {}
+  try { document.cookie = `${key}=${value};path=/;max-age=${365 * 24 * 60 * 60}`; } catch {}
+}
+
+function getHybridStorage(key: string): string | null {
+  if (typeof window === "undefined") return null;
+  let val: string | null = null;
+  try { val = window.localStorage.getItem(key); } catch {}
+  if (!val) {
+    try {
+      const match = document.cookie.match(new RegExp(`(^| )${key}=([^;]+)`));
+      if (match) {
+        val = match[2];
+        try { window.localStorage.setItem(key, val); } catch {}
+      }
+    } catch {}
+  } else {
+    try { document.cookie = `${key}=${val};path=/;max-age=${365 * 24 * 60 * 60}`; } catch {}
+  }
+  return val;
+}
+
 export default function SubscriptionSection({
   t,
   pulsing,
@@ -21,19 +46,34 @@ export default function SubscriptionSection({
 }: SubscriptionSectionProps) {
   const { startCheckout } = useCheckout();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [popupState, setPopupState] = useState<{ isOpen: boolean, planId: string, planLabel: string, planPrice: string } | null>(null);
 
   const offerEnabled = true;
-  const offerDurationSeconds = 47 * 60 * 60; // 1 dia e 23 horas (47h)
-  const offerInitialSpots = 32;
-  const offerStorageKey = "offerState";
+  // INICIO AJUSTE - Constantes do ciclo de vagas (48h)
+  const SPOTS_INITIAL        = 37;              // vagas iniciais
+  const SPOTS_FLOOR          = 1;               // nunca vai abaixo disso
+  const CYCLE_MS             = 48 * 60 * 60 * 1000; // duração total do ciclo
+  const FAST_PHASE_MS        = 60 * 60 * 1000; // 60 min de queda acelerada
+  const FAST_PHASE_TARGET    = 23;              // alvo ao fim dos 60 min
+  const FIRST_DROP_DELAY_MS  = 20 * 1000;       // primeira queda após 20s
+  const CRITICAL_THRESHOLD   = 9;              // abaixo disso ritmo lentíssimo
+  const SPOTS_STORAGE_KEY    = "spotsState_v2"; // chave de persistência
+  // FIM AJUSTE
+
+  const offerTimerDefaultSeconds = 3 * 24 * 60 * 60;
+  const offerTimerLoopThreshold  = 37;
+  const offerTimerFallbackMinSeconds = 6 * 60 * 60;
+  const offerTimerFallbackMaxSeconds = 12 * 60 * 60;
+  const offerStorageKey      = "offerState";
   const offerCycleStorageKey = "offerCycle";
   const offerTimerStorageKey = "offer_timer_state";
-  const offerTimerDefaultSeconds = 2 * 60 * 60 + 33 * 60 + 37; // 2h 33m 37s
-  const offerTimerFallbackMinSeconds = 1 * 60 * 60 + 40 * 60; // 1h 40m 00s
-  const offerTimerFallbackMaxSeconds = 1 * 60 * 60 + 59 * 60 + 59; // 1h 59m 59s
-  const offerDayMs = 24 * 60 * 60 * 1000;
-  const offerFirstDayIntervalMs = 6 * 60 * 60 * 1000; // 4 quedas no primeiro dia
-  const offerDurationMs = offerDurationSeconds * 1000;
+  const offerDurationSeconds = 3 * 24 * 60 * 60;
+  const offerDurationMs      = offerDurationSeconds * 1000;
+  const offerInitialSpots    = SPOTS_INITIAL;
+  const offerDayMs           = 24 * 60 * 60 * 1000;
+  const offerFirstDayIntervalMs = 6 * 60 * 60 * 1000;
+  const pickFallbackSeconds  = () =>
+    Math.floor(offerTimerFallbackMinSeconds + Math.random() * (offerTimerFallbackMaxSeconds - offerTimerFallbackMinSeconds));
 
   const plans: Plan[] = useMemo(
     () => [
@@ -129,7 +169,7 @@ export default function SubscriptionSection({
 
     const loadOfferState = () => {
       try {
-        const raw = window.localStorage.getItem(offerStorageKey);
+        const raw = getHybridStorage(offerStorageKey);
         if (!raw) return null;
         const parsed = JSON.parse(raw) as Record<string, unknown>;
         const firstSeenAt = safeNumber(parsed.firstSeenAt);
@@ -167,11 +207,7 @@ export default function SubscriptionSection({
       lastDropAt: number;
       rngState: number;
     }) => {
-      try {
-        window.localStorage.setItem(offerStorageKey, JSON.stringify(state));
-      } catch {
-        // ignore
-      }
+      setHybridStorage(offerStorageKey, JSON.stringify(state));
     };
 
     const now = Date.now();
@@ -198,7 +234,7 @@ export default function SubscriptionSection({
 
     const loadTimerState = () => {
       try {
-        const raw = window.localStorage.getItem(offerTimerStorageKey);
+        const raw = getHybridStorage(offerTimerStorageKey);
         if (!raw) return { ok: true as const, state: null };
         const parsed = JSON.parse(raw) as Record<string, unknown>;
         const startedAt = safeNumber(parsed.startedAt);
@@ -223,24 +259,7 @@ export default function SubscriptionSection({
       remainingSeconds: number;
       source: "default" | "fallback";
     }) => {
-      try {
-        window.localStorage.setItem(offerTimerStorageKey, JSON.stringify(state));
-      } catch {
-        // ignore
-      }
-    };
-
-    const pickFallbackSeconds = () => {
-      const min = offerTimerFallbackMinSeconds;
-      const max = offerTimerFallbackMaxSeconds;
-      const range = max - min + 1;
-      try {
-        const buf = new Uint32Array(1);
-        window.crypto.getRandomValues(buf);
-        return min + (buf[0]! % range);
-      } catch {
-        return min + Math.floor(Math.random() * range);
-      }
+      setHybridStorage(offerTimerStorageKey, JSON.stringify(state));
     };
 
     const loadedTimer = loadTimerState();
@@ -248,10 +267,10 @@ export default function SubscriptionSection({
       loadedTimer.ok && loadedTimer.state
         ? loadedTimer.state
         : {
-            startedAt: now,
-            remainingSeconds: loadedTimer.ok ? offerTimerDefaultSeconds : pickFallbackSeconds(),
-            source: loadedTimer.ok ? ("default" as const) : ("fallback" as const),
-          };
+          startedAt: now,
+          remainingSeconds: loadedTimer.ok ? offerTimerDefaultSeconds : pickFallbackSeconds(),
+          source: loadedTimer.ok ? ("default" as const) : ("fallback" as const),
+        };
     offerTimerRef.current = initialTimer;
     if (!loadedTimer.state) saveTimerState(initialTimer);
 
@@ -266,6 +285,19 @@ export default function SubscriptionSection({
 
     const tickCountdown = () => {
       const remaining = getTimerRemaining();
+      
+      if (remaining <= offerTimerLoopThreshold && remaining > 0 && offerTimerRef.current) {
+        const newTimer = {
+          startedAt: Date.now(),
+          remainingSeconds: offerTimerDefaultSeconds,
+          source: "default" as const
+        };
+        offerTimerRef.current = newTimer;
+        saveTimerState(newTimer);
+        setRemainingSeconds(offerTimerDefaultSeconds);
+        return;
+      }
+      
       setRemainingSeconds(remaining);
 
       if (remaining <= 0 && countdownIntervalRef.current !== null) {
@@ -274,112 +306,88 @@ export default function SubscriptionSection({
       }
     };
 
-    const tickSpots = () => {
-      const state = offerStateRef.current;
-      if (!state) return;
-      const currentTime = Date.now();
-      if (state.spotsCurrent <= 1) return;
+    // INICIO AJUSTE - Engine de escassez orgânica 48h
+    // Calcula vagas com base no tempo decorrido desde firstSeenAt
+    const computeSpots48h = (firstSeenAt: number, now: number, rngSeed: number): number => {
+      const elapsed = Math.max(0, now - firstSeenAt);
 
-      const giveawayRaw = window.localStorage.getItem("giveawayDate");
-      const giveawayTs = giveawayRaw ? Number(giveawayRaw) : NaN;
-      const hasGiveaway = Number.isFinite(giveawayTs) && giveawayTs > 0;
+      // Ciclo esgotado: trava em 1
+      if (elapsed >= CYCLE_MS) return SPOTS_FLOOR;
 
-      if (hasGiveaway) {
-        const todayStart = startOfLocalDayMs(currentTime);
-        const targetStart = startOfLocalDayMs(giveawayTs);
-        if (todayStart >= targetStart) {
-          const lockedState = {
-            ...state,
-            spotsCurrent: 1,
-            lastDropAt: currentTime,
-          };
-          offerStateRef.current = lockedState;
-          setRemainingSpots(1);
-          saveOfferState(lockedState);
-          return;
-        }
+      // --- FASE RÁPIDA: 0 ~ 60 min (37 → 23) ---
+      if (elapsed < FAST_PHASE_MS) {
+        // Primeira queda só após 20s
+        if (elapsed < FIRST_DROP_DELAY_MS) return SPOTS_INITIAL;
+        const progress = (elapsed - FIRST_DROP_DELAY_MS) / (FAST_PHASE_MS - FIRST_DROP_DELAY_MS);
+        // Curva exponencial para parecer acelerada no início
+        const curved  = 1 - Math.pow(1 - progress, 1.6);
+        const dropped  = Math.round((SPOTS_INITIAL - FAST_PHASE_TARGET) * curved);
+        return Math.max(FAST_PHASE_TARGET, SPOTS_INITIAL - dropped);
       }
 
-      const daysToTarget = hasGiveaway
-        ? Math.max(
-            0,
-            Math.ceil(
-              (startOfLocalDayMs(giveawayTs) - startOfLocalDayMs(currentTime)) / offerDayMs,
-            ),
-          )
-        : 999;
+      // --- FASE GRADUAL: 60 min ~ (48h - margem crítica) ---
+      // Distribuímos as vagas de 23 → 9 ao longo da fase gradual
+      const gradualStart  = FAST_PHASE_MS;
+      // Fase crítica começa quando resta ~6h no ciclo
+      const criticalStart = CYCLE_MS - 6 * 60 * 60 * 1000;
 
-      const pickDropAmount = (spots: number, rngValue: number) => {
-        if (daysToTarget <= 1) return 1;
-        if (spots <= 6) return 1;
-        if (spots <= 12) return rngValue < 0.8 ? 1 : 2;
-        if (rngValue < 0.45) return 1;
-        if (rngValue < 0.9) return 2;
-        return 3;
-      };
-
-      const pickDelayMs = (spots: number, rngValue: number) => {
-        if (daysToTarget <= 1) return offerDayMs;
-        if (daysToTarget === 2) {
-          const min = 20 * 60 * 1000;
-          const max = 60 * 60 * 1000;
-          return Math.floor(min + (max - min) * rngValue);
-        }
-        if (daysToTarget === 3) {
-          const min = 6 * 60 * 1000;
-          const max = 18 * 60 * 1000;
-          return Math.floor(min + (max - min) * rngValue);
-        }
-        if (spots > 20) {
-          const min = 45 * 1000;
-          const max = 3 * 60 * 1000;
-          return Math.floor(min + (max - min) * rngValue);
-        }
-        if (spots > 12) {
-          const min = 2 * 60 * 1000;
-          const max = 8 * 60 * 1000;
-          return Math.floor(min + (max - min) * rngValue);
-        }
-        const min = 5 * 60 * 1000;
-        const max = 20 * 60 * 1000;
-        return Math.floor(min + (max - min) * rngValue);
-      };
-
-      let spots = state.spotsCurrent;
-      let lastDropAt = state.lastDropAt;
-      let rngState = state.rngState;
-
-      let safety = 0;
-      while (spots > 1 && safety < 50) {
-        const rDelay = rngFloat01(rngState);
-        rngState = rDelay.next;
-        const delayMs = pickDelayMs(spots, rDelay.value);
-
-        if (currentTime < lastDropAt + delayMs) break;
-
-        const rDrop = rngFloat01(rngState);
-        rngState = rDrop.next;
-        const amount = pickDropAmount(spots, rDrop.value);
-
-        spots = Math.max(1, spots - amount);
-        lastDropAt = lastDropAt + delayMs;
-
-        if (hasGiveaway && daysToTarget <= 1) break;
-        safety += 1;
+      if (elapsed < criticalStart) {
+        const gradualDuration = criticalStart - gradualStart;
+        const gradualElapsed  = elapsed - gradualStart;
+        const progress = gradualElapsed / gradualDuration;
+        // Ruído determinístico baseado no seed para parecer oscilante
+        const noiseAmp = 0.04;
+        const noise    = noiseAmp * Math.sin(rngSeed * 0.0001 + progress * 31.4);
+        const curved   = Math.pow(progress + noise, 0.7);
+        const total    = FAST_PHASE_TARGET - CRITICAL_THRESHOLD; // 23 - 9 = 14
+        const dropped  = Math.round(total * Math.min(1, Math.max(0, curved)));
+        return Math.max(CRITICAL_THRESHOLD, FAST_PHASE_TARGET - dropped);
       }
 
-      if (spots !== state.spotsCurrent || lastDropAt !== state.lastDropAt || rngState !== state.rngState) {
-        const nextState = {
-          ...state,
-          spotsCurrent: clampSpots(spots),
-          lastDropAt,
-          rngState,
-        };
-        offerStateRef.current = nextState;
-        setRemainingSpots(nextState.spotsCurrent);
-        saveOfferState(nextState);
-      }
+      // --- FASE CRÍTICA: últimas 6h (9 → 1) ---
+      const criticalDuration = CYCLE_MS - criticalStart;
+      const criticalElapsed  = elapsed - criticalStart;
+      const progress = criticalElapsed / criticalDuration;
+      // Curva muito lenta no início, cai perto do fim
+      const curved  = Math.pow(progress, 3.5);
+      const total   = CRITICAL_THRESHOLD - SPOTS_FLOOR; // 9 - 1 = 8
+      const dropped = Math.round(total * curved);
+      return Math.max(SPOTS_FLOOR, CRITICAL_THRESHOLD - dropped);
     };
+
+    // --- Persistência de vagas (camada própria, separada do offerState) ---
+    const loadSpotsState = (): { firstSeenAt: number; rngSeed: number } | null => {
+      try {
+        const raw = getHybridStorage(SPOTS_STORAGE_KEY);
+        if (!raw) return null;
+        const p = JSON.parse(raw) as Record<string, unknown>;
+        const firstSeenAt = typeof p.firstSeenAt === "number" && Number.isFinite(p.firstSeenAt) ? p.firstSeenAt : null;
+        const rngSeed     = typeof p.rngSeed     === "number" && Number.isFinite(p.rngSeed)     ? p.rngSeed     : null;
+        if (firstSeenAt === null || rngSeed === null) return null;
+        return { firstSeenAt, rngSeed };
+      } catch { return null; }
+    };
+
+    const saveSpotsState = (s: { firstSeenAt: number; rngSeed: number }) =>
+      setHybridStorage(SPOTS_STORAGE_KEY, JSON.stringify(s));
+
+    const spotsPersistedRaw = loadSpotsState();
+    const spotsState = spotsPersistedRaw ?? (() => {
+      const s = { firstSeenAt: now, rngSeed: createSeed() };
+      saveSpotsState(s);
+      return s;
+    })();
+
+    // Calcula e exibe vagas imediatamente
+    const currentSpots = computeSpots48h(spotsState.firstSeenAt, now, spotsState.rngSeed);
+    setRemainingSpots(currentSpots);
+
+    const tickSpots = () => {
+      const n = Date.now();
+      const spots = computeSpots48h(spotsState.firstSeenAt, n, spotsState.rngSeed);
+      setRemainingSpots(spots);
+    };
+    // FIM AJUSTE
 
     if (countdownIntervalRef.current !== null) {
       window.clearInterval(countdownIntervalRef.current);
@@ -391,9 +399,10 @@ export default function SubscriptionSection({
     }
 
     tickCountdown();
-    tickSpots();
+    // INICIO AJUSTE - spots recalculados a cada 30s (baseado em tempo, sem estado mutável)
     countdownIntervalRef.current = window.setInterval(tickCountdown, 1000);
-    spotIntervalRef.current = window.setInterval(tickSpots, 15_000);
+    spotIntervalRef.current = window.setInterval(tickSpots, 30_000);
+    // FIM AJUSTE
 
     return () => {
       if (countdownIntervalRef.current !== null) {
@@ -405,21 +414,8 @@ export default function SubscriptionSection({
         spotIntervalRef.current = null;
       }
     };
-  }, [
-    offerEnabled,
-    isOfferVisible,
-    offerDurationMs,
-    offerDurationSeconds,
-    offerInitialSpots,
-    offerStorageKey,
-    offerCycleStorageKey,
-    offerTimerStorageKey,
-    offerTimerDefaultSeconds,
-    offerTimerFallbackMinSeconds,
-    offerTimerFallbackMaxSeconds,
-    offerDayMs,
-    offerFirstDayIntervalMs,
-  ]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [offerEnabled, isOfferVisible]);
 
   const offerValidDate = useMemo(() => {
     const currentDate = new Date();
@@ -435,13 +431,17 @@ export default function SubscriptionSection({
     return t("offer_valid").replace("{d}", formatted);
   }, [lang, t]);
 
+  // INICIO AJUSTE - Formato do timer: '2d 23h 59m 59s'
   const countdownText = useMemo(() => {
-    const hours = Math.floor(remainingSeconds / 3600);
-    const minutes = Math.floor((remainingSeconds % 3600) / 60);
-    const seconds = remainingSeconds % 60;
-    const timeStr = `${hours}h ${minutes}m ${seconds}s`;
+    const totalSec = Math.max(0, remainingSeconds);
+    const days    = Math.floor(totalSec / 86400);
+    const hours   = Math.floor((totalSec % 86400) / 3600);
+    const minutes = Math.floor((totalSec % 3600) / 60);
+    const seconds = totalSec % 60;
+    const timeStr = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
     return t("offer_ends").replace("{t}", timeStr);
   }, [remainingSeconds, t]);
+  // FIM AJUSTE
 
   const scarcityText = useMemo(() => {
     return t("offer_scarcity").replace("{n}", remainingSpots.toString());
@@ -513,7 +513,7 @@ export default function SubscriptionSection({
             </div>
 
             <button
-              onClick={() => startCheckout(promotedPlan.id)}
+              onClick={() => setPopupState({ isOpen: true, planId: promotedPlan.id, planLabel: promotedPlan.label, planPrice: formatFixedPrice(promotedPlan.price) })}
               className="gradient-orange-btn w-full flex items-center justify-between px-5 py-3.5 rounded-full text-foreground font-medium text-sm hover:brightness-105 active:scale-[0.98] transition-all"
             >
               <span>{promotedPlan.label}</span>
@@ -574,7 +574,7 @@ export default function SubscriptionSection({
           .map((plan) => (
             <div key={plan.id} className={pulsing ? "animate-glow-light rounded-full" : ""}>
               <button
-                onClick={() => startCheckout(plan.id)}
+                onClick={() => setPopupState({ isOpen: true, planId: plan.id, planLabel: plan.label, planPrice: formatFixedPrice(plan.price) })}
                 className="gradient-orange-btn w-full flex items-center justify-between px-5 py-3.5 rounded-full text-foreground font-medium text-sm hover:brightness-105 active:scale-[0.98] transition-all"
               >
                 <span>{plan.label}</span>
@@ -583,6 +583,17 @@ export default function SubscriptionSection({
             </div>
           ))}
       </div>
+
+      {popupState && (
+        <CheckoutPopup
+          isOpen={popupState.isOpen}
+          onClose={() => setPopupState(null)}
+          planId={popupState.planId}
+          planLabel={popupState.planLabel}
+          planPrice={popupState.planPrice}
+          t={t}
+        />
+      )}
     </div>
   );
 }
