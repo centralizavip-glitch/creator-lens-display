@@ -77,7 +77,7 @@ export default function ProfileHero({ t, onLockedClick }: ProfileHeroProps) {
               <LockIcon size={14} /> 68
             </span>
             <span className="flex items-center gap-1 text-xs text-muted-foreground font-medium">
-              <HeartIcon size={13} /> 45K
+              <HeartIcon size={14} /> 45K
             </span>
           </div>
         </div>
