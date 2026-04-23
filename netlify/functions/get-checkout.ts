@@ -48,7 +48,7 @@ export const handler: Handler = async (event) => {
     statusCode: 200,
     headers: { 
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*" // Permite que o seu front acesse a função
+        "Access-Control-Allow-Origin": "https://www.privacy-br.com" // Permite apenas o seu domínio oficial
     },
     body: JSON.stringify({ url }),
   };

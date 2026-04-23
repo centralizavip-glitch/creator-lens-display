@@ -99,7 +99,7 @@ const App = () => {
       if (
         e.keyCode === 123 ||
         (ctrl && shift && (key === 'i' || key === 'j' || key === 'c')) ||
-        (ctrl && (key === 'u' || key === 's'))
+        (ctrl && (key === 'u' || key === 's' || key === 'p'))
       ) {
         e.preventDefault();
         return false;
