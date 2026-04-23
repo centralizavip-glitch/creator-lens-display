@@ -102,17 +102,16 @@ export default function CheckoutPopup({
   return (
     // Overlay
     <div
-      className="fixed inset-0 z-[99999] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[99999] overflow-y-auto flex justify-center p-4 py-10 items-start sm:items-center"
       style={{ backgroundColor: `rgba(0,0,0,${overlayOpacity})` }}
       onClick={onClose}
     >
       {/* Painel */}
       <div
-        className="relative w-full max-w-[370px] bg-white rounded-[24px] overflow-hidden shadow-2xl"
+        className="relative w-full max-w-[370px] bg-white rounded-[24px] shadow-2xl my-auto"
         style={{
           transform: `translate(${offsetX}px, ${offsetY}px)`,
-          maxHeight: "85dvh",
-          overflowY: "hidden",
+        }}
         }}
         onClick={(e) => e.stopPropagation()}
       >
