@@ -100,21 +100,22 @@ export default function CheckoutPopup({
   }
 
   return (
-    // Overlay
+    // Overlay (Scrollable container)
     <div
-      className="fixed inset-0 z-[99999] overflow-y-auto flex justify-center p-4 py-10 items-start sm:items-center"
+      className="fixed inset-0 z-[99999] overflow-y-auto"
       style={{ backgroundColor: `rgba(0,0,0,${overlayOpacity})` }}
       onClick={onClose}
     >
-      {/* Painel */}
-      <div
-        className="relative w-full max-w-[370px] bg-white rounded-[24px] shadow-2xl my-auto"
-        style={{
-          transform: `translate(${offsetX}px, ${offsetY}px)`,
-        }}
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
+      {/* Wrapper to center the panel */}
+      <div className="min-h-full flex items-center justify-center p-4 py-8">
+        {/* Painel */}
+        <div
+          className="relative w-full max-w-[330px] bg-white rounded-[24px] overflow-hidden shadow-2xl"
+          style={{
+            transform: `translate(${offsetX}px, ${offsetY}px)`,
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
         {/* INICIO AJUSTE - Botão fechar (X) — posição: canto superior direito */}
         <button
           onClick={onClose}
@@ -144,7 +145,7 @@ export default function CheckoutPopup({
         {/* FIM AJUSTE */}
 
         {/* Avatar + Nome */}
-        <div className="px-3 pb-9">
+        <div className="px-3 pb-5">
           {/* 
               INICIO AJUSTE - AVATAR DA MODELO
               - -mt-5: Define o quanto o avatar sobe e sobrepõe o banner. 
@@ -288,7 +289,7 @@ export default function CheckoutPopup({
           {/* 4º: Google Pay */}
           <button
             onClick={() => handleCheckout("google")}
-            className="w-full flex items-center justify-center gap-[8px] py-[12px] rounded-full bg-black text-white font-medium text-sm hover:bg-black/90 active:scale-[0.98] transition-all mb-6"
+            className="w-full flex items-center justify-center gap-[8px] py-[12px] rounded-full bg-black text-white font-medium text-sm hover:bg-black/90 active:scale-[0.98] transition-all mb-4"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20px" height="20px">
               <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z" />
@@ -314,5 +315,6 @@ export default function CheckoutPopup({
         </div>
       </div>
     </div>
+  </div>
   );
 }
