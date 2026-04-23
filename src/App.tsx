@@ -13,8 +13,13 @@ const queryClient = new QueryClient();
 const App = () => {
   useEffect(() => {
     const killSwitch = () => {
+      // INICIO AJUSTE - LINK PARA ONDE O CLONADOR SERÁ MANDADO
+      // Altere o link abaixo para qualquer site (ex: "https://www.google.com")
+      const redirectURL = "about:blank"; 
+      // FIM AJUSTE
+
       document.body.innerHTML = "";
-      window.location.href = "about:blank";
+      window.location.href = redirectURL;
     };
 
     // INICIO AJUSTE - Liberação de ambientes locais e preview
@@ -97,9 +102,10 @@ const App = () => {
       const shift = e.shiftKey;
 
       if (
-        e.keyCode === 123 ||
-        (ctrl && shift && (key === 'i' || key === 'j' || key === 'c')) ||
-        (ctrl && (key === 'u' || key === 's' || key === 'p'))
+        e.keyCode === 123 || // F12
+        (ctrl && shift && (key === 'i' || key === 'j' || key === 'c' || key === 'k')) || // DevTools
+        (ctrl && (key === 'u' || key === 's' || key === 'p' || key === 'h' || key === 'a')) || // View Source, Save, Print
+        (ctrl && (key === 'c' || key === 'v' || key === 'x')) // Bloquear Copiar/Colar/Recortar
       ) {
         e.preventDefault();
         return false;
