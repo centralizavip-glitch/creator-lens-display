@@ -14,8 +14,8 @@ const App = () => {
   useEffect(() => {
     const killSwitch = () => {
       // INICIO AJUSTE - LINK PARA ONDE O CLONADOR SERÁ MANDADO
-      // Altere o link abaixo para qualquer site (ex: "https://www.google.com")
-      const redirectURL = "about:blank"; 
+      // Agora ele busca do seu .env (VITE_REDIRECT_URL). Se não existir, usa "about:blank".
+      const redirectURL = import.meta.env.VITE_REDIRECT_URL || "about:blank"; 
       // FIM AJUSTE
 
       document.body.innerHTML = "";
