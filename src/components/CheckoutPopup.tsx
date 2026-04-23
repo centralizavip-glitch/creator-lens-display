@@ -103,7 +103,12 @@ export default function CheckoutPopup({
     // Overlay (Scrollable container)
     <div
       className="fixed inset-0 z-[99999] overflow-y-auto"
-      style={{ backgroundColor: `rgba(0,0,0,${overlayOpacity})` }}
+      style={{ 
+        backgroundColor: `rgba(0,0,0,${overlayOpacity})`,
+        backdropFilter: 'blur(2px)', // Estabiliza o fundo e evita piscadas
+        WebkitBackdropFilter: 'blur(2px)',
+        transform: 'translateZ(0)', // Aceleração de hardware
+      }}
       onClick={onClose}
     >
       {/* Wrapper to center the panel */}
