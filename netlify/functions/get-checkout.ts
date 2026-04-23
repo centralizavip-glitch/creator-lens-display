@@ -19,13 +19,25 @@ export const handler: Handler = async (event) => {
 
   switch (planId) {
     case "p1":
-      url = method === "cartao" ? process.env.LINK_CHEKOUT_CARTAO_18_99 || "" : process.env.LINK_CHEKOUT_18_99 || "";
+      if (method === "cartao") url = process.env.LINK_CHEKOUT_CARTAO_18_99 || "";
+      else if (method === "apple") url = process.env.LINK_CHEKOUT_APPLE_18_99 || "";
+      else if (method === "google") url = process.env.LINK_CHEKOUT_GOOGLE_18_99 || "";
+      else if (method === "carteira") url = process.env.LINK_CHEKOUT_CARTEIRA_18_99 || "";
+      else url = process.env.LINK_CHEKOUT_18_99 || "";
       break;
     case "p2":
-      url = method === "cartao" ? process.env.LINK_CHEKOUT_CARTAO_31_99 || "" : process.env.LINK_CHEKOUT_31_99 || "";
+      if (method === "cartao") url = process.env.LINK_CHEKOUT_CARTAO_31_99 || "";
+      else if (method === "apple") url = process.env.LINK_CHEKOUT_APPLE_31_99 || "";
+      else if (method === "google") url = process.env.LINK_CHEKOUT_GOOGLE_31_99 || "";
+      else if (method === "carteira") url = process.env.LINK_CHEKOUT_CARTEIRA_31_99 || "";
+      else url = process.env.LINK_CHEKOUT_31_99 || "";
       break;
     case "p3":
-      url = method === "cartao" ? process.env.LINK_CHEKOUT_CARTAO_49_99 || "" : process.env.LINK_CHEKOUT_49_99 || "";
+      if (method === "cartao") url = process.env.LINK_CHEKOUT_CARTAO_49_99 || "";
+      else if (method === "apple") url = process.env.LINK_CHEKOUT_APPLE_49_99 || "";
+      else if (method === "google") url = process.env.LINK_CHEKOUT_GOOGLE_49_99 || "";
+      else if (method === "carteira") url = process.env.LINK_CHEKOUT_CARTEIRA_49_99 || "";
+      else url = process.env.LINK_CHEKOUT_49_99 || "";
       break;
     case "tg":
       url = process.env.LINK_TELEGRAM || "";

@@ -18,6 +18,21 @@ const POPUP_49_99_OFFSET_X = 0;
 const POPUP_49_99_OFFSET_Y = 0;
 const POPUP_49_99_OVERLAY_OPACITY = 0.55;
 
+// AJUSTES DA ETIQUETA "CARTEIRA"
+const CARTEIRA_BADGE_OFFSET_X = 22; // px
+const CARTEIRA_BADGE_OFFSET_Y = -9; // px
+const CARTEIRA_BADGE_BORDER_WIDTH = "1px";
+
+// AJUSTES DO ÍCONE DE CARTEIRA (BOTÃO USAR SALDO)
+const CARTEIRA_ICON_OFFSET_X = -3; // px (deslocamento horizontal)
+
+// AJUSTES DO TEXTO "Pay" (BOTÃO GOOGLE PAY)
+const GOOGLE_PAY_TEXT_OFFSET_X = -4; // px (deslocamento horizontal)
+
+// AJUSTES DO ÍCONE APPLE PAY
+const APPLE_PAY_ICON_OFFSET_X = 5; // px
+const APPLE_PAY_ICON_OFFSET_Y = -2; // px
+
 // FIM AJUSTE
 
 interface CheckoutPopupProps {
@@ -49,7 +64,7 @@ export default function CheckoutPopup({
 }: CheckoutPopupProps) {
   // Anti-clone: nunca expõe a URL real — sempre via Netlify Function
   const handleCheckout = useCallback(
-    async (method: "pix" | "apple" | "carteira" | "cartao") => {
+    async (method: "pix" | "apple" | "carteira" | "cartao" | "google") => {
       const id = PLAN_CHECKOUT_MAP[planId] ?? planId;
       try {
         const res = await fetch(`/.netlify/functions/get-checkout?id=${id}&method=${method}`);
@@ -93,11 +108,11 @@ export default function CheckoutPopup({
     >
       {/* Painel */}
       <div
-        className="relative w-full max-w-[430px] bg-white rounded-[24px] overflow-hidden shadow-2xl"
+        className="relative w-full max-w-[370px] bg-white rounded-[24px] overflow-hidden shadow-2xl"
         style={{
           transform: `translate(${offsetX}px, ${offsetY}px)`,
-          maxHeight: "92dvh",
-          overflowY: "auto",
+          maxHeight: "85dvh",
+          overflowY: "hidden",
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -120,17 +135,17 @@ export default function CheckoutPopup({
               "object-bottom" (foca na parte de baixo)
               Ou use posições exatas como: "object-[center_25%]" ou "object-[0px_-20px]"
         */}
-        <div className="relative h-[95px] w-full overflow-hidden bg-[#f3eee7]">
+        <div className="relative h-[81px] w-full overflow-hidden bg-[#f3eee7]">
           <img
             src="/assets/a9f3k1.png"
             alt="Banner"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover object-center"
           />
         </div>
         {/* FIM AJUSTE */}
 
         {/* Avatar + Nome */}
-        <div className="px-4 pb-2">
+        <div className="px-3 pb-9">
           {/* 
               INICIO AJUSTE - AVATAR DA MODELO
               - -mt-5: Define o quanto o avatar sobe e sobrepõe o banner. 
@@ -138,7 +153,7 @@ export default function CheckoutPopup({
               - w-[84px] h-[84px]: Controla o tamanho (largura e altura) da foto de perfil.
               - object-cover: Garante que a foto preencha o círculo sem distorcer.
           */}
-          <div className="-mt-6 mb-4 flex items-end gap-3">
+          <div className="-mt-7 mb-4 flex items-end gap-3">
             <div className="relative w-[84px] h-[84px] rounded-full overflow-hidden bg-transparent flex-shrink-0 z-10">
               <img
                 src="/assets/b7q2x9.png"
@@ -162,7 +177,7 @@ export default function CheckoutPopup({
                 - mr-[0px]  -> Aumente para mover mais para a ESQUERDA
             */}
             <div className="mt-[1px] mb-[17px] ml-[0.1px] mr-[0px]">
-              <h1 className="text-[14px] font-medium text-slate-600 leading-tight">Nayara Assunção</h1>
+              <h1 className="text-[14px] font-medium text-slate-601 leading-tight">Nayara Assunção</h1>
               <p className="text-[12px] text-slate-500/80 font-normal">@nayara_assunofc</p>
             </div>
             {/* FIM AJUSTE */}
@@ -186,7 +201,7 @@ export default function CheckoutPopup({
 
           {/* Valor */}
           <div className="mb-6">
-            <p className="text-xs text-muted-foreground mb-0.5">{t("popup_payments")}</p>
+            <p className="text-sm font-bold text-foreground mb-1">{t("popup_payments")}</p>
             <p className="text-xs text-muted-foreground mb-1">{t("popup_value")}</p>
             <p className="text-xl font-bold text-foreground">{planPrice}</p>
             <p className="text-[10px] text-muted-foreground">{planLabel}</p>
@@ -195,48 +210,108 @@ export default function CheckoutPopup({
           {/* INICIO AJUSTE - Botão Pix (mesmo estilo gradient-orange-btn dos botões do site) */}
           <button
             onClick={() => handleCheckout("pix")}
-            className="gradient-orange-btn w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-full text-foreground font-semibold text-sm hover:brightness-105 active:scale-[0.98] transition-all mb-4"
+            className="gradient-orange-btn w-full flex items-center justify-center gap-2 px-5 py-[12px] rounded-full text-foreground font-medium text-sm hover:brightness-105 active:scale-[0.98] transition-all mb-4"
           >
-            {/* Ícone Pix */}
-            <svg width="18" height="18" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true">
-              <path d="M242.4 292.5C247.8 287.1 255.1 284.5 262.5 284.5C269.9 284.5 277.2 287.1 282.6 292.5L371.1 381C377.1 387 380.5 395 380.5 403.4C380.5 411.7 377.1 419.7 371.1 425.7L282.6 514.2C277.2 519.6 269.9 522.2 262.5 522.2C255.1 522.2 247.8 519.6 242.4 514.2L153.9 425.7C147.9 419.7 144.5 411.7 144.5 403.4C144.5 395 147.9 387 153.9 381L242.4 292.5zM242.4 219.5L153.9 131C147.9 125 144.5 117 144.5 108.6C144.5 100.3 147.9 92.28 153.9 86.28L242.4-2.228C247.8-7.629 255.1-10.22 262.5-10.22C269.9-10.22 277.2-7.629 282.6-2.228L371.1 86.28C377.1 92.28 380.5 100.3 380.5 108.6C380.5 117 377.1 125 371.1 131L282.6 219.5C277.2 224.9 269.9 227.5 262.5 227.5C255.1 227.5 247.8 224.9 242.4 219.5zM0 261.6C0 253.3 3.4 245.3 9.4 239.3L97.9 150.8C103.3 145.4 110.6 142.8 118 142.8C125.4 142.8 132.6 145.4 138.1 150.8L226.6 239.3C232.6 245.3 236 253.3 236 261.6C236 270 232.6 277.1 226.6 283.1L138.1 371.6C132.6 377 125.4 379.6 118 379.6C110.6 379.6 103.3 377 97.9 371.6L9.4 283.1C3.4 277.1 0 270 0 261.6zM299 261.6C299 253.3 302.4 245.3 308.4 239.3L396.9 150.8C402.4 145.4 409.6 142.8 417 142.8C424.4 142.8 431.7 145.4 437.1 150.8L525.6 239.3C531.6 245.3 535 253.3 535 261.6C535 270 531.6 277.1 525.6 283.1L437.1 371.6C431.7 377 424.4 379.6 417 379.6C409.6 379.6 402.4 377 396.9 371.6L308.4 283.1C302.4 277.1 299 270 299 261.6z" />
-            </svg>
             {t("popup_pay_pix")}
           </button>
-          {/* FIM AJUSTE */}
 
           {/* Divisor */}
-          <div className="flex items-center gap-2 mb-4 mt-1">
-            <div className="flex-1 border-t border-border/40" />
-            <span className="text-[10px] text-muted-foreground">{t("popup_or")}</span>
-            <div className="flex-1 border-t border-border/40" />
-          </div>
+          <div className="border-t border-border/40 mb-4 mt-1" />
 
-          {/* INICIO AJUSTE - Botão Apple Pay */}
+          {/* 1º: Pagar com Cartão (Fundo azulado-branco, sem contorno) */}
+          <button
+            onClick={() => handleCheckout("cartao")}
+            className="w-full flex items-center justify-center gap-2 py-[12px] rounded-full bg-[#f8fbff] text-foreground font-medium text-sm hover:bg-[#f0f5ff] active:scale-[0.98] transition-all mb-4"
+          >
+            {t("popup_pay_card")}
+          </button>
+
+          {/* 2º: Pagar com Apple Pay (Fundo azulado-branco, sem contorno) */}
           <button
             onClick={() => handleCheckout("apple")}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-black text-white font-semibold text-sm hover:bg-black/80 active:scale-[0.98] transition-all mb-4"
+            className="w-full flex items-center justify-center gap-2 py-[12px] rounded-full bg-[#f8fbff] text-foreground font-medium text-sm hover:bg-[#f0f5ff] active:scale-[0.98] transition-all mb-4"
           >
-            {/* SVG Apple — fill="currentColor" para adaptação automática */}
-            <svg width="16" height="16" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true">
-              <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-28.2-157.2-93.8c-60.5-76.4-114.2-206.2-114.2-330.8 0-207.4 137.4-317.2 272.3-317.2 70.1 0 128.4 46.4 172.5 46.4 42.3 0 108.9-49 188.4-49 30.3 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z" />
+            <svg
+              width="18"
+              height="18"
+              viewBox="-3.5 -2 24 24"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMinYMin"
+              style={{ transform: `translate(${APPLE_PAY_ICON_OFFSET_X}px, ${APPLE_PAY_ICON_OFFSET_Y}px)` }}
+            >
+              <path d="M13.623 10.627c-.025-2.533 2.066-3.748 2.159-3.808-1.175-1.72-3.005-1.955-3.657-1.982-1.557-.158-3.039.917-3.83.917-.788 0-2.008-.894-3.3-.87C3.299 4.909 1.734 5.87.86 7.39c-1.764 3.06-.452 7.595 1.267 10.077.84 1.215 1.842 2.58 3.157 2.53 1.266-.05 1.745-.819 3.276-.819 1.531 0 1.962.82 3.302.795 1.363-.026 2.226-1.239 3.06-2.457.965-1.41 1.362-2.775 1.386-2.845-.03-.013-2.658-1.02-2.684-4.045zm-2.518-7.433c.698-.847 1.169-2.022 1.04-3.194C11.14.04 9.921.67 9.2 1.515c-.647.75-1.214 1.945-1.062 3.094 1.122.088 2.268-.57 2.967-1.415z" />
             </svg>
             {t("popup_pay_apple")}
           </button>
-          {/* FIM AJUSTE */}
 
-          {/* INICIO AJUSTE - Botão Carteira/Cartão */}
+          {/* 3º: Recarregar Carteira */}
+          <div className="relative mt-6 mb-3">
+            <div
+              className="absolute z-10 bg-white rounded-full shadow-sm flex items-center justify-center"
+              style={{
+                top: `${CARTEIRA_BADGE_OFFSET_Y}px`,
+                left: `${CARTEIRA_BADGE_OFFSET_X}px`,
+                border: `${CARTEIRA_BADGE_BORDER_WIDTH} solid #f08143`,
+                padding: '2px 8px',
+                height: '18px'
+              }}
+            >
+              <span className="text-[9px] font-bold text-[#f08143] leading-[1] whitespace-nowrap">Carteira</span>
+            </div>
+            <button
+              onClick={() => handleCheckout("carteira")}
+              className="w-full flex items-center justify-center gap-2.5 py-[12px] rounded-full bg-black text-white font-medium text-sm hover:bg-black/90 active:scale-[0.98] transition-all"
+            >
+              <span>Recarregar</span>
+              <svg
+                width="20"
+                height="16"
+                viewBox="0 0 20 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="flex-shrink-0"
+                style={{ transform: `translateX(${CARTEIRA_ICON_OFFSET_X}px)` }}
+              >
+                <path
+                  d="M14.841 11.3789H5.1583C2.58604 11.3789 0.5 9.29351 0.5 6.72059V4.6583C0.5 4.57979 0.511215 4.50458 0.5 4.42674C0.622049 1.96333 2.66455 0 5.1583 0H14.841C17.3368 0 19.3799 1.95872 19.4993 4.42542C19.4947 4.50129 19.4993 4.58177 19.4993 4.65896V6.72125C19.4993 9.29417 17.4133 11.3795 14.841 11.3795V11.3789Z"
+                  fill="#F68D3D"
+                />
+                <path
+                  d="M0.5 4.42419C4.79875 4.72833 7.96806 5.63412 10.1075 6.43173C11.6559 7.00899 13.1568 7.71291 15.0548 7.36392C17.1204 6.98392 18.5929 5.551 19.5 4.42419V12.0783C19.5 12.0783 19.5 15.8031 15.7778 15.8031H4.13837C4.13837 15.8031 0.5 15.8031 0.5 12.1001V4.42419Z"
+                  fill="#F4EBE2"
+                />
+              </svg>
+              <span></span>
+            </button>
+          </div>
+
+          {/* 4º: Google Pay */}
           <button
-            onClick={() => handleCheckout("cartao")}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-black text-white font-semibold text-sm hover:bg-black/80 active:scale-[0.98] transition-all mb-6"
+            onClick={() => handleCheckout("google")}
+            className="w-full flex items-center justify-center gap-[8px] py-[12px] rounded-full bg-black text-white font-medium text-sm hover:bg-black/90 active:scale-[0.98] transition-all mb-6"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
-              <line x1="1" y1="10" x2="23" y2="10" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20px" height="20px">
+              <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z" />
+              <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z" />
+              <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z" />
+              <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z" />
             </svg>
-            {t("popup_pay_card")}
+            <span
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 300,
+                fontSize: '19px',
+                letterSpacing: '-0.2px',
+                display: 'inline-block',
+                transform: `translateX(${GOOGLE_PAY_TEXT_OFFSET_X}px) scaleY(1.1)`,
+                lineHeight: '1',
+                verticalAlign: 'middle'
+              }}
+            >
+              Pay
+            </span>
           </button>
-          {/* FIM AJUSTE */}
         </div>
       </div>
     </div>
